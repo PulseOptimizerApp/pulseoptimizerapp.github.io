@@ -460,7 +460,7 @@
     </div>
     <div class="verify rv">
       <p><b style="color:var(--text)">Verify your download.</b> Each release is built by GitHub Actions from the public code, with a SHA-256 checksum and signed build proof. With the GitHub CLI installed, run:</p>
-      <pre id="attest">gh attestation verify PulseOptimizer.exe --repo PulseOptimizerApp/PulseOptimizer</pre>
+      <pre id="attest">gh attestation verify PulseOptimizer.exe --repo PulseOptimizerApp/Pulse</pre>
     </div>
   </div>
 </section>
@@ -504,7 +504,7 @@
 
 <script>
   // Pulse's homes, newest first. Downloads come from the first one that has a release with the exe.
-  const REPOS = ["PulseOptimizerApp/PulseOptimizer", "PulseOptimizer-app/PulseOptimizer"];
+  const REPOS = ["PulseOptimizerApp/Pulse", "PulseOptimizer-app/PulseOptimizer"];
   const HOME = REPOS[0];
   const gh = p => `https://github.com/${HOME}${p}`;
 
