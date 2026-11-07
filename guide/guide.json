@@ -580,26 +580,6 @@
    "Date": "2026-11-07"
   },
   {
-   "Tag": "Storage",
-   "Hot": false,
-   "Title": "TeamGroup GA Pro 2TB SSD Review: A faltering attempt at a mid-range PCIe 5.0 SSD",
-   "Body": "The TeamGroup GA Pro mostly misses. Decent QD8 and steady-state writes can’t make up for weak overall performance, poor efficiency, and high temps.",
-   "SourceName": "Tom's Hardware",
-   "SourceUrl": "https://www.tomshardware.com/pc-components/ssds/teamgroup-ga-pro-2tb-ssd-review",
-   "Date": "2026-11-07",
-   "Auto": true
-  },
-  {
-   "Tag": "RAM",
-   "Hot": false,
-   "Title": "TSMC denies exploring 3D DRAM at Nvidia's request",
-   "Body": "Nvidia reportedly asks TSMC to produce '3D DRAM' to address memory shortages.",
-   "SourceName": "Tom's Hardware",
-   "SourceUrl": "https://www.tomshardware.com/pc-components/dram/tsmc-denies-exploring-3d-dram-at-nvidias-request-advanced-memory-tech-is-still-years-from-market-viability",
-   "Date": "2026-11-07",
-   "Auto": true
-  },
-  {
    "Tag": "GPU",
    "Hot": false,
    "Title": "The Best GPU for Budget PCs: CPU/GPU Scaling Tested",
@@ -616,16 +596,6 @@
    "Body": "A known Intel leaker claims that Intel's next-generation processors will top out at 5.1 GHz if the CPU core temperatures aren't kept below 90°C.",
    "SourceName": "Tom's Hardware",
    "SourceUrl": "https://www.tomshardware.com/pc-components/cpus/intel-leaker-claims-nova-lake-desktop-chips-have-5-1-ghz-clock-limit-beyond-90-c-high-clock-speeds-could-demand-significant-cooling-for-next-gen-chips",
-   "Date": "2026-11-05",
-   "Auto": true
-  },
-  {
-   "Tag": "RAM",
-   "Hot": false,
-   "Title": "Sam Altman is annoyed his DRAM comment was 'taken out of context'",
-   "Body": "Him being annoyed has not made DRAM cheaper, however.",
-   "SourceName": "PC Gamer",
-   "SourceUrl": "https://www.pcgamer.com/software/ai/sam-altman-is-annoyed-his-dram-comment-was-taken-out-of-context/",
    "Date": "2026-11-05",
    "Auto": true
   }
