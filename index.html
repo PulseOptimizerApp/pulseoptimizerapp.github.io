@@ -264,6 +264,24 @@
   .one li { display: flex; gap: 10px; color: var(--text); font-size: 15px; }
   .one li svg { width: 18px; height: 18px; stroke: var(--good); flex: none; margin-top: 3px; }
 
+  .specs { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
+  .specs span { font-size: 12.5px; font-weight: 600; color: var(--text); background: var(--s2); border: 1px solid var(--line2); border-radius: 999px; padding: 5px 11px; }
+
+  /* Debloat list */
+  .dl-list { width: 100%; max-width: 420px; display: grid; gap: 8px; }
+  .dl-item { display: grid; grid-template-columns: 20px 1fr auto; gap: 12px; align-items: center; border: 1px solid var(--line); background: var(--s1); border-radius: 10px; padding: 11px 14px; font-size: 14px; }
+  .dl-item small { display: block; color: var(--faint); font-size: 12px; }
+  .box { width: 18px; height: 18px; border-radius: 5px; border: 1.5px solid var(--line2); display: grid; place-items: center; }
+  .box.on { background: var(--b); border-color: var(--b); }
+  .box.on::after { content: ""; width: 8px; height: 4px; border-left: 2px solid #fff; border-bottom: 2px solid #fff; transform: rotate(-45deg) translate(1px, -1px); }
+  .dl-total { display: flex; justify-content: space-between; align-items: center; margin-top: 6px; padding: 12px 14px; border-radius: 10px; background: rgba(91,140,255,.10); border: 1px solid rgba(91,140,255,.35); font-size: 14px; }
+  .dl-total b { font-size: 18px; }
+
+  /* Tweak categories */
+  .cats { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin-bottom: 30px; }
+  .cats div { border: 1px solid var(--line); background: var(--s1); border-radius: 12px; padding: 16px; }
+  .cats b { display: block; font-size: 14.5px; margin-bottom: 4px; } .cats small { color: var(--dim); font-size: 13px; }
+
   /* Reveal on scroll */
   .rv { opacity: 0; transform: translateY(14px); transition: opacity .6s ease, transform .6s cubic-bezier(.2,.8,.2,1); }
   .rv.in { opacity: 1; transform: none; }
@@ -276,6 +294,7 @@
     .grid3, .promise { grid-template-columns: 1fr 1fr; }
     .bento { grid-template-columns: 1fr 1fr; } .tile.w3, .tile.w2, .tile.w4 { grid-column: span 1; } .tile.full { grid-column: span 2; }
     .swap { grid-template-columns: 1fr; } .arrow { transform: rotate(90deg); margin: 0 auto; }
+    .cats { grid-template-columns: 1fr 1fr; }
     .nums { grid-template-columns: 1fr 1fr; } .nums div:nth-child(2) { border-right: 0; } .nums div:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
     .app { grid-template-columns: 1fr; } .side { display: none; }
   }
@@ -303,12 +322,12 @@
   <div class="wrap">
     <a class="brand" href="#"><img src="img/icon-small.svg" alt="">Pulse</a>
     <div class="links">
-      <a href="#everything">Features</a>
-      <a href="#diagnose">Diagnose</a>
       <a href="#clips">Clips</a>
+      <a href="#tweaks">Tweaks</a>
+      <a href="#macros">Macros</a>
+      <a href="#debloat">Debloat</a>
       <a href="#games">Games</a>
       <a href="#roblox">Roblox</a>
-      <a href="#macros">Macros</a>
       <a href="#safety">Safety</a>
       <a href="#faq">FAQ</a>
     </div>
@@ -321,9 +340,9 @@
 
 <header class="hero">
   <div class="wrap">
-    <a class="pill rv" href="#clips"><span>New</span> Match recaps with your agent, rank and map</a>
-    <h1 class="rv">Everything your gaming PC needs. <span class="g">One free app.</span></h1>
-    <p class="lead rv">Pulse finds what's slowing your games and fixes it, clips your best plays, recaps every match, and looks after Roblox, macros, clean-up and security. It proves what helped, and undoes anything with one click.</p>
+    <a class="pill rv" href="#clips"><span>New</span> Auto clips for your aces, and a recap after every match</a>
+    <h1 class="rv">Flawless clips. Faster games. <span class="g">One free app.</span></h1>
+    <p class="lead rv">Record your best plays in full quality without slowing your game, apply tweaks that prove they work, run macros on any mouse, and strip the bloat out of Windows. Pulse is the all-in-one companion for your gaming PC.</p>
     <div class="cta rv">
       <a class="btn big primary dl" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0l-5-5m5 5l5-5M4 21h16"/></svg>Download for Windows</a>
       <a class="btn big src" href="#"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5a11.5 11.5 0 00-3.6 22.4c.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.2 1.2a11 11 0 015.8 0c2.2-1.5 3.2-1.2 3.2-1.2.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A11.5 11.5 0 0012 .5z"/></svg>View the source</a>
@@ -363,21 +382,20 @@
   <div class="wrap">
     <div class="center"><div class="eyebrow rv">All in one</div>
     <h2 class="rv">Your PC's game companion.</h2>
-    <p class="intro rv">Most players juggle an optimizer, a clipper, an FPS counter, a macro tool and a Roblox launcher. Pulse is all of them, built to work together and stay out of your way.</p></div>
+    <p class="intro rv">Most players juggle an optimizer, a clipper, a macro tool, a debloat script and an FPS counter. Pulse is all of them, built to work together and stay out of your way.</p></div>
     <div class="bento">
-      <a class="tile w4 c1 rv" href="#diagnose"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l3-8 4 16 3-8h4"/></svg></div><h4>Fix what's really slowing your games</h4><p>A monitor stuck at 60 Hz, RAM at half speed, a cable in the wrong port, an old BIOS. Pulse checks the setup mistakes that cost the most FPS first, then walks you through each fix.</p><span class="more">See what it checks →</span></a>
-      <a class="tile w2 c2 rv" href="#clips"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M10 10l5 2.5-5 2.5z"/></svg></div><h4>Clips without the lag</h4><p>Instant replay on your graphics card's video chip. Aces and multi-kills save themselves.</p><span class="more">Clips →</span></a>
-      <a class="tile w2 c4 rv" href="#clips"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 01-10 0zM17 6h3v2a3 3 0 01-3 3M7 6H4v2a3 3 0 003 3"/></svg></div><h4>A recap after every match</h4><p>Agent, rank, map, K/D/A and headshots for VALORANT, CS2, League and Dota 2. A session card for every other game.</p></a>
-      <a class="tile w2 c3 rv" href="#games"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10m6 10V4m6 16v-7m4 7H2"/></svg></div><h4>Proof, not placebo</h4><p>Before-and-after tests in your own game tell you if a tweak helped. If it didn't, undo it.</p></a>
-      <a class="tile w2 c1 rv" href="#games"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="11" rx="3"/><path d="M7 11v3m-1.5-1.5h3M16 12h.01M18 14h.01"/></svg></div><h4>Checklists for your games</h4><p>Reflex or Anti-Lag, the right frame cap and an FPS counter for 35+ games.</p></a>
-      <a class="tile w3 c2 rv" href="#roblox"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2" transform="rotate(12 12 12)"/><path d="M10 10h4v4h-4z"/></svg></div><h4>Roblox, unlocked</h4><p>Higher FPS cap, allowed performance flags, your own font, and settings that survive every Roblox update. Nothing touches the running game.</p></a>
-      <a class="tile w3 c5 rv" href="#macros"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="6"/><path d="M12 6v4"/></svg></div><h4>Macros on any mouse</h4><p>Key sequences, auto clicking and Logitech G Hub scripts on any mouse, with fair-play limits built in.</p></a>
-      <a class="tile w3 c3 rv" href="#safety"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg></div><h4>Clean-up and security</h4><p>Get space back safely, tame startup apps, run Defender scans and see what starts with Windows.</p></a>
-      <a class="tile w3 c4 rv" href="#evidence"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 109-9 9.7 9.7 0 00-6.7 2.7L3 8"/><path d="M3 3v5h5"/></svg></div><h4>Undo anything, any time</h4><p>Every setting's old value is saved first, plus a restore point. One click puts it all back.</p></a>
+      <a class="tile w4 c2 rv" href="#clips"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M10 10l5 2.5-5 2.5z"/></svg></div><h4>Full-quality clips that don't slow your game</h4><p>Instant replay recorded by your graphics card's own video chip, up to 144 FPS and 120 Mbps in H.264, HEVC or AV1. Aces and multi-kills save themselves, and every match ends with a recap.</p><span class="more">Clips →</span></a>
+      <a class="tile w2 c1 rv" href="#tweaks"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h10M4 12h16M4 18h7"/><circle cx="17" cy="6" r="2"/><circle cx="14" cy="18" r="2"/></svg></div><h4>Tweaks that prove they work</h4><p>Latency, network, GPU and power tweaks, each explained, measured in your game and undoable.</p><span class="more">Tweaks →</span></a>
+      <a class="tile w2 c5 rv" href="#macros"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="6"/><path d="M12 6v4"/></svg></div><h4>Macros on any mouse</h4><p>Key sequences, auto clicking and Logitech G Hub scripts, with no brand lock-in.</p><span class="more">Macros →</span></a>
+      <a class="tile w2 c3 rv" href="#debloat"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M8 6V4h8v2M6 6l1 14h10l1-14"/><path d="M10 10v6M14 10v6"/></svg></div><h4>Debloat Windows safely</h4><p>Remove preinstalled junk, quiet background services and get gigabytes back, all reversible.</p><span class="more">Debloat →</span></a>
+      <a class="tile w2 c4 rv" href="#clips"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 01-10 0zM17 6h3v2a3 3 0 01-3 3M7 6H4v2a3 3 0 003 3"/></svg></div><h4>A recap after every match</h4><p>Agent, rank, map, K/D/A and headshots for VALORANT, CS2, League and Dota 2.</p></a>
+      <a class="tile w2 c1 rv" href="#diagnose"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l3-8 4 16 3-8h4"/></svg></div><h4>Finds what's really wrong</h4><p>A monitor stuck at 60 Hz, RAM at half speed or an old BIOS, with step-by-step fixes.</p></a>
+      <a class="tile w2 c2 rv" href="#roblox"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2" transform="rotate(12 12 12)"/><path d="M10 10h4v4h-4z"/></svg></div><h4>Roblox, unlocked</h4><p>Higher FPS cap, allowed performance flags and your own font, kept through every Roblox update.</p></a>
+      <a class="tile w2 c4 rv" href="#safety"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 109-9 9.7 9.7 0 00-6.7 2.7L3 8"/><path d="M3 3v5h5"/></svg></div><h4>Undo anything, any time</h4><p>Every setting's old value is saved first, plus a restore point. One click puts it all back.</p></a>
     </div>
     <div class="nums rv">
-      <div><b>1</b><small>app instead of five</small></div>
-      <div><b>35+</b><small>games with their own checklist</small></div>
+      <div><b>144 FPS</b><small>clips at up to 120 Mbps</small></div>
+      <div><b>~40</b><small>tweaks, each one explained</small></div>
       <div><b>100%</b><small>of changes undoable</small></div>
       <div><b>$0</b><small>no ads, no account, no upsell</small></div>
     </div>
@@ -391,6 +409,7 @@
       <div><s>Game clipper</s><em>account, ads, background load</em></div>
       <div><s>FPS counter and benchmark tool</s><em>separate app</em></div>
       <div><s>Macro software</s><em>only for one mouse brand</em></div>
+      <div><s>Debloat script</s><em>runs blind, no undo</em></div>
       <div><s>Roblox launcher</s><em>another download</em></div>
     </div>
     <div class="arrow rv"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14m-6-6l6 6-6 6"/></svg></div>
@@ -401,9 +420,114 @@
         <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Clips, auto clips and match recaps</li>
         <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>FPS counter and before-and-after tests</li>
         <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Macros on any mouse or key</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Debloat you can see and undo</li>
         <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Roblox launcher with your settings</li>
         <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>One small download. Free.</li>
       </ul>
+    </div>
+  </div>
+</section>
+
+<section id="clips">
+  <div class="wrap split">
+    <div>
+      <div class="eyebrow rv">Clips</div>
+      <h2 class="rv">Clips that look as good as the play.</h2>
+      <p class="intro rv" style="margin-bottom:0">Instant replay recorded by the video chip built into your graphics card (NVIDIA NVENC, AMD AMF or Intel Quick Sync), not the part running your game. Full quality, no account, no ads, no uploads.</p>
+      <div class="specs rv"><span>Native, 1440p or 1080p</span><span>Up to 144 FPS</span><span>Up to 120 Mbps</span><span>H.264 · HEVC · AV1</span><span>Replay up to 5 min</span><span>Game and mic on separate tracks</span></div>
+      <ul class="ticks">
+        <li class="rv"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span><b>Auto clips your big plays.</b> 3Ks, 4Ks and aces in Counter-Strike 2, triples to pentas in League of Legends, and rampages in Dota 2, from each game's official live data.</span></li>
+        <li class="rv"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span><b>A recap after every match.</b> Map, agent or champion, win or loss, K/D/A, headshot % and rank, with that match's clips one click away. VALORANT, CS2, League and Dota 2.</span></li>
+        <li class="rv"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span><b>A popup that doesn't get in the way.</b> It slides in the moment you clip, shows what you saved, and never takes focus from your game.</span></li>
+        <li class="rv"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span><b>Trim, mix and keep.</b> A built-in trimmer, separate game and mic volume, screenshots, and a storage limit so clips never fill your drive.</span></li>
+      </ul>
+    </div>
+    <div class="stage clipstage rv" aria-label="Your clip library and the clip popup (illustration)">
+      <div class="toast"><div class="thumb"></div><div class="row"><div class="badge"><svg viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></div><div><b>ACE clipped</b><small>Last 30 seconds</small></div></div><div class="drain"></div></div>
+      <div class="lib">
+        <div class="lt"><div class="lp g1"><span>ACE</span><em>0:24</em></div><b>ACE</b><small>VALORANT · 2 min ago</small></div>
+        <div class="lt"><div class="lp g2"><span>Penta kill</span><em>0:30</em></div><b>Penta kill</b><small>League of Legends · 1 h ago</small></div>
+        <div class="lt"><div class="lp g3"><span>4K</span><em>0:19</em></div><b>4K</b><small>Counter-Strike 2 · Yesterday</small></div>
+        <div class="lt"><div class="lp g4"><em>0:30</em></div><b>Marvel Rivals</b><small>Saved with your hotkey</small></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="tweaks">
+  <div class="wrap">
+    <div class="eyebrow rv">Tweaks</div>
+    <h2 class="rv">Tweaks that actually do something.</h2>
+    <p class="intro rv">Nearly 40 tweaks for lower latency, steadier frame times, better ping and a quieter Windows. Each one says exactly what it changes and what to expect, only shows up if it fits your PC, can be measured in your own game, and comes back off with one click.</p>
+    <div class="cats">
+      <div class="rv"><b>Latency and input</b><small>Mouse, keyboard and frame pacing</small></div>
+      <div class="rv"><b>Network and ping</b><small>Adapter power saving, Nagle, throttling</small></div>
+      <div class="rv"><b>GPU and display</b><small>Scheduling, game mode, visual effects</small></div>
+      <div class="rv"><b>Power and CPU</b><small>Plans, timers, background priority</small></div>
+      <div class="rv"><b>Privacy and background</b><small>Telemetry, AI features, ads in Windows</small></div>
+    </div>
+    <div class="rv">
+      <table>
+        <thead><tr><th>Tweak</th><th>Label</th><th>Why</th></tr></thead>
+        <tbody>
+          <tr><td>Turn off background game recording</td><td><span class="v k">Documented</span></td><td>Uses the official Group Policy setting instead of undocumented registry values.</td></tr>
+          <tr><td>Hardware-accelerated GPU scheduling</td><td><span class="v s">Only where it helps</span></td><td>Offered for RTX 40-series and newer, where DLSS Frame Generation needs it.</td></tr>
+          <tr><td>Network adapter power saving off</td><td><span class="v s">Only where it helps</span></td><td>Stops the adapter dozing between packets. Mostly helps laptops and cheaper adapters.</td></tr>
+          <tr><td>Nagle's algorithm and network throttling</td><td><span class="v s">Only where it helps</span></td><td>Not in Microsoft's documentation, so they're optional and explained, and Measure shows if they help on your PC.</td></tr>
+          <tr><td>"GPU Priority" and "SFIO Priority"</td><td><span class="v x">Left out</span></td><td>Microsoft documents these values as not used.</td></tr>
+          <tr><td>Timer resolution registry tweaks</td><td><span class="v x">Left out</span></td><td>Timer resolution has been per-process since Windows 10 version 2004.</td></tr>
+        </tbody>
+      </table>
+      <p class="note">Automated tests make sure left-out tweaks can't come back in a future version. Every change saves the exact old value first, and Pulse makes a Windows restore point before your first one.</p>
+    </div>
+  </div>
+</section>
+
+<section id="macros">
+  <div class="wrap split rev">
+    <div>
+      <div class="eyebrow rv">Macros</div>
+      <h2 class="rv">Macros on any key or mouse button.</h2>
+      <p class="intro rv" style="margin-bottom:0">Record or build key sequences, auto and butterfly clicking, and run Logitech G Hub Lua scripts on any mouse, not just Logitech's. They keep working with Pulse in the tray.</p>
+      <ul class="ticks">
+        <li class="rv"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span><b>Clean step editor</b> with your own delays, and a panic key that stops everything instantly.</span></li>
+        <li class="rv"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span><b>Plays fair by default.</b> Macros pause while an anti-cheat is running, and mouse-moving macros stay off in competitive shooters. Only use them where a game's rules allow.</span></li>
+      </ul>
+    </div>
+    <div class="stage rv" aria-label="A macro (illustration)">
+      <div class="mac">
+        <div class="step"><span class="n">1</span><span>Press <span class="key">Q</span></span><span class="mini">Key</span></div>
+        <div class="delay">wait 20 ms</div>
+        <div class="step"><span class="n">2</span><span>Press <span class="key">E</span></span><span class="mini">Key</span></div>
+        <div class="delay">wait 20 ms</div>
+        <div class="step"><span class="n">3</span><span>Repeat while <span class="key">Mouse 5</span> is held</span><span class="mini blue">Loop</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="debloat">
+  <div class="wrap split">
+    <div>
+      <div class="eyebrow rv">Debloat</div>
+      <h2 class="rv">A cleaner Windows, without breaking it.</h2>
+      <p class="intro rv" style="margin-bottom:0">Most debloat scripts rip things out blindly. Pulse shows you everything first, explains each item, and keeps what Windows and your games need.</p>
+      <ul class="ticks">
+        <li class="rv"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span><b>Remove preinstalled apps.</b> Candy Crush, news feeds, Solitaire with ads and the rest, each marked "safe to remove" or "check first". Xbox sign-in and Gaming Services are never offered, so your games keep working.</span></li>
+        <li class="rv"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span><b>Get gigabytes back.</b> Old downloads, Windows Update leftovers (cleaned with Microsoft's own tool) and caches, biggest first. Your own files go to the Recycle Bin.</span></li>
+        <li class="rv"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span><b>Quiet the background.</b> Startup apps with advice for each one, extra services, telemetry, AI features and ads in Windows, all as undoable tweaks.</span></li>
+        <li class="rv"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span><b>Stay clean.</b> An optional weekly clean-up of temporary files, and a snapshot that shows what crept back since.</span></li>
+      </ul>
+    </div>
+    <div class="stage rv" aria-label="Debloat (illustration)">
+      <div class="dl-list">
+        <div class="dl-item"><span class="box on"></span><div>Candy Crush Saga<small>Game installed by Windows</small></div><span class="tag o">Safe</span></div>
+        <div class="dl-item"><span class="box on"></span><div>Microsoft Solitaire Collection<small>Card games with ads</small></div><span class="tag o">Safe</span></div>
+        <div class="dl-item"><span class="box on"></span><div>Windows Update leftovers<small>Cleaned with Microsoft's DISM</small></div><span class="mini">6.2 GB</span></div>
+        <div class="dl-item"><span class="box on"></span><div>Old installers in Downloads<small>Over a month old</small></div><span class="mini">3.8 GB</span></div>
+        <div class="dl-item"><span class="box"></span><div>Phone Link<small>Keep it if you use it</small></div><span class="tag c">Check</span></div>
+        <div class="dl-total"><span>Ready to free</span><b>10.4 GB</b></div>
+      </div>
     </div>
   </div>
 </section>
@@ -420,31 +544,6 @@
       <div class="card rv"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M22 12H2M5.5 5h13L22 12v6a2 2 0 01-2 2H4a2 2 0 01-2-2v-6z"/><path d="M6 16h.01M10 16h.01"/></svg></div><h4>Games on a hard drive</h4><p>Pulse names them and shows how to move them to an SSD without re-downloading.</p></div>
       <div class="card rv"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M5 12.5a10 10 0 0114 0M8.5 16a5 5 0 017 0M2 9a15 15 0 0120 0M12 20h.01"/></svg></div><h4>Wi-Fi lag and slow network links</h4><p>Including the 2.4 GHz band, cables stuck at 100 Mbps, and a network adapter that saves power at your ping's expense.</p></div>
       <div class="card rv"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M14 14.8V4a2 2 0 10-4 0v10.8a4 4 0 104 0z"/></svg></div><h4>A CPU that throttles under load</h4><p>A short load test shows whether heat or power limits are holding your processor back.</p></div>
-    </div>
-  </div>
-</section>
-
-<section id="clips">
-  <div class="wrap split">
-    <div>
-      <div class="eyebrow rv">Clips</div>
-      <h2 class="rv">Clip the play. Pulse does the rest.</h2>
-      <p class="intro rv" style="margin-bottom:0">Instant replay that runs on your graphics card's own video chip, so your game keeps its FPS. No account, no ads, no uploads.</p>
-      <ul class="ticks">
-        <li class="rv"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span><b>Auto clips your big plays.</b> 3Ks, 4Ks and aces in Counter-Strike 2, triples to pentas in League of Legends, and rampages in Dota 2, from each game's official live data.</span></li>
-        <li class="rv"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span><b>A recap after every match.</b> Map, agent or champion, win or loss, K/D/A, headshot % and rank, with that match's clips one click away. VALORANT, CS2, League and Dota 2.</span></li>
-        <li class="rv"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span><b>A popup that doesn't get in the way.</b> It slides in the moment you clip, shows what you saved, and never takes focus from your game.</span></li>
-        <li class="rv"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span><b>Trim, mix and keep.</b> A built-in trimmer, separate game and mic volume, screenshots, and a storage limit so clips never fill your drive.</span></li>
-      </ul>
-    </div>
-    <div class="stage clipstage rv" aria-label="Your clip library and the clip popup (illustration)">
-      <div class="toast"><div class="thumb"></div><div class="row"><div class="badge"><svg viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></div><div><b>ACE clipped</b><small>Last 30 seconds</small></div></div><div class="drain"></div></div>
-      <div class="lib">
-        <div class="lt"><div class="lp g1"><span>ACE</span><em>0:24</em></div><b>ACE</b><small>VALORANT · 2 min ago</small></div>
-        <div class="lt"><div class="lp g2"><span>Penta kill</span><em>0:30</em></div><b>Penta kill</b><small>League of Legends · 1 h ago</small></div>
-        <div class="lt"><div class="lp g3"><span>4K</span><em>0:19</em></div><b>4K</b><small>Counter-Strike 2 · Yesterday</small></div>
-        <div class="lt"><div class="lp g4"><em>0:30</em></div><b>Marvel Rivals</b><small>Saved with your hotkey</small></div>
-      </div>
     </div>
   </div>
 </section>
@@ -495,51 +594,6 @@
         <div class="opt"><div><b>Custom font</b><small style="font-family: Georgia, serif; font-size: 13.5px">The quick brown fox jumps</small></div><span class="sw"></span></div>
         <div class="opt"><div><b>Game mode while Roblox runs</b><small>High performance plan, back after</small></div><span class="sw off"></span></div>
       </div>
-    </div>
-  </div>
-</section>
-
-<section id="macros">
-  <div class="wrap split rev">
-    <div>
-      <div class="eyebrow rv">Macros</div>
-      <h2 class="rv">Macros on any key or mouse button.</h2>
-      <p class="intro rv" style="margin-bottom:0">Record or build key sequences, auto and butterfly clicking, and run Logitech G Hub Lua scripts on any mouse, not just Logitech's. They keep working with Pulse in the tray.</p>
-      <ul class="ticks">
-        <li class="rv"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span><b>Clean step editor</b> with your own delays, and a panic key that stops everything instantly.</span></li>
-        <li class="rv"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span><b>Plays fair by default.</b> Macros pause while an anti-cheat is running, and mouse-moving macros stay off in competitive shooters. Only use them where a game's rules allow.</span></li>
-      </ul>
-    </div>
-    <div class="stage rv" aria-label="A macro (illustration)">
-      <div class="mac">
-        <div class="step"><span class="n">1</span><span>Press <span class="key">Q</span></span><span class="mini">Key</span></div>
-        <div class="delay">wait 20 ms</div>
-        <div class="step"><span class="n">2</span><span>Press <span class="key">E</span></span><span class="mini">Key</span></div>
-        <div class="delay">wait 20 ms</div>
-        <div class="step"><span class="n">3</span><span>Repeat while <span class="key">Mouse 5</span> is held</span><span class="mini blue">Loop</span></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="evidence">
-  <div class="wrap">
-    <div class="eyebrow rv">Tweaks</div>
-    <h2 class="rv">Every tweak explained, labelled and undoable.</h2>
-    <p class="intro rv">Each tweak says what it changes, what to expect and its downsides, with an evidence label. Tweaks that can't help your PC are dimmed with the reason. Here's a sample.</p>
-    <div class="rv">
-      <table>
-        <thead><tr><th>Tweak</th><th>Label</th><th>Why</th></tr></thead>
-        <tbody>
-          <tr><td>Turn off background game recording</td><td><span class="v k">Documented</span></td><td>Uses the official Group Policy setting instead of undocumented registry values.</td></tr>
-          <tr><td>Hardware-accelerated GPU scheduling</td><td><span class="v s">Only where it helps</span></td><td>Offered for RTX 40-series and newer, where DLSS Frame Generation needs it.</td></tr>
-          <tr><td>Network adapter power saving off</td><td><span class="v s">Only where it helps</span></td><td>Stops the adapter dozing between packets. Mostly helps laptops and cheaper adapters.</td></tr>
-          <tr><td>Nagle's algorithm and network throttling</td><td><span class="v s">Only where it helps</span></td><td>Not in Microsoft's documentation, so they're optional and explained, and Measure shows if they help on your PC.</td></tr>
-          <tr><td>"GPU Priority" and "SFIO Priority"</td><td><span class="v x">Left out</span></td><td>Microsoft documents these values as not used.</td></tr>
-          <tr><td>Timer resolution registry tweaks</td><td><span class="v x">Left out</span></td><td>Timer resolution has been per-process since Windows 10 version 2004.</td></tr>
-        </tbody>
-      </table>
-      <p class="note">Automated tests make sure left-out tweaks can't come back in a future version. Every change saves the exact old value first, and Pulse makes a Windows restore point before your first one.</p>
     </div>
   </div>
 </section>
