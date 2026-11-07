@@ -170,7 +170,7 @@
    "Tier": "1440p / 4K"
   }
  ],
- "RamSource": "Capital and Compute RAM tracker, November 3, 2026",
+ "RamSource": "Capital and Compute RAM tracker, November 7, 2026",
  "RamSourceUrl": "https://capitalandcompute.net/memory-prices/",
  "Ram": [
   {
@@ -263,12 +263,27 @@
    "Average": 605
   },
   {
+   "Date": "2026-10-20",
+   "Cheapest": 420,
+   "Average": 608
+  },
+  {
    "Date": "2026-10-24",
    "Cheapest": 420,
    "Average": 607
   },
   {
+   "Date": "2026-10-28",
+   "Cheapest": 420,
+   "Average": 608
+  },
+  {
    "Date": "2026-10-31",
+   "Cheapest": 429,
+   "Average": 617
+  },
+  {
+   "Date": "2026-11-01",
    "Cheapest": 429,
    "Average": 617
   },
@@ -534,7 +549,8 @@
    "Title": "RAM costs four to seven times more than a year ago",
    "Body": "AI data centers are buying most of the world's memory. A 32 GB DDR5 kit went from about $59 in April 2025 to $429 on November 3, 2026.",
    "SourceName": "Capital and Compute",
-   "SourceUrl": "https://capitalandcompute.net/memory-prices/history/"
+   "SourceUrl": "https://capitalandcompute.net/memory-prices/history/",
+   "Date": "2026-11-07"
   },
   {
    "Tag": "RAM",
@@ -542,7 +558,8 @@
    "Title": "The worst may still be ahead",
    "Body": "Team Group's CEO said the tightest stretch is Q4 2026 to Q2 2027, with balance in late 2028 or later.",
    "SourceName": "Tech Insider",
-   "SourceUrl": "https://tech-insider.org/team-group-ddr5-chip-price-452-percent-shortage-2028-2026/"
+   "SourceUrl": "https://tech-insider.org/team-group-ddr5-chip-price-452-percent-shortage-2028-2026/",
+   "Date": "2026-11-07"
   },
   {
    "Tag": "Storage",
@@ -550,7 +567,8 @@
    "Title": "SSD prices are climbing too",
    "Body": "Some SSD contract prices are up 303% in a year, with another 15 to 20% expected this quarter.",
    "SourceName": "Notebookcheck",
-   "SourceUrl": "https://www.notebookcheck.net/SSD-prices-explode-by-303-in-a-year-as-AI-fuels-NAND-flash-shortage.1433261.0.html"
+   "SourceUrl": "https://www.notebookcheck.net/SSD-prices-explode-by-303-in-a-year-as-AI-fuels-NAND-flash-shortage.1433261.0.html",
+   "Date": "2026-11-07"
   },
   {
    "Tag": "GPU",
@@ -558,39 +576,58 @@
    "Title": "NVIDIA pulled the RTX 5090 and 5080 from its store",
    "Body": "Street prices passed twice launch price. AMD is reportedly planning its fourth Radeon price rise this year.",
    "SourceName": "Tom's Hardware",
-   "SourceUrl": "https://www.tomshardware.com/pc-components/gpus/news"
+   "SourceUrl": "https://www.tomshardware.com/pc-components/gpus/news",
+   "Date": "2026-11-07"
+  },
+  {
+   "Tag": "Storage",
+   "Hot": false,
+   "Title": "TeamGroup GA Pro 2TB SSD Review: A faltering attempt at a mid-range PCIe 5.0 SSD",
+   "Body": "The TeamGroup GA Pro mostly misses. Decent QD8 and steady-state writes can’t make up for weak overall performance, poor efficiency, and high temps.",
+   "SourceName": "Tom's Hardware",
+   "SourceUrl": "https://www.tomshardware.com/pc-components/ssds/teamgroup-ga-pro-2tb-ssd-review",
+   "Date": "2026-11-07",
+   "Auto": true
+  },
+  {
+   "Tag": "RAM",
+   "Hot": false,
+   "Title": "TSMC denies exploring 3D DRAM at Nvidia's request",
+   "Body": "Nvidia reportedly asks TSMC to produce '3D DRAM' to address memory shortages.",
+   "SourceName": "Tom's Hardware",
+   "SourceUrl": "https://www.tomshardware.com/pc-components/dram/tsmc-denies-exploring-3d-dram-at-nvidias-request-advanced-memory-tech-is-still-years-from-market-viability",
+   "Date": "2026-11-07",
+   "Auto": true
   },
   {
    "Tag": "GPU",
    "Hot": false,
-   "Title": "AMD outsold NVIDIA on Amazon US",
-   "Body": "A first, per sales tracker TechEpiphany on November 3, as GeForce prices climbed. That's one retailer, not the whole market.",
-   "SourceName": "ShiftDelete",
-   "SourceUrl": "https://shiftdelete.net/en/amd-outsells-nvidia"
-  },
-  {
-   "Tag": "Coming",
-   "Hot": false,
-   "Title": "Next graphics cards: likely 2028",
-   "Body": "Leakers say NVIDIA's RTX 60 and most of AMD's RDNA 5 won't arrive until 2028. Neither company has confirmed a date.",
-   "SourceName": "PC Guide",
-   "SourceUrl": "https://www.pcguide.com/news/rtx-60-series-faces-massive-delay-says-leak-and-amd-might-only-launch-one-rdna-5-gpu-next-year/"
-  },
-  {
-   "Tag": "Coming",
-   "Hot": false,
-   "Title": "Next CPUs: early 2027",
-   "Body": "AMD Zen 6 and Intel Nova Lake desktop chips are expected around CES 2027. Zen 6 keeps the AM5 socket.",
-   "SourceName": "Club386",
-   "SourceUrl": "https://www.club386.com/6-exciting-pc-hardware-launches-mark-your-calendars/"
-  },
-  {
-   "Tag": "Windows",
-   "Hot": false,
-   "Title": "Windows 11 26H2 is out",
-   "Body": "A small update released September 29 that resets support to 24 months on Home and Pro.",
+   "Title": "The Best GPU for Budget PCs: CPU/GPU Scaling Tested",
+   "Body": "A faster GPU isn't always a better upgrade for an older PC.",
    "SourceName": "TechSpot",
-   "SourceUrl": "https://www.techspot.com/news/114418-most-users-can-now-upgrade-windows-11-26h2.html"
+   "SourceUrl": "https://www.techspot.com/review/3193-gpu-for-budget-pc-scaling-test/",
+   "Date": "2026-11-06",
+   "Auto": true
+  },
+  {
+   "Tag": "CPU",
+   "Hot": false,
+   "Title": "Intel leaker claims Nova Lake desktop chips have 5.1 GHz clock limit beyond 90°C",
+   "Body": "A known Intel leaker claims that Intel's next-generation processors will top out at 5.1 GHz if the CPU core temperatures aren't kept below 90°C.",
+   "SourceName": "Tom's Hardware",
+   "SourceUrl": "https://www.tomshardware.com/pc-components/cpus/intel-leaker-claims-nova-lake-desktop-chips-have-5-1-ghz-clock-limit-beyond-90-c-high-clock-speeds-could-demand-significant-cooling-for-next-gen-chips",
+   "Date": "2026-11-05",
+   "Auto": true
+  },
+  {
+   "Tag": "RAM",
+   "Hot": false,
+   "Title": "Sam Altman is annoyed his DRAM comment was 'taken out of context'",
+   "Body": "Him being annoyed has not made DRAM cheaper, however.",
+   "SourceName": "PC Gamer",
+   "SourceUrl": "https://www.pcgamer.com/software/ai/sam-altman-is-annoyed-his-dram-comment-was-taken-out-of-context/",
+   "Date": "2026-11-05",
+   "Auto": true
   }
  ],
  "UpgradeTips": [
@@ -606,13 +643,9 @@
    "500 Hz OLED": "OLED de 500 Hz",
    "540 Hz OLED, the top pick of OLED specialists.": "OLED de 540 Hz, la favorita de los especialistas en OLED.",
    "A 144 Hz screen left at 60 Hz, or a cable in the motherboard instead of the graphics card, costs more than any tweak can win back.": "Una pantalla de 144 Hz a 60 Hz, o un cable en la placa base en vez de la tarjeta gráfica, cuesta más de lo que cualquier ajuste puede recuperar.",
-   "A first, per sales tracker TechEpiphany on November 3, as GeForce prices climbed. That's one retailer, not the whole market.": "Por primera vez, según el rastreador TechEpiphany el 3 de noviembre, mientras subían las GeForce. Es una sola tienda, no todo el mercado.",
    "A named power supply brand with an 80 Plus Gold rating.": "Una fuente de marca conocida con certificación 80 Plus Gold.",
    "A prebuilt PC can be the better deal right now: their prices have risen less than the parts.": "Un PC prearmado puede salir mejor ahora: su precio ha subido menos que el de las piezas.",
-   "A small update released September 29 that resets support to 24 months on Home and Pro.": "Una actualización pequeña del 29 de septiembre que reinicia el soporte a 24 meses en Home y Pro.",
    "AI data centers are buying most of the world's memory. A 32 GB DDR5 kit went from about $59 in April 2025 to $429 on November 3, 2026.": "Los centros de datos de IA compran casi toda la memoria del mundo. Un kit DDR5 de 32 GB pasó de unos $59 en abril de 2025 a $429 el 3 de noviembre de 2026.",
-   "AMD Zen 6 and Intel Nova Lake desktop chips are expected around CES 2027. Zen 6 keeps the AM5 socket.": "Se esperan Zen 6 de AMD y Nova Lake de Intel para escritorio hacia el CES 2027. Zen 6 mantiene el socket AM5.",
-   "AMD outsold NVIDIA on Amazon US": "AMD vendió más que NVIDIA en Amazon EE. UU.",
    "About 3% faster in games, with about 30% more power draw.": "Un 3% más rápido en juegos, con un 30% más de consumo.",
    "About 9% behind the RTX 5080 at 1440p, for less.": "Un 9% por detrás de la RTX 5080 en 1440p, por menos.",
    "At least a 1-year warranty with parts and labor.": "Al menos 1 año de garantía con piezas y mano de obra.",
@@ -635,7 +668,6 @@
    "Check my PC": "Revisar mi PC",
    "Check which parts are standard": "Revisa qué piezas son estándar",
    "Clean looks, easy upgrades": "Diseño limpio, fácil de mejorar",
-   "Coming": "Próximamente",
    "Costs more than mass-market brands": "Cuesta más que las marcas masivas",
    "Enable Resizable BAR": "Activa Resizable BAR",
    "Ergonomic": "Ergonómico",
@@ -656,7 +688,6 @@
    "High end": "Gama alta",
    "Huge": "enorme",
    "Keyboards": "Teclados",
-   "Leakers say NVIDIA's RTX 60 and most of AMD's RDNA 5 won't arrive until 2028. Neither company has confirmed a date.": "Según filtradores, la RTX 60 de NVIDIA y casi toda RDNA 5 de AMD no llegarán hasta 2028. Ninguna empresa ha confirmado fecha.",
    "Let shaders build, and stop wiping them": "Deja que se compilen los shaders y no los borres",
    "Lets the CPU reach all of the graphics card's memory at once. Usually a few percent, over 15% in some games. In the BIOS: CSM off, Above 4G Decoding on, Re-Size BAR on.": "Deja que la CPU acceda a toda la memoria de la tarjeta gráfica a la vez. Suele dar unos pocos por ciento, más del 15% en algunos juegos. En la BIOS: CSM desactivado, Above 4G Decoding activado, Re-Size BAR activado.",
    "Lightweight": "Ultraligero",
@@ -674,8 +705,6 @@
    "NVIDIA pulled the RTX 5090 and 5080 from its store": "NVIDIA retiró la RTX 5090 y la 5080 de su tienda",
    "New games compile shaders the first time an effect appears, causing hitches that fade. Let the pre-compile step finish, raise the driver's shader cache (10 GB or Unlimited), and skip cleaner apps that delete it.": "Los juegos nuevos compilan shaders la primera vez que aparece un efecto, con tirones que luego desaparecen. Deja terminar la precompilación, sube la caché de shaders del driver (10 GB o Ilimitada) y evita apps de limpieza que la borran.",
    "New games stutter badly on hard drives. Drops that start after 5 to 15 minutes usually mean heat: clean the dust, fix airflow, repaste or undervolt.": "Los juegos nuevos dan muchos tirones en discos duros. Caídas que empiezan a los 5 a 15 minutos suelen ser calor: limpia el polvo, mejora el flujo de aire, cambia la pasta o haz undervolt.",
-   "Next CPUs: early 2027": "Próximas CPU: principios de 2027",
-   "Next graphics cards: likely 2028": "Próximas tarjetas gráficas: probablemente 2028",
    "No measurable effect on modern Windows, and a real chance of breaking installed software.": "Ningún efecto medible en Windows moderno, y riesgo real de romper programas instalados.",
    "OMEN 35L / 45L with 9800X3D options": "OMEN 35L / 45L con opciones 9800X3D",
    "Old \"FPS boost\" registry packs": "Viejos paquetes de registro \"para más FPS\"",
@@ -722,8 +751,6 @@
    "Value": "Valor",
    "Value varies by config": "La calidad-precio varía según la configuración",
    "Variable refresh on, V-Sync on in the driver and off in the game. With Reflex on, the driver caps for you (about 138 FPS at 144 Hz); without it, cap a few FPS under your refresh rate.": "Frecuencia variable activada, V-Sync activado en el driver y desactivado en el juego. Con Reflex, el driver limita por ti (unos 138 FPS a 144 Hz); sin él, limita unos FPS por debajo de tu frecuencia.",
-   "Windows": "Windows",
-   "Windows 11 26H2 is out": "Ya salió Windows 11 26H2",
    "Windows turned it on for many PCs with the October 2026 update. On modern CPUs it costs under 2% in 2026 tests; older CPUs lose more. Turning it off removes real protection, so only do it if you measure a difference.": "Windows la activó en muchos PC con la actualización de octubre de 2026. En CPU modernas cuesta menos del 2% en pruebas de 2026; las antiguas pierden más. Desactivarla quita protección real, así que hazlo solo si mides una diferencia.",
    "Wireless": "Inalámbrico",
    "Wireless value": "Inalámbrico calidad-precio",
@@ -734,13 +761,9 @@
    "500 Hz OLED": "OLED de 500 Hz",
    "540 Hz OLED, the top pick of OLED specialists.": "OLED de 540 Hz, a favorita dos especialistas em OLED.",
    "A 144 Hz screen left at 60 Hz, or a cable in the motherboard instead of the graphics card, costs more than any tweak can win back.": "Uma tela de 144 Hz em 60 Hz, ou um cabo na placa-mãe em vez da placa de vídeo, custa mais do que qualquer ajuste recupera.",
-   "A first, per sales tracker TechEpiphany on November 3, as GeForce prices climbed. That's one retailer, not the whole market.": "Pela primeira vez, segundo o rastreador TechEpiphany em 3 de novembro, com as GeForce subindo. É uma só loja, não o mercado todo.",
    "A named power supply brand with an 80 Plus Gold rating.": "Uma fonte de marca conhecida com certificação 80 Plus Gold.",
    "A prebuilt PC can be the better deal right now: their prices have risen less than the parts.": "Um PC montado pode compensar mais agora: o preço subiu menos que o das peças.",
-   "A small update released September 29 that resets support to 24 months on Home and Pro.": "Uma atualização pequena de 29 de setembro que reinicia o suporte para 24 meses no Home e Pro.",
    "AI data centers are buying most of the world's memory. A 32 GB DDR5 kit went from about $59 in April 2025 to $429 on November 3, 2026.": "Data centers de IA compram quase toda a memória do mundo. Um kit DDR5 de 32 GB foi de cerca de US$ 59 em abril de 2025 para US$ 429 em 3 de novembro de 2026.",
-   "AMD Zen 6 and Intel Nova Lake desktop chips are expected around CES 2027. Zen 6 keeps the AM5 socket.": "Espera-se Zen 6 da AMD e Nova Lake da Intel para desktop por volta da CES 2027. O Zen 6 mantém o soquete AM5.",
-   "AMD outsold NVIDIA on Amazon US": "A AMD vendeu mais que a NVIDIA na Amazon dos EUA",
    "About 3% faster in games, with about 30% more power draw.": "Cerca de 3% mais rápido em jogos, com cerca de 30% mais consumo.",
    "About 9% behind the RTX 5080 at 1440p, for less.": "Cerca de 9% atrás da RTX 5080 em 1440p, por menos.",
    "At least a 1-year warranty with parts and labor.": "Pelo menos 1 ano de garantia com peças e mão de obra.",
@@ -763,7 +786,6 @@
    "Check my PC": "Verificar meu PC",
    "Check which parts are standard": "Confira quais peças são padrão",
    "Clean looks, easy upgrades": "Visual limpo, fácil de fazer upgrade",
-   "Coming": "Em breve",
    "Costs more than mass-market brands": "Custa mais que marcas de massa",
    "Enable Resizable BAR": "Ative o Resizable BAR",
    "Ergonomic": "Ergonômico",
@@ -784,7 +806,6 @@
    "High end": "Topo de linha",
    "Huge": "enorme",
    "Keyboards": "Teclados",
-   "Leakers say NVIDIA's RTX 60 and most of AMD's RDNA 5 won't arrive until 2028. Neither company has confirmed a date.": "Segundo vazadores, a RTX 60 da NVIDIA e quase toda a RDNA 5 da AMD só chegam em 2028. Nenhuma das duas confirmou data.",
    "Let shaders build, and stop wiping them": "Deixe os shaders compilarem e pare de apagá-los",
    "Lets the CPU reach all of the graphics card's memory at once. Usually a few percent, over 15% in some games. In the BIOS: CSM off, Above 4G Decoding on, Re-Size BAR on.": "Deixa a CPU acessar toda a memória da placa de vídeo de uma vez. Normalmente alguns por cento, mais de 15% em alguns jogos. Na BIOS: CSM desligado, Above 4G Decoding ligado, Re-Size BAR ligado.",
    "Lightweight": "Ultraleve",
@@ -802,8 +823,6 @@
    "NVIDIA pulled the RTX 5090 and 5080 from its store": "A NVIDIA tirou a RTX 5090 e a 5080 da loja",
    "New games compile shaders the first time an effect appears, causing hitches that fade. Let the pre-compile step finish, raise the driver's shader cache (10 GB or Unlimited), and skip cleaner apps that delete it.": "Jogos novos compilam shaders na primeira vez que um efeito aparece, causando travadas que somem depois. Deixe a pré-compilação terminar, aumente o cache de shaders do driver (10 GB ou Ilimitado) e evite apps de limpeza que o apagam.",
    "New games stutter badly on hard drives. Drops that start after 5 to 15 minutes usually mean heat: clean the dust, fix airflow, repaste or undervolt.": "Jogos novos travam muito em HD. Quedas que começam após 5 a 15 minutos geralmente são calor: limpe a poeira, melhore a ventilação, troque a pasta ou faça undervolt.",
-   "Next CPUs: early 2027": "Próximas CPUs: início de 2027",
-   "Next graphics cards: likely 2028": "Próximas placas de vídeo: provavelmente 2028",
    "No measurable effect on modern Windows, and a real chance of breaking installed software.": "Nenhum efeito medível no Windows moderno, e risco real de quebrar programas instalados.",
    "OMEN 35L / 45L with 9800X3D options": "OMEN 35L / 45L com opções 9800X3D",
    "Old \"FPS boost\" registry packs": "Pacotes antigos de registro \"para mais FPS\"",
@@ -850,8 +869,6 @@
    "Value": "Valor",
    "Value varies by config": "O custo-benefício varia com a configuração",
    "Variable refresh on, V-Sync on in the driver and off in the game. With Reflex on, the driver caps for you (about 138 FPS at 144 Hz); without it, cap a few FPS under your refresh rate.": "Taxa variável ligada, V-Sync ligado no driver e desligado no jogo. Com Reflex, o driver limita por você (cerca de 138 FPS em 144 Hz); sem ele, limite alguns FPS abaixo da sua taxa.",
-   "Windows": "Windows",
-   "Windows 11 26H2 is out": "O Windows 11 26H2 saiu",
    "Windows turned it on for many PCs with the October 2026 update. On modern CPUs it costs under 2% in 2026 tests; older CPUs lose more. Turning it off removes real protection, so only do it if you measure a difference.": "O Windows a ativou em muitos PCs na atualização de outubro de 2026. Em CPUs modernas custa menos de 2% em testes de 2026; CPUs antigas perdem mais. Desligar remove uma proteção real, então só faça se medir diferença.",
    "Wireless": "Sem fio",
    "Wireless value": "Sem fio custo-benefício",
