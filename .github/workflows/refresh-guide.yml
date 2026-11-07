@@ -1,0 +1,43 @@
+# Keeps the PC guide in the Pulse app current: every night it refreshes graphics card and RAM prices and hardware
+# news in guide/guide.json, which the app downloads when someone opens the guide. Free, and runs without anyone's PC.
+# Optional: add a GEMINI_API_KEY repository secret to translate new text into Spanish and Portuguese.
+name: Refresh PC guide
+
+on:
+  schedule:
+    - cron: "23 8 * * *"   # every day, 3:23 AM New York time
+  workflow_dispatch:        # "Run workflow" button in the Actions tab
+
+permissions:
+  contents: write
+
+concurrency:
+  group: refresh-guide
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Refresh prices and news
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: python tools/refresh_guide.py
+
+      - name: Publish
+        if: always()
+        run: |
+          if git diff --quiet -- guide/guide.json; then echo "No changes."; exit 0; fi
+          git config user.name "Pulse guide bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add guide/guide.json
+          git commit -m "Guide: refresh prices and news ($(date -u +%F))"
+          git pull --rebase --autostash origin main
+          git push
