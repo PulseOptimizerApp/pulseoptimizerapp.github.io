@@ -36,7 +36,6 @@ FEEDS = [
     ("Tom's Hardware", "https://www.tomshardware.com/feeds/all"),
     ("PC Gamer", "https://www.pcgamer.com/rss/"),
     ("TechSpot", "https://www.techspot.com/backend.xml"),
-    ("VideoCardz", "https://videocardz.com/feed"),
 ]
 LOG = []
 
@@ -215,8 +214,8 @@ TAGS = [
     ("Windows", r"\b(windows 1[01]|26h2|25h2|microsoft update)\b"),
 ]
 # Stories that change what to buy or when.
-MATTERS = r"(price|cost|shortage|launch|release|delay|discontinu|recall|tariff|stock|cheaper|expensive|msrp|leak|announce|benchmark|review)"
-SKIP = r"(deal|% off|save \$|coupon|black friday|prime day|giveaway|sponsored|best .* (deals|sales))"
+MATTERS = r"(price|cost|shortage|launch|release|delay|discontinu|recall|tariff|stock|cheaper|expensive|msrp|leak|announce|tested|upgrade|vs\.?|supply|rais|cut|hike)"
+SKIP = r"(deal|% off|save \$|coupon|black friday|prime day|giveaway|sponsored|best .* (deals|sales)|\breview\b|hands-on|unboxing|podcast|quiz)"
 HOT = r"(shortage|price (hike|increase|rise)|prices? (soar|surge|jump|climb|double)|discontinu|recall|delay)"
 
 
@@ -268,7 +267,7 @@ def refresh_news(g):
     picked, seen = [], set()
     for s in sorted(stories, key=lambda s: s["date"], reverse=True):
         t = s["title"]
-        if (TODAY - s["date"]).days > 14 or re.search(SKIP, t, re.I) or not re.search(MATTERS, t + " " + s["desc"], re.I):
+        if (TODAY - s["date"]).days > 14 or re.search(SKIP, t, re.I) or not re.search(MATTERS, t, re.I):
             continue
         tag = next((tag for tag, rx in TAGS if re.search(rx, t, re.I)), None)
         if not tag:
