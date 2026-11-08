@@ -314,7 +314,9 @@ def refresh_news(g):
 # ───────── translations ─────────
 
 SKIP_KEYS = {"SourceUrl", "GpuSourceUrl", "RamSourceUrl", "PulsePage", "Date", "Glyph", "Updated", "Name", "SourceName",
-             "GpuSource", "RamSource", "RamHistorySource", "Auto", "Schema", "Now", "Msrp", "Lowest", "Before"}
+             "GpuSource", "RamSource", "RamHistorySource", "Auto", "Schema", "Now", "Msrp", "Lowest", "Before",
+             # Step-by-step guides: links, ids and machine values, not text people read.
+             "Url", "Id", "Tool", "Only", "Page", "Minutes", "Featured"}
 
 
 def strings(o, key=None):
