@@ -1,6 +1,6 @@
 {
  "Schema": 1,
- "Updated": "2026-11-08",
+ "Updated": "2026-11-09",
  "Tips": [
   {
    "Title": "Run your monitor at its full refresh rate, from the graphics card",
@@ -190,7 +190,7 @@
    "Tier": "1440p / 4K"
   }
  ],
- "RamSource": "Capital and Compute RAM tracker, November 8, 2026",
+ "RamSource": "Capital and Compute RAM tracker, November 9, 2026",
  "RamSourceUrl": "https://capitalandcompute.net/memory-prices/",
  "Ram": [
   {
@@ -602,7 +602,37 @@
   {
    "Tag": "GPU",
    "Hot": false,
-   "Title": "This RTX 5060 gaming PC costs less than the Steam Machine — grab the iBuyPower Slate prebuilt PC with massive $500 discount",
+   "Title": "Nvidia released its 8800 GTX GPU 20 years ago today, celebrates with Steam game homage",
+   "Body": "On this day in 2006, Nvidia released the legendary GeForce 8800 GTX graphics card and it is celebrating the event with a very demanding (but free) interactive Steam demo.",
+   "SourceName": "Tom's Hardware",
+   "SourceUrl": "https://www.tomshardware.com/pc-components/gpus/nvidia-released-its-8800-gtx-gpu-20-years-ago-today-celebrates-with-steam-game-homage-interactive-demos-eye-watering-minimum-requirements-include-rtx-4070-32gb-ram-and-30gb-storage",
+   "Date": "2026-11-08",
+   "Auto": true
+  },
+  {
+   "Tag": "RAM",
+   "Hot": true,
+   "Title": "PC's with 64GB of RAM plummet 18% as memory prices soar",
+   "Body": "CPU-Z data reveals PC memory capacity is dropping for the first time ever.",
+   "SourceName": "Tom's Hardware",
+   "SourceUrl": "https://www.tomshardware.com/pc-components/ram/pcs-with-64gb-of-ram-plummet-18-percent-as-memory-prices-soar-cpu-z-install-base-data-shows-ddr4-making-a-surprise-comeback",
+   "Date": "2026-11-08",
+   "Auto": true
+  },
+  {
+   "Tag": "RAM",
+   "Hot": false,
+   "Title": "WoW: Forever launch used 70,480 CPU cores and 251 terabytes of RAM",
+   "Body": "Inside the astonishing hardware behind World of Warcraft: Forever.",
+   "SourceName": "Tom's Hardware",
+   "SourceUrl": "https://www.tomshardware.com/video-games/pc-gaming/wow-forever-launch-used-70-480-cpu-cores-and-251-terabytes-of-ram-3-924-virtual-machines-powered-one-of-world-of-warcrafts-smoothest-launches-ever",
+   "Date": "2026-11-08",
+   "Auto": true
+  },
+  {
+   "Tag": "GPU",
+   "Hot": false,
+   "Title": "This RTX 5060 gaming PC costs less than the Steam Machine",
    "Body": "Best Buy knocks $500 off the iBUYPOWER Slate, bringing this RTX 5060-powered gaming desktop down to $899 with a Ryzen 5 processor, 16GB of DDR5 memory, and a 1TB SSD",
    "SourceName": "Tom's Hardware",
    "SourceUrl": "https://www.tomshardware.com/pc-components/this-rtx-5060-gaming-pc-costs-less-than-the-steam-machine-grab-the-ibuypower-slate-prebuilt-pc-with-massive-usd500-discount",
@@ -913,7 +943,6 @@
    "The Best GPU for Budget PCs: CPU/GPU Scaling Tested": "La mejor GPU para PCs económicos: escalado CPU/GPU a prueba",
    "Intel leaker claims Nova Lake desktop chips have 5.1 GHz clock limit beyond 90°C": "Un filtrador de Intel dice que los Nova Lake de escritorio se limitan a 5,1 GHz por encima de 90 °C",
    "A known Intel leaker claims that Intel's next-generation processors will top out at 5.1 GHz if the CPU core temperatures aren't kept below 90°C.": "Un conocido filtrador de Intel afirma que los próximos procesadores de Intel no pasarán de 5,1 GHz si los núcleos no se mantienen por debajo de 90 °C.",
-   "This RTX 5060 gaming PC costs less than the Steam Machine — grab the iBuyPower Slate prebuilt PC with massive $500 discount": "Este PC gamer con RTX 5060 cuesta menos que la Steam Machine: el iBUYPOWER Slate con $500 de descuento",
    "Best Buy knocks $500 off the iBUYPOWER Slate, bringing this RTX 5060-powered gaming desktop down to $899 with a Ryzen 5 processor, 16GB of DDR5 memory, and a 1TB SSD": "Best Buy rebaja $500 el iBUYPOWER Slate y deja este PC con RTX 5060 en $899, con un Ryzen 5, 16 GB de DDR5 y un SSD de 1 TB"
   },
   "pt-BR": {
@@ -1191,7 +1220,6 @@
    "The Best GPU for Budget PCs: CPU/GPU Scaling Tested": "A melhor GPU para PCs baratos: escala de CPU/GPU testada",
    "Intel leaker claims Nova Lake desktop chips have 5.1 GHz clock limit beyond 90°C": "Vazador da Intel diz que os Nova Lake de desktop ficam limitados a 5,1 GHz acima de 90 °C",
    "A known Intel leaker claims that Intel's next-generation processors will top out at 5.1 GHz if the CPU core temperatures aren't kept below 90°C.": "Um vazador conhecido da Intel afirma que os próximos processadores da Intel vão parar em 5,1 GHz se os núcleos não ficarem abaixo de 90 °C.",
-   "This RTX 5060 gaming PC costs less than the Steam Machine — grab the iBuyPower Slate prebuilt PC with massive $500 discount": "Este PC gamer com RTX 5060 custa menos que a Steam Machine: o iBUYPOWER Slate com US$ 500 de desconto",
    "Best Buy knocks $500 off the iBUYPOWER Slate, bringing this RTX 5060-powered gaming desktop down to $899 with a Ryzen 5 processor, 16GB of DDR5 memory, and a 1TB SSD": "A Best Buy tira US$ 500 do iBUYPOWER Slate e deixa este PC com RTX 5060 por US$ 899, com Ryzen 5, 16 GB de DDR5 e SSD de 1 TB"
   }
  },
