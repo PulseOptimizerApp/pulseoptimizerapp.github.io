@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pulse stats: downloads and stars</title>
+<meta name="description" content="Live download counts for every Pulse release, and its GitHub stars.">
+<meta name="robots" content="noindex">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#0E0D0B">
+<link rel="icon" type="image/svg+xml" href="img/icon-small.svg">
+<link rel="stylesheet" href="css/site.css">
+<style>
+  .kpis { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border: 1px solid var(--line2); border-radius: 14px; overflow: hidden; }
+  .kpis div { padding: 20px 22px; background: var(--raise); }
+  .kpis div + div { border-left: 1px solid var(--line); }
+  .kpis small { display: block; color: var(--faint); font-size: 13.5px; font-weight: 600; }
+  .kpis strong { display: block; font-stretch: var(--wide); font-weight: 800; font-size: clamp(28px, 4vw, 40px); letter-spacing: -0.02em; line-height: 1.1; margin-top: 6px; }
+  @media (max-width: 760px) { .kpis { grid-template-columns: 1fr 1fr; } .kpis div:nth-child(3) { border-left: 0; } .kpis div:nth-child(n+3) { border-top: 1px solid var(--line); } }
+  .bars { margin-top: 36px; }
+  .bar { display: grid; grid-template-columns: 90px minmax(0, 1fr) 70px; gap: 14px; align-items: center; padding: 7px 0; font-size: 14.5px; }
+  .bar .t { color: var(--dim); }
+  .bar .track { height: 10px; border-radius: 0 4px 4px 0; background: transparent; }
+  .bar .fill { height: 100%; border-radius: 0 4px 4px 0; background: var(--ember); min-width: 2px; }
+  .bar .n { text-align: right; font-weight: 650; }
+  .bar .d { grid-column: 2 / 4; color: var(--faint); font-size: 12.5px; margin-top: -6px; }
+  .visits { margin-top: 44px; border: 1px solid var(--line2); border-radius: 14px; background: var(--raise); padding: 26px; }
+  .visits p { color: var(--dim); margin-top: 8px; max-width: 46em; }
+  .visits ol { color: var(--dim); margin: 12px 0 18px; padding-left: 1.2em; }
+  .visits li + li { margin-top: 4px; }
+  .visits code { font-family: ui-monospace, Consolas, monospace; color: var(--text); background: #0A0908; padding: 2px 6px; border-radius: 5px; font-size: 14px; }
+</style>
+</head>
+<body>
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="./" aria-label="Pulse home"><img src="img/icon.svg" alt="" width="28" height="28">Pulse</a>
+    <nav class="links" aria-label="Site"><a href="./">App</a><a href="fps-calculator/">FPS calculator</a><a href="guides/">FPS guides</a></nav>
+  </div>
+</header>
+<main class="wrap">
+  <div class="page-head">
+    <span class="tag">Stats</span>
+    <h1>How Pulse is doing</h1>
+    <p class="lead">Live from GitHub: every time someone downloads a release, and the project's stars. Website visits are on GoatCounter, below.</p>
+  </div>
+  <div class="kpis">
+    <div><small>Downloads, all time</small><strong id="k-all">…</strong></div>
+    <div><small>Latest release</small><strong id="k-latest">…</strong></div>
+    <div><small>Stars</small><strong id="k-stars">…</strong></div>
+    <div><small>Releases</small><strong id="k-rel">…</strong></div>
+  </div>
+  <p class="meta" id="note">Downloads count the exe and installer files of each release. Updates Pulse installs by itself count too.</p>
+  <section class="bars" aria-label="Downloads per release"><h2 style="margin-bottom:14px">Downloads per release</h2><div id="bars"></div></section>
+  <section class="visits">
+    <h2>Website visits</h2>
+    <p>Visits, where they came from (Google, Reddit, Discord…), which pages people read and how many clicked Download are counted by GoatCounter: free, no cookies, nothing personal stored, so there's no cookie banner.</p>
+    <ol>
+      <li>Sign up free at goatcounter.com, and choose the code <code>pulseoptimizer</code> (the site already sends visits there).</li>
+      <li>Open your dashboard any time. Download clicks show up as <code>download-hero</code>, <code>download-nav</code> and so on.</li>
+    </ol>
+    <a class="btn go" href="https://pulseoptimizer.goatcounter.com">Open the visits dashboard</a>
+  </section>
+</main>
+<footer><div class="wrap"><p>Pulse is free and open source.</p><nav aria-label="Footer"><a href="./">Pulse</a><a href="https://github.com/PulseOptimizerApp/Pulse">Source</a></nav></div></footer>
+<script>
+(async () => {
+  const REPOS = ["PulseOptimizerApp/Pulse", "PulseOptimizer-app/PulseOptimizer"];
+  const fmt = n => n.toLocaleString("en-US");
+  const rels = [];
+  for (const repo of REPOS) {
+    for (let page = 1; page <= 5; page++) {
+      try {
+        const r = await fetch(`https://api.github.com/repos/${repo}/releases?per_page=100&page=${page}`);
+        if (!r.ok) break;
+        const list = await r.json();
+        if (!list.length) break;
+        list.forEach(x => rels.push({ tag: x.tag_name, date: x.published_at, n: (x.assets || []).filter(a => /\.(exe|msi|zip)$/i.test(a.name)).reduce((s, a) => s + a.download_count, 0) }));
+        if (list.length < 100) break;
+      } catch (e) { break; }
+    }
+  }
+  if (!rels.length) { document.getElementById("note").textContent = "GitHub didn't answer (it allows 60 lookups an hour per network). Try again in a bit."; return; }
+  rels.sort((a, b) => new Date(b.date) - new Date(a.date));
+  const total = rels.reduce((s, r) => s + r.n, 0);
+  document.getElementById("k-all").textContent = fmt(total);
+  document.getElementById("k-latest").textContent = fmt(rels[0].n);
+  document.getElementById("k-rel").textContent = fmt(rels.length);
+  try {
+    const r = await fetch(`https://api.github.com/repos/${REPOS[0]}`);
+    if (r.ok) document.getElementById("k-stars").textContent = fmt((await r.json()).stargazers_count);
+  } catch (e) {}
+  const top = rels.slice(0, 30), max = Math.max(1, ...top.map(r => r.n));
+  document.getElementById("bars").innerHTML = top.map(r => `<div class="bar"><span class="t">${r.tag}</span><span class="track"><span class="fill" style="display:block;width:${(r.n / max * 100).toFixed(1)}%"></span></span><span class="n">${fmt(r.n)}</span><span class="d">${new Date(r.date).toLocaleDateString(undefined, { month: "short", day: "numeric", year: "numeric" })}</span></div>`).join("");
+})();
+</script>
+</body>
+</html>

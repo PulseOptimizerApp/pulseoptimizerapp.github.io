@@ -1,0 +1,345 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FPS calculator: what frame rate will your PC get? Valorant, Fortnite, CS2 and more</title>
+<meta name="description" content="Pick a CPU, graphics card and memory and see the FPS to expect in Valorant, Fortnite, CS2, Apex, Warzone, Marvel Rivals and more at 720p, 1080p and 1440p, what holds the PC back, and what the build costs. Free, no sign-up.">
+<link rel="canonical" href="https://pulseoptimizerapp.github.io/fps-calculator/">
+<meta property="og:title" content="FPS calculator: what frame rate will your PC get?">
+<meta property="og:description" content="Any CPU and graphics card: expected FPS in 15 popular games at 720p, 1080p and 1440p, the bottleneck, and the build's price.">
+<meta property="og:image" content="https://pulseoptimizerapp.github.io/img/og-calculator.png">
+<meta property="og:url" content="https://pulseoptimizerapp.github.io/fps-calculator/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Pulse">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#0E0D0B">
+<link rel="icon" type="image/png" sizes="32x32" href="../img/favicon-32.png">
+<link rel="icon" type="image/svg+xml" href="../img/icon-small.svg">
+<link rel="preload" href="../fonts/archivo.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../css/site.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Pulse FPS calculator",
+  "url": "https://pulseoptimizerapp.github.io/fps-calculator/",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "Any",
+  "isAccessibleForFree": true,
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "description": "Estimate the FPS any CPU, graphics card and memory get in popular games at 720p, 1080p and 1440p."
+}
+</script>
+<style>
+  .calc { display: grid; grid-template-columns: minmax(0, 380px) minmax(0, 1fr); gap: 28px; align-items: start; }
+  @media (max-width: 920px) { .calc { grid-template-columns: 1fr; } }
+  .panel { border: 1px solid var(--line2); border-radius: 14px; background: var(--raise); padding: 24px; position: sticky; top: 84px; }
+  @media (max-width: 920px) { .panel { position: static; } }
+  .field { margin-top: 18px; }
+  .field:first-of-type { margin-top: 0; }
+  .field label { display: block; font-weight: 600; font-size: 14.5px; margin-bottom: 7px; }
+  .field .hint { font-size: 13.5px; color: var(--faint); margin-top: 6px; min-height: 1.4em; }
+  input[type=text], select {
+    width: 100%; height: 46px; border-radius: 10px; border: 1px solid var(--line2); background: #0B0A09; color: var(--text);
+    font: inherit; font-size: 15.5px; padding: 0 14px;
+  }
+  input[type=text]:focus, select:focus { outline: none; border-color: var(--ember); }
+  select { appearance: none; background-image: linear-gradient(45deg, transparent 50%, var(--faint) 50%), linear-gradient(135deg, var(--faint) 50%, transparent 50%); background-position: calc(100% - 18px) 20px, calc(100% - 13px) 20px; background-size: 5px 5px; background-repeat: no-repeat; padding-right: 34px; }
+  .ram { display: grid; grid-template-columns: 1fr 1.3fr; gap: 8px; }
+  .ram select:last-child { grid-column: 1 / -1; }
+  .picks { margin-top: 22px; padding-top: 18px; border-top: 1px solid var(--line); }
+  .picks b { font-size: 14.5px; font-weight: 600; }
+  .picks div { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+  .chip { font: inherit; font-size: 13.5px; font-weight: 600; color: var(--dim); background: var(--raise2); border: 1px solid var(--line2); border-radius: 999px; padding: 6px 12px; cursor: pointer; }
+  .chip:hover { color: var(--text); border-color: #57514A; }
+  .chip[aria-pressed=true] { color: var(--text); border-color: var(--ember); background: rgba(224,119,63,.12); }
+
+  .summary { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border: 1px solid var(--line2); border-radius: 14px; overflow: hidden; }
+  .summary > div { padding: 18px 20px; background: var(--raise); }
+  .summary > div + div { border-left: 1px solid var(--line); }
+  .summary small { display: block; color: var(--faint); font-size: 13px; font-weight: 600; }
+  .summary strong { display: block; font-stretch: var(--wide); font-size: 26px; font-weight: 800; letter-spacing: -0.02em; margin-top: 4px; line-height: 1.1; }
+  .summary span { display: block; color: var(--dim); font-size: 14px; margin-top: 4px; }
+  @media (max-width: 640px) { .summary { grid-template-columns: 1fr; } .summary > div + div { border-left: 0; border-top: 1px solid var(--line); } }
+
+  .verdict { margin-top: 16px; padding: 16px 18px; border-radius: 12px; background: rgba(224,119,63,.08); border: 1px solid rgba(224,119,63,.28); font-size: 15.5px; }
+  .res-tabs { display: none; gap: 6px; margin: 24px 0 0; }
+  .res-tabs button { font: inherit; font-size: 14px; font-weight: 600; color: var(--dim); background: var(--raise2); border: 1px solid var(--line2); border-radius: 8px; padding: 6px 14px; cursor: pointer; }
+  .res-tabs button[aria-pressed=true] { color: var(--text); border-color: var(--ember); }
+  table.fps { width: 100%; border-collapse: collapse; margin-top: 22px; }
+  table.fps th { text-align: right; font-size: 13px; font-weight: 600; color: var(--faint); padding: 0 0 10px 12px; border-bottom: 1px solid var(--line2); }
+  table.fps th:first-child { text-align: left; padding-left: 0; }
+  table.fps td { padding: 12px 0 12px 12px; border-bottom: 1px solid var(--line); text-align: right; vertical-align: top; }
+  table.fps td:first-child { text-align: left; padding-left: 0; }
+  table.fps .game { font-weight: 600; }
+  table.fps .set { display: block; font-size: 13px; color: var(--faint); font-weight: 400; }
+  table.fps .n { font-stretch: var(--wide); font-weight: 800; font-size: 21px; letter-spacing: -0.02em; line-height: 1.1; }
+  table.fps .why { display: block; font-size: 12.5px; color: var(--faint); }
+  .g { color: #7DC58E; } .y { color: var(--warn); } .r { color: var(--bad); }
+  @media (max-width: 640px) {
+    .res-tabs { display: flex; }
+    table.fps th.r720, table.fps td.r720, table.fps th.r1440, table.fps td.r1440 { display: none; }
+    table.fps.show-720 .r720, table.fps.show-1440 .r1440 { display: table-cell; }
+    table.fps.show-720 .r1080, table.fps.show-1440 .r1080 { display: none; }
+  }
+  .legend { font-size: 13.5px; color: var(--faint); margin-top: 14px; }
+  .share { display: flex; gap: 10px; margin-top: 22px; flex-wrap: wrap; }
+  .method { margin-top: 56px; max-width: 760px; }
+  .method h2 { margin-bottom: 14px; }
+  .method p { color: var(--dim); }
+  .method p + p { margin-top: 12px; }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="../" aria-label="Pulse home"><img src="../img/icon.svg" alt="" width="28" height="28">Pulse</a>
+    <nav class="links" aria-label="Site">
+      <a href="../">App</a>
+      <a href="./" aria-current="page">FPS calculator</a>
+      <a href="../guides/">FPS guides</a>
+    </nav>
+    <div class="right"><a class="btn go sm dl" href="https://github.com/PulseOptimizerApp/Pulse/releases/latest/download/Pulse.exe" data-goatcounter-click="download-calc-nav">Download Pulse</a></div>
+  </div>
+</header>
+
+<main id="main" class="wrap">
+  <div class="page-head">
+    <a class="tag" href="./">FPS calculator</a>
+    <h1>What FPS will this PC get?</h1>
+    <p class="lead">Pick a CPU, graphics card and memory to see the frame rates to expect in 15 popular games, what holds the PC back, and roughly what it costs.</p>
+  </div>
+
+  <div class="calc">
+    <form class="panel" id="form" autocomplete="off" onsubmit="return false">
+      <div class="field">
+        <label for="cpu">CPU</label>
+        <input type="text" id="cpu" list="cpus" placeholder="e.g. Ryzen 5 5600, i5-12400F" spellcheck="false">
+        <datalist id="cpus"></datalist>
+        <p class="hint" id="cpu-hint"></p>
+      </div>
+      <div class="field">
+        <label for="gpu">Graphics card</label>
+        <input type="text" id="gpu" list="gpus" placeholder="e.g. RTX 4060, RX 6600" spellcheck="false">
+        <datalist id="gpus"></datalist>
+        <p class="hint" id="gpu-hint"></p>
+      </div>
+      <div class="field">
+        <label for="ram-gb">Memory</label>
+        <div class="ram">
+          <select id="ram-gb" aria-label="Memory size"><option value="8">8 GB</option><option value="16" selected>16 GB</option><option value="32">32 GB</option><option value="64">64 GB</option></select>
+          <select id="ram-speed" aria-label="Memory type and speed">
+            <option>DDR4-2400</option><option>DDR4-2666</option><option selected>DDR4-3200</option><option>DDR4-3600</option>
+            <option>DDR5-4800</option><option>DDR5-5600</option><option>DDR5-6000</option><option>DDR5-6400</option><option>DDR5-7200</option>
+          </select>
+          <select id="ram-dual" aria-label="Memory sticks"><option value="1" selected>Two sticks or more (dual channel)</option><option value="0">One stick (single channel)</option></select>
+        </div>
+      </div>
+      <div class="picks">
+        <b>Or start from a build</b>
+        <div id="builds"></div>
+      </div>
+    </form>
+
+    <section aria-live="polite">
+      <div class="summary" id="summary"></div>
+      <p class="verdict" id="verdict"></p>
+      <div class="res-tabs" role="group" aria-label="Resolution">
+        <button type="button" data-res="720" aria-pressed="false">720p</button>
+        <button type="button" data-res="1080" aria-pressed="true">1080p</button>
+        <button type="button" data-res="1440" aria-pressed="false">1440p</button>
+      </div>
+      <table class="fps" id="table">
+        <thead><tr><th>Game</th><th class="r720">720p</th><th class="r1080">1080p</th><th class="r1440">1440p</th></tr></thead>
+        <tbody></tbody>
+      </table>
+      <p class="legend">Green: 144 FPS or more. Yellow: 60 to 143. Red: under 60. Estimates from review averages, at the settings shown, without upscaling or frame generation; real numbers vary by 10–20% with drivers, coolers and patches.</p>
+      <div class="share">
+        <button class="btn sm" type="button" id="copy-link" data-goatcounter-click="calc-share">Copy a link to this build</button>
+      </div>
+
+      <div class="callout">
+        <div>
+          <h3>Is your PC hitting these numbers?</h3>
+          <p>Pulse reads your exact parts, measures your real FPS, and finds what's holding it back, like a monitor at 60 Hz or RAM at half speed. Free.</p>
+        </div>
+        <a class="btn go dl" href="https://github.com/PulseOptimizerApp/Pulse/releases/latest/download/Pulse.exe" data-goatcounter-click="download-calc">Download Pulse</a>
+      </div>
+    </section>
+  </div>
+
+  <section class="method">
+    <h2>How the estimate works</h2>
+    <p>Each CPU and graphics card has a gaming score from public review averages (graphics: RTX 4070 = 100; CPUs: Ryzen 7 7800X3D = 100). Each game has reference frame rates measured on a known PC. The CPU sets the frame rate a game can reach (memory speed and channels nudge it), the graphics card sets what each resolution allows, short of video memory costs extra, and the slower of the two dominates.</p>
+    <p>Prices are rough US prices from late 2026, when graphics cards and memory cost far more than usual. Parts no longer sold new show a used price. The same data powers the PC builder inside Pulse, and it's <a href="https://github.com/PulseOptimizerApp/Pulse/blob/main/src/PulseOptimizer/Core/Guide/hardware.json" style="color:var(--text)">open on GitHub</a>.</p>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>Pulse is free and open source. Not affiliated with NVIDIA, AMD, Intel or any game's publisher.</p>
+    <nav aria-label="Footer"><a href="../">Pulse</a><a href="../guides/">FPS guides</a><a href="https://github.com/PulseOptimizerApp/Pulse">Source</a><a href="../stats.html">Stats</a></nav>
+  </div>
+</footer>
+
+<script>
+(async () => {
+  const $ = id => document.getElementById(id);
+  let data;
+  // The app's own table, newest first; the site's copy if GitHub can't be reached.
+  for (const url of ["https://raw.githubusercontent.com/PulseOptimizerApp/Pulse/main/src/PulseOptimizer/Core/Guide/hardware.json", "../data/hardware.json"]) {
+    try { const r = await fetch(url); if (r.ok) { data = await r.json(); if (data.cpus && data.gpus) break; } } catch (e) {}
+  }
+  if (!data) { $("verdict").textContent = "The parts list couldn't load. Refresh the page to try again."; return; }
+  const cpus = data.cpus, gpus = data.gpus, games = data.games;
+  const label = p => p.n + (p.k === "laptop" ? " (laptop)" : p.k === "integrated" ? " (built-in)" : "");
+  $("cpus").innerHTML = [...cpus].sort((a, b) => b.s - a.s).map(c => `<option value="${label(c)}">`).join("");
+  $("gpus").innerHTML = [...gpus].sort((a, b) => b.s - a.s).map(g => `<option value="${label(g)}">`).join("");
+
+  // Find a part from what someone typed: exact, then by model number, then by every word.
+  const norm = s => s.toLowerCase().replace(/\((laptop|built-in)\)/, " $1 ").replace(/geforce|radeon|core|intel|amd|nvidia|amd/g, " ").replace(/[^a-z0-9 ]+/g, " ").replace(/\s+/g, " ").trim();
+  function find(list, text) {
+    if (!text) return null;
+    const t = norm(text.replace(/(\d)k?f\b/i, (m, d) => m.toLowerCase().endsWith("kf") ? d + "k" : d));
+    let hit = list.find(p => norm(label(p)) === t) || list.find(p => norm(p.n) === t);
+    if (hit) return hit;
+    const words = t.split(" ").filter(Boolean);
+    const cands = list.filter(p => words.every(w => norm(label(p)).split(" ").some(x => x === w || x.startsWith(w))));
+    return cands.sort((a, b) => (a.k === "desktop" ? 0 : 1) - (b.k === "desktop" ? 0 : 1) || norm(a.n).length - norm(b.n).length)[0] || null;
+  }
+
+  const ramFactor = r => {
+    const sp = r.type === "DDR5"
+      ? (r.mhz >= 7000 ? 1.02 : r.mhz >= 6400 ? 1.01 : r.mhz >= 6000 ? 1 : r.mhz >= 5600 ? .98 : r.mhz >= 5200 ? .97 : .95)
+      : (r.mhz >= 3600 ? .97 : r.mhz >= 3200 ? .95 : r.mhz >= 3000 ? .93 : r.mhz >= 2666 ? .9 : r.mhz >= 2400 ? .88 : .85);
+    return sp * (r.dual ? 1 : .82) * (r.gb <= 8 ? .85 : 1);
+  };
+  function estimate(cpu, gpu, ram, g, res) {
+    const cpuFps = g.cpu * cpu.s / 100 * ramFactor(ram);
+    let gpuFps = (res === 720 ? g.g720 : res === 1440 ? g.g1440 : g.g1080) * gpu.s / 100;
+    const need = res >= 1440 ? g.v1440 : res <= 720 ? Math.max(1, g.v1080 - 1) : g.v1080;
+    const vram = gpu.vram > 0 ? gpu.vram : Math.max(1, ram.gb / 4);
+    const short = vram + .01 < need;
+    if (short) gpuFps *= .55 + .45 * Math.min(1, Math.max(0, vram / need));
+    const k = 6;
+    let fps = Math.pow(Math.pow(cpuFps, -k) + Math.pow(gpuFps, -k), -1 / k);
+    const capped = g.cap > 0 && fps > g.cap;
+    if (capped) fps = g.cap;
+    const limit = capped ? "cap" : Math.abs(cpuFps - gpuFps) / Math.max(cpuFps, gpuFps) < .1 ? "balanced" : cpuFps < gpuFps ? "cpu" : "gpu";
+    return { fps, limit, short };
+  }
+  const tierCpu = s => s >= 95 ? "Top gaming" : s >= 78 ? "High end" : s >= 58 ? "Mid range" : s >= 40 ? "Entry level" : "Basic";
+  const tierGpu = s => s >= 140 ? "Top gaming" : s >= 95 ? "High end" : s >= 60 ? "Mid range" : s >= 30 ? "Entry level" : "Basic";
+  const money = n => "$" + Math.round(n).toLocaleString("en-US");
+  const ramPrice = r => {
+    const ddr5 = r.type === "DDR5";
+    const speed = ddr5 ? 1 + (r.mhz - 6000) / 1200 * .08 : 1 + (r.mhz - 3200) / 800 * .06;
+    return Math.round(Math.max(ddr5 ? 90 : 35, r.gb * (ddr5 ? 13.5 : 6.3) * Math.min(1.25, Math.max(.85, speed))) / 5) * 5;
+  };
+  const newPlatform = c => c.n.startsWith("Core Ultra") || /^Ryzen \d [789]\d{3}/.test(c.n);
+  const restOfPc = (c, g) => { const s = g.s; return (s >= 160 ? 750 : s >= 110 ? 550 : s >= 70 ? 420 : 320) + (newPlatform(c) ? 60 : 0); };
+
+  const byName = (list, n) => list.find(p => p.n === n);
+  const builds = [
+    ["Low end", "Ryzen 5 5500", "Radeon RX 6600", "16", "DDR4-3200"],
+    ["Entry level", "Ryzen 5 5600", "GeForce RTX 5060", "16", "DDR4-3200"],
+    ["Mid range", "Ryzen 5 9600X", "Radeon RX 9060 XT 16GB", "32", "DDR5-6000"],
+    ["Competitive", "Ryzen 7 9800X3D", "GeForce RTX 5060 Ti 16GB", "32", "DDR5-6000"],
+    ["High end", "Ryzen 7 9800X3D", "GeForce RTX 5070 Ti", "32", "DDR5-6000"],
+    ["Top gaming", "Ryzen 7 9850X3D", "GeForce RTX 5090", "32", "DDR5-6400"],
+  ].filter(b => byName(cpus, b[1]) && byName(gpus, b[2]));
+  $("builds").innerHTML = builds.map((b, i) => `<button type="button" class="chip" data-b="${i}" aria-pressed="false">${b[0]}</button>`).join("");
+
+  let res = 1080;
+  function ram() {
+    const [type, mhz] = $("ram-speed").value.split("-");
+    return { gb: +$("ram-gb").value, type, mhz: +mhz, dual: $("ram-dual").value === "1" };
+  }
+  function render(push) {
+    const cpu = find(cpus, $("cpu").value), gpu = find(gpus, $("gpu").value), r = ram();
+    $("cpu-hint").textContent = cpu ? `${tierCpu(cpu.s)} · ${cpu.c} cores · ${cpu.y}` + (cpu.p ? ` · ${money(cpu.p)}${cpu.u ? " used" : ""}` : "") : $("cpu").value ? "Not in the list yet. Try just the model number." : "";
+    $("gpu-hint").textContent = gpu ? `${tierGpu(gpu.s)} · ${gpu.vram ? gpu.vram + " GB" : "uses system memory"} · ${gpu.y}` + (gpu.p ? ` · ${money(gpu.p)}${gpu.u ? " used" : ""}` : "") : $("gpu").value ? "Not in the list yet. Try just the model number." : "";
+    document.querySelectorAll("#builds .chip").forEach(ch => {
+      const b = builds[+ch.dataset.b];
+      ch.setAttribute("aria-pressed", String(!!cpu && !!gpu && cpu.n === b[1] && gpu.n === b[2] && String(r.gb) === b[3] && $("ram-speed").value === b[4]));
+    });
+    const body = document.querySelector("#table tbody");
+    if (!cpu || !gpu) {
+      $("summary").innerHTML = `<div><small>Pick a CPU and a graphics card</small><strong>–</strong><span>to see frame rates</span></div><div><small>Holds it back</small><strong>–</strong></div><div><small>Whole PC</small><strong>–</strong></div>`;
+      $("verdict").textContent = "Start typing a part's name or model number, or pick a ready-made build.";
+      body.innerHTML = "";
+      return;
+    }
+    const rows = games.map(g => ({ g, e: [720, 1080, 1440].map(x => estimate(cpu, gpu, r, g, x)) }));
+    const col = f => f >= 144 ? "g" : f >= 60 ? "y" : "r";
+    const why = e => ({ cpu: "CPU-limited", gpu: "graphics-limited", cap: "game's cap", balanced: "balanced" })[e.limit];
+    body.innerHTML = rows.map(({ g, e }) => `<tr><td><span class="game">${g.n}</span><span class="set">${g.set}</span></td>` +
+      e.map((x, i) => `<td class="r${[720, 1080, 1440][i]}"><span class="n ${col(x.fps)}">${Math.round(x.fps).toLocaleString("en-US")}${x.short ? "!" : ""}</span><span class="why">${why(x)}${x.short ? ", short on VRAM" : ""}</span></td>`).join("") + `</tr>`).join("");
+    const at = i => rows.map(x => x.e[i]);
+    const cpuBound = i => at(i).filter(x => x.limit === "cpu").length, gpuBound = i => at(i).filter(x => x.limit === "gpu").length;
+    const val = rows.find(x => x.g.n === "Valorant"), fn = rows.find(x => x.g.n === "Fortnite");
+    let held = cpuBound(1) > gpuBound(1) ? "CPU" : "Graphics card";
+    let verdict = cpuBound(1) > gpuBound(1) && cpuBound(2) > gpuBound(2) ? `The ${cpu.n} sets the pace at every resolution: a faster CPU is the upgrade that would help most.`
+      : cpuBound(1) > gpuBound(1) ? `At 1080p the ${cpu.n} holds most games back; at 1440p the ${gpu.n} does. Play at 1440p, or upgrade the CPU for more frames at 1080p.`
+      : `The ${gpu.n} sets the pace in most games: a faster graphics card is the upgrade that would help most.`;
+    if (!r.dual) verdict += " One memory stick costs frames in CPU-heavy games: a second matching stick is a cheap win.";
+    else if (r.gb <= 8) verdict += " 8 GB of memory is tight for today's games: 16 GB or more avoids stutter.";
+    const priced = cpu.k === "desktop" && gpu.k === "desktop" && cpu.p && gpu.p;
+    const parts = priced ? cpu.p + gpu.p + ramPrice(r) : 0;
+    $("summary").innerHTML =
+      `<div><small>VALORANT at 1080p</small><strong class="${col(val.e[1].fps)}">${Math.round(val.e[1].fps)} FPS</strong><span>Fortnite: ${Math.round(fn.e[1].fps)} FPS</span></div>` +
+      `<div><small>Holds it back at 1080p</small><strong>${held}</strong><span>in ${Math.max(cpuBound(1), gpuBound(1))} of ${games.length} games</span></div>` +
+      `<div><small>Whole PC, roughly</small><strong>${priced ? money(parts + restOfPc(cpu, gpu)) : "–"}</strong><span>${priced ? `${money(parts)} for these parts` : "Laptop parts aren't sold on their own"}</span></div>`;
+    $("verdict").textContent = verdict;
+    if (push) {
+      const q = new URLSearchParams({ cpu: cpu.n, gpu: gpu.n, ram: `${r.gb}-${$("ram-speed").value}-${r.dual ? 2 : 1}` });
+      history.replaceState(null, "", "?" + q.toString());
+      document.title = `${cpu.n} + ${gpu.n}: FPS in Valorant, Fortnite, CS2 and more`;
+    }
+  }
+
+  // Start from a shared link, or a common mid-range PC.
+  const q = new URLSearchParams(location.search);
+  $("cpu").value = q.get("cpu") || "Ryzen 5 5600";
+  $("gpu").value = q.get("gpu") || "GeForce RTX 3060";
+  if (q.get("ram")) {
+    const [gb, type, mhz, ch] = q.get("ram").split("-");
+    if (gb) $("ram-gb").value = gb;
+    if (type && mhz) $("ram-speed").value = `${type}-${mhz}`;
+    $("ram-dual").value = ch === "1" ? "0" : "1";
+  }
+  ["cpu", "gpu"].forEach(id => $(id).addEventListener("input", () => render(true)));
+  ["ram-gb", "ram-speed", "ram-dual"].forEach(id => $(id).addEventListener("change", () => render(true)));
+  $("builds").addEventListener("click", e => {
+    const ch = e.target.closest(".chip"); if (!ch) return;
+    const b = builds[+ch.dataset.b];
+    $("cpu").value = b[1]; $("gpu").value = b[2]; $("ram-gb").value = b[3]; $("ram-speed").value = b[4]; $("ram-dual").value = "1";
+    render(true);
+  });
+  document.querySelectorAll(".res-tabs button").forEach(b => b.addEventListener("click", () => {
+    res = +b.dataset.res;
+    document.querySelectorAll(".res-tabs button").forEach(x => x.setAttribute("aria-pressed", String(x === b)));
+    $("table").className = "fps show-" + res;
+  }));
+  $("copy-link").addEventListener("click", async () => {
+    try { await navigator.clipboard.writeText(location.href); $("copy-link").textContent = "Link copied"; setTimeout(() => $("copy-link").textContent = "Copy a link to this build", 1800); } catch (e) {}
+  });
+  render(!!q.get("cpu"));
+})();
+
+// The download button goes to the newest release that has the exe.
+(async () => {
+  try {
+    const r = await fetch("https://api.github.com/repos/PulseOptimizerApp/Pulse/releases?per_page=10");
+    if (!r.ok) return;
+    const rel = (await r.json()).find(x => !x.draft && !x.prerelease && (x.assets || []).some(a => a.name === "Pulse.exe"));
+    if (rel) document.querySelectorAll(".dl").forEach(a => a.href = rel.assets.find(a => a.name === "Pulse.exe").browser_download_url);
+  } catch (e) {}
+})();
+</script>
+<script data-goatcounter="https://pulseoptimizer.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+</body>
+</html>
