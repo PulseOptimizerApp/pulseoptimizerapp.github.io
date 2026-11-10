@@ -3,661 +3,546 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Pulse: the free all-in-one companion for your gaming PC</title>
-<meta name="description" content="Pulse is the free all-in-one companion for your gaming PC: it fixes what slows your games, clips your best plays, recaps every match, and handles Roblox, macros, clean-up and security. One app, no account, no ads.">
-<meta property="og:title" content="Pulse">
-<meta property="og:description" content="Faster games, your best plays clipped, every match recapped. One free app for your whole gaming PC.">
+<title>Pulse: free FPS boost and PC optimizer for gamers, with clips and trackers</title>
+<meta name="description" content="Pulse finds what's really slowing your games (a monitor stuck at 60 Hz, RAM at half speed, background recording), fixes it with tweaks you can measure and undo, and adds instant replay clips, match trackers and a PC builder. Free, open source, no account.">
+<link rel="canonical" href="https://pulseoptimizerapp.github.io/">
+<meta property="og:title" content="Pulse: find what's slowing your games, fix it, prove it">
+<meta property="og:description" content="Free, open-source gaming PC companion: diagnose, measured tweaks, full-quality clips, match trackers and a PC builder with real frame rates.">
 <meta property="og:image" content="https://pulseoptimizerapp.github.io/img/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://pulseoptimizerapp.github.io/">
 <meta property="og:type" content="website">
+<meta property="og:site_name" content="Pulse">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="color-scheme" content="dark">
-<meta name="theme-color" content="#0C0C0B">
+<meta name="theme-color" content="#0E0D0B">
 <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png">
 <link rel="icon" type="image/svg+xml" href="img/icon-small.svg">
 <link rel="apple-touch-icon" href="img/icon-180.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="preload" href="fonts/archivo.woff2" as="font" type="font/woff2" crossorigin>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Pulse",
+  "alternateName": "Pulse Optimizer",
+  "applicationCategory": "UtilitiesApplication",
+  "applicationSubCategory": "Game optimizer",
+  "operatingSystem": "Windows 10, Windows 11",
+  "description": "Free, open-source gaming PC companion: finds what slows your games, applies measured and undoable tweaks, records full-quality clips, tracks your matches and estimates frame rates for any PC build.",
+  "url": "https://pulseoptimizerapp.github.io/",
+  "downloadUrl": "https://github.com/PulseOptimizerApp/Pulse/releases/latest",
+  "softwareHelp": "https://pulseoptimizerapp.github.io/#faq",
+  "license": "https://www.gnu.org/licenses/agpl-3.0.html",
+  "isAccessibleForFree": true,
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "image": "https://pulseoptimizerapp.github.io/img/og.png",
+  "screenshot": "https://pulseoptimizerapp.github.io/img/shots/home.webp"
+}
+</script>
 <style>
+  @font-face {
+    font-family: "Archivo"; src: url("fonts/archivo.woff2") format("woff2");
+    font-weight: 100 900; font-stretch: 62% 125%; font-display: swap;
+  }
   :root {
-    --bg: #0C0C0B; --bg2: #0F0F0E; --s1: #141413; --s2: #1B1B19; --hover: #22221F;
-    --line: #2A2926; --line2: #35332F;
-    --text: #F2EFE8; --dim: #9C988F; --faint: #6F6C65;
-    --a: #F2EFE8; --b: #E0773F; --c: #8DB596;
-    --grad: var(--text);
-    --good: #7DC58E; --bad: #E5674F; --warn: #E3B04B;
-    --r: 14px;
-    --max: 1160px;
+    --bg: #0E0D0B; --raise: #161512; --raise2: #1D1B18; --line: #2A2723; --line2: #3A3630;
+    --text: #F2EFE8; --dim: #ABA597; --faint: #77716A;
+    --ember: #E0773F; --ember-hi: #EE8A54; --calm: #8DB596; --warn: #E3B04B;
+    --max: 1200px; --gut: clamp(16px, 4vw, 40px);
+    --wide: 125%; --semi: 87.5%;
   }
   * { box-sizing: border-box; }
-  html { scroll-behavior: smooth; scroll-padding-top: 84px; }
-  body { margin: 0; background: var(--bg); color: var(--text); font: 16px/1.6 "Segoe UI Variable Text", "Segoe UI", system-ui, -apple-system, sans-serif; -webkit-font-smoothing: antialiased; }
+  html { scroll-behavior: smooth; scroll-padding-top: 76px; -webkit-text-size-adjust: 100%; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font-family: "Archivo", "Segoe UI", system-ui, sans-serif; font-size: 17px; line-height: 1.6; font-weight: 400;
+    font-variant-numeric: tabular-nums; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
+  }
   a { color: inherit; }
-  img, svg { display: block; }
-  .wrap { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
-  .mono { font-family: "JetBrains Mono", ui-monospace, Consolas, monospace; }
+  img, svg { display: block; max-width: 100%; }
+  :focus-visible { outline: 2px solid var(--ember); outline-offset: 3px; border-radius: 4px; }
+  .wrap { max-width: var(--max); margin: 0 auto; padding: 0 var(--gut); }
+  .skip { position: absolute; left: -999px; top: 8px; background: var(--text); color: var(--bg); padding: 8px 14px; border-radius: 8px; z-index: 99; }
+  .skip:focus { left: 8px; }
 
-  /* Moved notice */
-  .moved { background: var(--s1); border-bottom: 1px solid var(--line); font-size: 13.5px; color: var(--dim); }
-  .moved .wrap { display: flex; gap: 10px; align-items: center; justify-content: center; padding-top: 9px; padding-bottom: 9px; text-align: center; }
-  .moved b { color: var(--text); font-weight: 600; }
-  .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--a); flex: none; box-shadow: 0 0 0 4px rgba(242,239,232,.15); }
+  /* Type */
+  h1, h2, h3 { font-stretch: var(--wide); margin: 0; letter-spacing: -0.025em; }
+  h1 { font-size: clamp(40px, 7vw, 96px); line-height: .95; font-weight: 800; }
+  h2 { font-size: clamp(32px, 4.6vw, 60px); line-height: 1; font-weight: 750; }
+  h3 { font-size: 19px; line-height: 1.25; font-weight: 700; letter-spacing: -0.01em; }
+  p { margin: 0; }
+  .lead { font-size: clamp(18px, 1.6vw, 21px); line-height: 1.55; color: var(--dim); max-width: 36em; }
+  .muted { color: var(--dim); }
+  .faint { color: var(--faint); }
+  .tag { font-stretch: var(--semi); font-weight: 600; font-size: 14px; color: var(--ember); letter-spacing: .01em; }
+
+  /* Buttons */
+  .btn {
+    display: inline-flex; align-items: center; gap: 10px; height: 52px; padding: 0 24px; border-radius: 12px;
+    font: inherit; font-weight: 650; font-size: 16px; text-decoration: none; cursor: pointer;
+    border: 1px solid var(--line2); background: var(--raise2); color: var(--text); transition: background .15s, transform .15s, border-color .15s;
+  }
+  .btn:hover { background: #26231F; border-color: #4A453D; }
+  .btn.go { background: var(--ember); border-color: var(--ember); color: #160B04; }
+  .btn.go:hover { background: var(--ember-hi); transform: translateY(-1px); }
+  .btn svg { width: 19px; height: 19px; flex: none; }
+  .btn.sm { height: 40px; padding: 0 16px; font-size: 14.5px; border-radius: 10px; }
+  .ver { font-size: 14px; color: var(--faint); margin-top: 14px; min-height: 1.6em; }
 
   /* Nav */
-  nav { position: sticky; top: 0; z-index: 50; background: rgba(10,10,12,.72); backdrop-filter: saturate(160%) blur(14px); -webkit-backdrop-filter: saturate(160%) blur(14px); border-bottom: 1px solid transparent; transition: border-color .2s; }
-  nav.scrolled { border-bottom-color: var(--line); }
-  nav .wrap { display: flex; align-items: center; height: 64px; gap: 28px; }
-  .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; letter-spacing: -.01em; text-decoration: none; font-size: 16.5px; }
+  .nav { position: sticky; top: 0; z-index: 50; background: rgba(14,13,11,.78); backdrop-filter: blur(14px) saturate(140%); -webkit-backdrop-filter: blur(14px) saturate(140%); border-bottom: 1px solid transparent; transition: border-color .2s; }
+  .nav.scrolled { border-bottom-color: var(--line); }
+  .nav .wrap { display: flex; align-items: center; height: 64px; gap: 30px; }
+  .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; font-weight: 750; font-stretch: var(--wide); font-size: 18px; letter-spacing: -0.02em; }
   .brand img { width: 28px; height: 28px; }
-  .links { display: flex; gap: 22px; margin-left: 8px; }
-  .links a { text-decoration: none; color: var(--dim); font-size: 14.5px; transition: color .15s; }
+  .links { display: flex; gap: 24px; }
+  .links a { text-decoration: none; color: var(--dim); font-size: 15px; transition: color .15s; }
   .links a:hover { color: var(--text); }
-  .navr { margin-left: auto; display: flex; gap: 10px; align-items: center; }
-
-  .btn { display: inline-flex; align-items: center; gap: 9px; height: 42px; padding: 0 18px; border-radius: 10px; font-weight: 600; font-size: 14.5px; text-decoration: none; border: 1px solid var(--line2); background: var(--s2); color: var(--text); transition: background .15s, border-color .15s, transform .15s; cursor: pointer; }
-  .btn:hover { background: var(--hover); border-color: #3a3a44; }
-  .btn.primary { background: var(--text); color: #0C0C0B; border-color: var(--text); }
-  .btn.primary:hover { background: #fff; transform: translateY(-1px); }
-  .btn.big { height: 50px; padding: 0 24px; font-size: 15.5px; border-radius: 12px; }
-  .btn svg { width: 18px; height: 18px; }
-  .btn.sm { height: 36px; padding: 0 14px; font-size: 13.5px; }
+  .nav .right { margin-left: auto; display: flex; gap: 10px; align-items: center; }
+  .gh { display: inline-flex; align-items: center; gap: 7px; color: var(--dim); text-decoration: none; font-size: 14.5px; }
+  .gh:hover { color: var(--text); }
+  .gh svg { width: 18px; height: 18px; }
+  @media (max-width: 860px) { .links, .gh { display: none; } }
 
   /* Hero */
-  .hero { position: relative; padding: 88px 0 56px; overflow: hidden; }
-  .hero::before { content: ""; position: absolute; inset: -30% -10% auto; height: 680px; background: radial-gradient(600px 300px at 50% 30%, rgba(224,119,63,.16), transparent 70%), radial-gradient(400px 240px at 25% 20%, rgba(242,239,232,.10), transparent 70%), radial-gradient(420px 260px at 78% 25%, rgba(141,181,150,.12), transparent 70%); pointer-events: none; }
-  .hero .wrap { position: relative; text-align: center; }
-  .pill { display: inline-flex; gap: 8px; align-items: center; font-size: 13px; color: var(--dim); border: 1px solid var(--line2); background: rgba(23,23,27,.6); padding: 5px 12px 5px 6px; border-radius: 999px; text-decoration: none; }
-  .pill span { background: var(--s2); border: 1px solid var(--line2); color: var(--text); font-weight: 600; font-size: 11.5px; padding: 1px 8px; border-radius: 999px; }
-  h1 { font-size: clamp(40px, 6.4vw, 72px); line-height: 1.02; letter-spacing: -.045em; font-weight: 800; margin: 22px auto 18px; max-width: 880px; }
-  .g { background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
-  .lead { font-size: clamp(17px, 2vw, 19.5px); color: var(--dim); max-width: 680px; margin: 0 auto 30px; }
-  .cta { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
-  .ver { color: var(--faint); font-size: 13.5px; margin-top: 14px; }
+  .hero { padding: clamp(48px, 8vw, 104px) 0 0; position: relative; }
+  .hero h1 { max-width: 11.5em; }
+  .hero .lead { margin-top: 28px; }
+  .hero .cta { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 36px; align-items: center; }
+  .trace { margin-top: clamp(40px, 6vw, 72px); position: relative; }
+  .trace svg { width: 100%; height: auto; overflow: visible; }
+  .trace .grid line { stroke: var(--line); stroke-width: 1; }
+  .trace .rough { fill: none; stroke: #6E685E; stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
+  .trace .smooth { fill: none; stroke: var(--ember); stroke-width: 3; stroke-linejoin: round; stroke-linecap: round; }
+  .trace .note { font-family: inherit; font-stretch: 87.5%; font-size: 13px; fill: var(--dim); }
+  .trace .note.fix { fill: var(--calm); }
+  .trace .pin { stroke: var(--line2); stroke-width: 1; stroke-dasharray: 2 3; }
+  .trace .axis { font-family: inherit; font-size: 12px; fill: var(--faint); font-stretch: 87.5%; }
+  .js .trace .draw { stroke-dasharray: var(--len); stroke-dashoffset: var(--len); animation: draw 2.6s cubic-bezier(.6,.05,.25,1) .25s forwards; }
+  .js .trace .draw.late { animation-delay: 1.9s; animation-duration: 1.6s; }
+  .js .trace .fade { opacity: 0; animation: fade .5s ease forwards; }
+  @keyframes draw { to { stroke-dashoffset: 0; } }
+  @keyframes fade { to { opacity: 1; } }
+  @media (prefers-reduced-motion: reduce) { .js .trace .draw, .js .trace .fade { animation: none; stroke-dashoffset: 0; opacity: 1; } }
+  .trace figcaption { display: none; font-size: 14px; color: var(--faint); margin-top: 10px; }
+  @media (max-width: 700px) { .trace .note, .trace .pin, .trace .axis { display: none; } .trace figcaption { display: block; } }
 
-  /* App window mock */
-  .shot { margin: 56px auto 0; max-width: 1040px; border-radius: 16px; border: 1px solid var(--line2); background: var(--bg2); box-shadow: 0 40px 120px -20px rgba(0,0,0,.8), 0 0 0 1px rgba(255,255,255,.02) inset; overflow: hidden; text-align: left; }
-  .bar { height: 38px; display: flex; align-items: center; gap: 8px; padding: 0 14px; border-bottom: 1px solid var(--line); background: var(--bg); }
-  .bar i { width: 11px; height: 11px; border-radius: 50%; background: #2a2a31; }
-  .bar b { margin-left: 10px; font-size: 12.5px; color: var(--faint); font-weight: 500; }
-  .app { display: grid; grid-template-columns: 210px 1fr; min-height: 470px; }
-  .side { border-right: 1px solid var(--line); padding: 14px 10px; background: var(--bg); }
-  .side .item { display: flex; align-items: center; gap: 10px; height: 34px; padding: 0 10px; border-radius: 8px; font-size: 13.5px; color: var(--dim); }
-  .side .item.on { background: var(--s2); color: var(--text); border: 1px solid var(--line); }
-  .side .item svg { width: 16px; height: 16px; opacity: .85; }
-  .side .sec { font-size: 11px; text-transform: uppercase; letter-spacing: .08em; color: var(--faint); margin: 14px 10px 6px; }
-  .main { padding: 26px 28px; }
-  .main h3 { margin: 0; font-size: 22px; letter-spacing: -.02em; }
-  .main .sub { color: var(--dim); font-size: 13.5px; margin: 2px 0 18px; }
-  .find { display: grid; grid-template-columns: auto 1fr auto; gap: 14px; align-items: center; padding: 13px 16px; border: 1px solid var(--line); background: var(--s1); border-radius: 10px; margin-bottom: 10px; }
-  .tag { font-size: 11.5px; font-weight: 600; padding: 3px 9px; border-radius: 6px; white-space: nowrap; }
-  .tag.p { color: var(--bad); background: rgba(248,113,113,.12); }
-  .tag.c { color: var(--warn); background: rgba(251,191,36,.12); }
-  .tag.o { color: var(--good); background: rgba(52,211,153,.12); }
-  .find b { font-size: 14px; font-weight: 600; display: block; }
-  .find small { color: var(--dim); font-size: 12.5px; }
-  .mini { height: 30px; padding: 0 12px; font-size: 12.5px; border-radius: 8px; border: 1px solid var(--line2); background: var(--s2); display: inline-flex; align-items: center; white-space: nowrap; }
-  .mini.blue { background: rgba(224,119,63,.14); border-color: rgba(224,119,63,.45); color: #b9cbff; }
+  /* Screens */
+  .screen { border-radius: 14px; border: 1px solid var(--line2); background: #0B0C0F; overflow: hidden; box-shadow: 0 50px 120px -40px rgba(0,0,0,.9); }
+  .screen img { width: 100%; height: auto; }
+  .hero .screen { margin-top: clamp(28px, 4vw, 48px); }
 
-  /* Sections */
-  section { padding: 104px 0; border-top: 1px solid var(--line); }
-  .eyebrow { font-size: 13px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--b); margin-bottom: 14px; }
-  h2 { font-size: clamp(30px, 4vw, 46px); line-height: 1.08; letter-spacing: -.035em; margin: 0 0 16px; font-weight: 750; max-width: 760px; }
-  .intro { color: var(--dim); font-size: 17.5px; max-width: 660px; margin: 0 0 48px; }
-  .center { text-align: center; }
-  .center h2, .center .intro { margin-left: auto; margin-right: auto; }
+  .promise { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); margin-top: clamp(56px, 8vw, 96px); }
+  .promise ul { list-style: none; margin: 0; padding: 22px 0; display: flex; flex-wrap: wrap; gap: 12px 28px; justify-content: space-between; }
+  .promise li { display: flex; align-items: center; gap: 9px; color: var(--dim); font-size: 15px; white-space: nowrap; }
+  .promise svg { width: 18px; height: 18px; color: var(--calm); flex: none; }
 
-  .grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
-  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-  .card { border: 1px solid var(--line); background: var(--s1); border-radius: var(--r); padding: 24px; transition: border-color .2s, background .2s; }
-  .card:hover { border-color: var(--line2); background: #131317; }
-  .card h4 { margin: 14px 0 6px; font-size: 16.5px; letter-spacing: -.01em; }
-  .card p { margin: 0; color: var(--dim); font-size: 14.5px; }
-  .ico { width: 38px; height: 38px; border-radius: 10px; display: grid; place-items: center; background: var(--s2); border: 1px solid var(--line2); }
-  .ico svg { width: 19px; height: 19px; stroke: var(--text); }
+  /* Chapters */
+  .chapter { padding: clamp(72px, 10vw, 136px) 0 0; }
+  .chapter .head { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: 24px 64px; align-items: end; }
+  .chapter .head .tag { grid-column: 1 / -1; margin-bottom: -8px; }
+  .chapter .copy p + p { margin-top: 14px; }
+  .facts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; margin: clamp(32px, 4vw, 48px) 0 28px; border-top: 1px solid var(--line); }
+  .facts div { padding: 20px 24px 0 0; }
+  .facts div + div { padding-left: 24px; border-left: 1px solid var(--line); }
+  .facts b { display: block; font-weight: 650; font-size: 16px; margin-bottom: 4px; }
+  .facts span { color: var(--dim); font-size: 15px; line-height: 1.5; display: block; }
+  @media (max-width: 860px) {
+    .chapter .head { grid-template-columns: 1fr; }
+    .facts { grid-template-columns: 1fr; }
+    .facts div, .facts div + div { padding: 16px 0; border-left: 0; border-bottom: 1px solid var(--line); }
+  }
+  .crop { aspect-ratio: var(--ar, 16/9); overflow: hidden; }
+  .crop img { width: 100%; height: 100%; object-fit: cover; object-position: top left; }
+  .try { margin-top: 18px; color: var(--dim); font-size: 16px; }
+  .try a { color: var(--text); text-decoration-color: var(--ember); text-underline-offset: 3px; }
 
-  /* Feature tour (split rows) */
-  .split { display: grid; grid-template-columns: 1fr 1.08fr; gap: 64px; align-items: center; }
-  .split.rev > :first-child { order: 2; }
-  .ticks { list-style: none; padding: 0; margin: 26px 0 0; display: grid; gap: 14px; }
-  .ticks li { display: grid; grid-template-columns: 22px 1fr; gap: 12px; color: var(--dim); font-size: 15px; }
-  .ticks li b { color: var(--text); font-weight: 600; }
-  .ticks svg { width: 20px; height: 20px; margin-top: 2px; stroke: var(--a); }
-  .stage { position: relative; border: 1px solid var(--line); border-radius: 18px; background: radial-gradient(500px 260px at 70% 0%, rgba(224,119,63,.10), transparent 70%), var(--bg2); padding: 34px; min-height: 380px; display: grid; place-items: center; overflow: hidden; }
+  /* Verdict (measure) */
+  .split { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 20px; }
+  @media (max-width: 860px) { .split { grid-template-columns: 1fr; } }
+  .verdict { border: 1px solid var(--line2); border-radius: 14px; background: var(--raise); padding: 26px; display: flex; flex-direction: column; }
+  .verdict h3 { font-size: 17px; }
+  .verdict .rows { margin: 18px 0; display: grid; gap: 10px; }
+  .verdict .row { display: flex; justify-content: space-between; gap: 16px; font-size: 15.5px; border-bottom: 1px solid var(--line); padding-bottom: 10px; }
+  .verdict .row span:first-child { color: var(--dim); }
+  .verdict .row b { font-weight: 650; }
+  .verdict .call { margin-top: auto; padding: 14px 16px; border-radius: 10px; background: rgba(141,181,150,.09); border: 1px solid rgba(141,181,150,.3); font-size: 15px; }
+  .verdict .call b { color: var(--calm); display: block; margin-bottom: 2px; }
+  .verdict svg.mini { width: 100%; height: 90px; margin-top: 6px; }
 
-  /* Match card mock (like the app) */
-  .match { width: 100%; max-width: 380px; border: 1px solid var(--line2); background: var(--s1); border-radius: 14px; padding: 18px 20px; box-shadow: 0 30px 60px -20px rgba(0,0,0,.7); }
-  .match .top { display: flex; justify-content: space-between; align-items: baseline; }
-  .match .who { font-weight: 750; letter-spacing: .02em; font-size: 15px; }
-  .match .res { font-weight: 700; font-size: 12px; letter-spacing: .06em; color: var(--good); margin-left: 8px; }
-  .rank { font-size: 11.5px; font-weight: 600; padding: 2px 9px; border-radius: 6px; background: rgba(224,119,63,.14); color: #b9cbff; }
-  .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 16px 0 14px; }
-  .stats div small { display: block; font-size: 10.5px; color: var(--faint); letter-spacing: .08em; font-weight: 600; }
-  .stats div b { font-size: 20px; letter-spacing: -.02em; font-weight: 750; }
-  .w { color: var(--good); } .l { color: var(--bad); }
-  .hl { display: inline-block; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 6px; background: rgba(251,191,36,.12); color: var(--warn); margin-right: 6px; }
-  .match .foot { display: flex; justify-content: space-between; color: var(--dim); font-size: 12.5px; border-top: 1px solid var(--line); padding-top: 12px; margin-top: 12px; }
+  /* More grid */
+  .more { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; margin-top: clamp(32px, 4vw, 48px); }
+  .more article { display: flex; flex-direction: column; }
+  .more .screen { border-radius: 12px; }
+  .more h3 { margin-top: 18px; }
+  .more p { color: var(--dim); font-size: 15.5px; margin-top: 6px; line-height: 1.55; }
+  .extras { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; margin-top: 44px; border-top: 1px solid var(--line); }
+  .extras div { padding: 22px 24px 0 0; }
+  .extras div + div { padding-left: 24px; border-left: 1px solid var(--line); }
+  .extras p { color: var(--dim); font-size: 15.5px; margin-top: 6px; }
+  @media (max-width: 860px) {
+    .more, .extras { grid-template-columns: 1fr; }
+    .extras div, .extras div + div { padding: 16px 0; border-left: 0; border-bottom: 1px solid var(--line); }
+  }
 
-  .clipstage { min-height: 500px; place-items: end center; padding-top: 120px; }
-  .clipstage .toast .thumb { display: none; }
-  .lib { width: 100%; display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-  .lt b { display: block; font-size: 14px; margin-top: 9px; } .lt small { color: var(--faint); font-size: 12px; }
-  .lp { position: relative; aspect-ratio: 16 / 9; border-radius: 10px; border: 1px solid var(--line2); overflow: hidden; }
-  .lp.g1 { background: radial-gradient(120px 80px at 30% 30%, rgba(242,239,232,.35), transparent 70%), linear-gradient(135deg, #1d2b45, #2b1f44); }
-  .lp.g2 { background: radial-gradient(120px 80px at 70% 30%, rgba(251,191,36,.28), transparent 70%), linear-gradient(135deg, #2a2234, #172a33); }
-  .lp.g3 { background: radial-gradient(120px 80px at 40% 70%, rgba(248,113,113,.28), transparent 70%), linear-gradient(135deg, #2b2a22, #1c2230); }
-  .lp.g4 { background: radial-gradient(120px 80px at 60% 40%, rgba(141,181,150,.35), transparent 70%), linear-gradient(135deg, #1c1f33, #2a1f2f); }
-  .lp span { position: absolute; left: 8px; top: 8px; font-size: 11px; font-weight: 800; color: var(--warn); background: rgba(0,0,0,.55); padding: 2px 7px; border-radius: 5px; }
-  .lp em { position: absolute; right: 8px; bottom: 8px; font-style: normal; font-size: 11px; font-family: "JetBrains Mono", monospace; color: #fff; background: rgba(0,0,0,.55); padding: 1px 6px; border-radius: 5px; }
-  /* Clip popup mock (animated like the app) */
-  .toast { position: absolute; top: 22px; right: 22px; width: 260px; border-radius: 12px; border: 1px solid #2A2A31; background: rgba(17,17,20,.96); box-shadow: 0 18px 40px -8px rgba(0,0,0,.7); overflow: hidden; animation: toast 6s cubic-bezier(.2,.8,.2,1) infinite; }
-  .toast .thumb { height: 0; background: linear-gradient(135deg, #1b2a4a, #352356 60%, #0f1b2b); animation: thumb 6s ease infinite; position: relative; }
-  .toast .thumb::after { content: "ACE"; position: absolute; left: 10px; bottom: 8px; font-size: 11px; font-weight: 800; color: var(--warn); background: rgba(0,0,0,.5); padding: 1px 7px; border-radius: 5px; }
-  .toast .row { display: flex; gap: 12px; align-items: center; padding: 12px 14px; }
-  .toast .badge { width: 34px; height: 34px; border-radius: 9px; display: grid; place-items: center; background: rgba(52,211,153,.14); flex: none; }
-  .toast .badge svg { width: 16px; height: 16px; stroke: var(--good); }
-  .toast b { display: block; font-size: 13.5px; }
-  .toast small { color: var(--dim); font-size: 12px; }
-  .toast .drain { height: 2px; background: var(--good); transform-origin: left; animation: drain 6s linear infinite; }
-  @keyframes toast { 0% { transform: translateX(40px); opacity: 0 } 6%, 82% { transform: none; opacity: 1 } 92%, 100% { transform: translateX(40px); opacity: 0 } }
-  @keyframes thumb { 0%, 22% { height: 0 } 30%, 100% { height: 140px } }
-  @keyframes drain { 0%, 22% { transform: scaleX(1) } 82%, 100% { transform: scaleX(0) } }
-
-  /* Macro mock */
-  .mac { width: 100%; max-width: 400px; display: grid; gap: 8px; }
-  .step { display: grid; grid-template-columns: 26px 1fr auto; gap: 12px; align-items: center; border: 1px solid var(--line); background: var(--s1); border-radius: 10px; padding: 10px 14px; font-size: 14px; }
-  .step .n { width: 26px; height: 26px; border-radius: 7px; background: var(--s2); color: var(--dim); display: grid; place-items: center; font-size: 12px; font-weight: 600; }
-  .key { font-family: "JetBrains Mono", monospace; font-size: 12.5px; padding: 2px 8px; border: 1px solid var(--line2); border-bottom-width: 2px; border-radius: 6px; background: var(--s2); }
-  .delay { color: var(--faint); font-size: 12.5px; padding-left: 50px; }
-
-  /* Roblox mock */
-  .rbx { width: 100%; max-width: 400px; display: grid; gap: 10px; }
-  .opt { display: flex; justify-content: space-between; align-items: center; gap: 16px; border: 1px solid var(--line); background: var(--s1); border-radius: 10px; padding: 13px 16px; }
-  .opt b { font-size: 14px; display: block; } .opt small { color: var(--dim); font-size: 12.5px; }
-  .sw { width: 38px; height: 22px; border-radius: 999px; background: var(--b); position: relative; flex: none; }
-  .sw::after { content: ""; position: absolute; top: 3px; right: 3px; width: 16px; height: 16px; border-radius: 50%; background: #fff; }
-  .sw.off { background: #26262C; } .sw.off::after { right: auto; left: 3px; background: #9a9aa3; }
-  .fps { font-family: "JetBrains Mono", monospace; font-size: 13px; padding: 4px 10px; border-radius: 7px; background: var(--s2); border: 1px solid var(--line2); }
-
-  /* Measure chart */
-  .chart { width: 100%; max-width: 480px; }
-  .chart svg { width: 100%; height: auto; }
-  .chart .grid line { stroke: #1f1f25; }
-  .chart .axis text { fill: var(--faint); font-size: 11px; font-family: inherit; }
-  .chart .trace { fill: none; stroke-width: 1.6; stroke-linejoin: round; }
-  .chart .off { stroke: #5a5a66; } .chart .on { stroke: url(#tg); }
-  .verdict { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 14px; }
-  .verdict div { border: 1px solid var(--line); background: var(--s1); border-radius: 10px; padding: 10px 12px; }
-  .verdict small { color: var(--faint); font-size: 11.5px; display: block; } .verdict b { font-size: 15px; }
-
-  /* Evidence table */
-  table { width: 100%; border-collapse: collapse; font-size: 14.5px; border: 1px solid var(--line); border-radius: var(--r); overflow: hidden; }
-  th, td { text-align: left; padding: 14px 18px; border-bottom: 1px solid var(--line); vertical-align: top; }
-  th { color: var(--faint); font-weight: 600; font-size: 12px; letter-spacing: .06em; text-transform: uppercase; background: var(--s1); }
-  td { color: var(--dim); } td:first-child { color: var(--text); font-weight: 500; }
-  tr:last-child td { border-bottom: 0; }
-  .v { font-size: 12px; font-weight: 600; padding: 3px 9px; border-radius: 6px; white-space: nowrap; }
-  .v.k { color: var(--good); background: rgba(52,211,153,.12); } .v.s { color: var(--warn); background: rgba(251,191,36,.12); } .v.x { color: var(--bad); background: rgba(248,113,113,.12); }
-  .note { color: var(--faint); font-size: 13.5px; margin-top: 14px; }
+  /* Setup steps */
+  .steps { list-style: none; padding: 0; margin: clamp(32px, 4vw, 48px) 0 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); counter-reset: s; border-top: 1px solid var(--line); }
+  .steps li { counter-increment: s; padding: 22px 22px 0 0; }
+  .steps li + li { padding-left: 22px; border-left: 1px solid var(--line); }
+  .steps li::before { content: counter(s); display: block; font-stretch: var(--wide); font-weight: 800; font-size: 40px; line-height: 1; color: var(--ember); margin-bottom: 14px; }
+  .steps p { color: var(--dim); font-size: 15.5px; margin-top: 6px; }
+  @media (max-width: 860px) {
+    .steps { grid-template-columns: 1fr 1fr; }
+    .steps li, .steps li + li { padding: 18px 16px 18px 0; border-left: 0; border-bottom: 1px solid var(--line); }
+  }
 
   /* Safety */
-  .promise { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
-  .promise div { display: flex; gap: 12px; align-items: flex-start; border: 1px solid var(--line); background: var(--s1); border-radius: 12px; padding: 16px 18px; font-size: 14.5px; }
-  .promise svg { width: 18px; height: 18px; stroke: var(--good); flex: none; margin-top: 3px; }
-  .verify { margin-top: 26px; border: 1px solid var(--line); background: var(--bg2); border-radius: var(--r); padding: 22px 24px; }
-  .verify p { margin: 0 0 12px; color: var(--dim); font-size: 14.5px; }
-  pre { margin: 0; overflow-x: auto; padding: 14px 16px; border-radius: 10px; background: #070709; border: 1px solid var(--line); font: 500 13px/1.6 "JetBrains Mono", monospace; color: #cfd3dc; }
+  .safe { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 20px; margin-top: clamp(32px, 4vw, 48px); }
+  @media (max-width: 860px) { .safe { grid-template-columns: 1fr; } }
+  .safe > *, .split > *, .head > * { min-width: 0; }
+  .rules { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
+  .rules li { display: flex; gap: 14px; padding: 15px 0; border-bottom: 1px solid var(--line); font-size: 16px; }
+  .rules svg { width: 20px; height: 20px; color: var(--calm); flex: none; margin-top: 2px; }
+  .verify { border: 1px solid var(--line2); border-radius: 14px; background: var(--raise); padding: 28px; }
+  .verify p { color: var(--dim); font-size: 15.5px; margin-top: 8px; }
+  .cmd { min-width: 0; display: flex; align-items: center; gap: 10px; margin-top: 18px; background: #0A0908; border: 1px solid var(--line); border-radius: 10px; padding: 12px 12px 12px 16px; }
+  .cmd code { font-family: ui-monospace, "Cascadia Mono", Consolas, monospace; font-size: 13.5px; color: var(--text); overflow-x: auto; white-space: nowrap; flex: 1; }
+  .copy-btn { flex: none; font: inherit; font-size: 13px; font-weight: 600; color: var(--dim); background: var(--raise2); border: 1px solid var(--line2); border-radius: 8px; padding: 6px 12px; cursor: pointer; }
+  .copy-btn:hover { color: var(--text); }
+  .verify .smartscreen { margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--line); }
 
   /* FAQ */
-  .faq { max-width: 820px; margin: 0 auto; }
-  details { border-bottom: 1px solid var(--line); padding: 4px 0; }
-  summary { cursor: pointer; list-style: none; padding: 18px 36px 18px 0; font-weight: 600; font-size: 16.5px; position: relative; }
-  summary::-webkit-details-marker { display: none; }
-  summary::after { content: ""; position: absolute; right: 6px; top: 26px; width: 9px; height: 9px; border-right: 2px solid var(--dim); border-bottom: 2px solid var(--dim); transform: rotate(45deg); transition: transform .2s; }
-  details[open] summary::after { transform: rotate(-135deg); top: 30px; }
-  details p { margin: 0 0 20px; color: var(--dim); font-size: 15px; max-width: 720px; }
+  .faq { margin-top: clamp(28px, 4vw, 44px); border-top: 1px solid var(--line); max-width: 860px; }
+  .faq details { border-bottom: 1px solid var(--line); }
+  .faq summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; gap: 20px; align-items: center; padding: 22px 0; font-size: 18px; font-weight: 600; }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary::after { content: ""; width: 12px; height: 12px; flex: none; border-right: 2px solid var(--faint); border-bottom: 2px solid var(--faint); transform: rotate(45deg) translate(-3px, -3px); transition: transform .2s; }
+  .faq details[open] summary::after { transform: rotate(225deg) translate(-3px, -3px); }
+  .faq details p { color: var(--dim); padding: 0 0 24px; max-width: 46em; }
 
-  /* Final CTA */
-  .final { text-align: center; padding: 120px 0; position: relative; overflow: hidden; }
-  .final::before { content: ""; position: absolute; inset: 0; background: radial-gradient(520px 240px at 50% 60%, rgba(224,119,63,.14), transparent 70%); pointer-events: none; }
-  .final .wrap { position: relative; }
-  .final img { width: 64px; height: 64px; margin: 0 auto 22px; }
+  /* End */
+  .end { padding: clamp(88px, 12vw, 160px) 0 clamp(64px, 8vw, 104px); }
+  .end h2 { font-size: clamp(40px, 6.6vw, 92px); max-width: 10em; }
+  .end .cta { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 36px; }
+  footer { border-top: 1px solid var(--line); padding: 36px 0 48px; color: var(--faint); font-size: 14px; }
+  footer .wrap { display: flex; flex-wrap: wrap; gap: 18px 40px; justify-content: space-between; }
+  footer nav { display: flex; flex-wrap: wrap; gap: 10px 22px; }
+  footer a { color: var(--dim); text-decoration: none; }
+  footer a:hover { color: var(--text); }
 
-  footer { border-top: 1px solid var(--line); padding: 34px 0 48px; color: var(--faint); font-size: 13.5px; }
-  footer .wrap { display: flex; gap: 20px; flex-wrap: wrap; align-items: center; justify-content: space-between; }
-  footer nav { position: static; background: none; backdrop-filter: none; border: 0; display: flex; gap: 20px; flex-wrap: wrap; }
-  footer a { text-decoration: none; color: var(--dim); } footer a:hover { color: var(--text); }
-
-  /* Trust strip */
-  .trust { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 22px; margin-top: 22px; color: var(--dim); font-size: 13.5px; }
-  .trust span { display: inline-flex; align-items: center; gap: 7px; }
-  .trust svg { width: 15px; height: 15px; stroke: var(--good); }
-
-  /* Numbers */
-  .nums { display: grid; grid-template-columns: repeat(4, 1fr); border: 1px solid var(--line); border-radius: var(--r); background: var(--s1); margin-top: 64px; }
-  .nums div { padding: 22px 24px; border-right: 1px solid var(--line); text-align: left; }
-  .nums div:last-child { border-right: 0; }
-  .nums b { display: block; font-size: 30px; letter-spacing: -.03em; font-weight: 800; }
-  .nums small { color: var(--dim); font-size: 13.5px; }
-
-  /* Bento */
-  .bento { display: grid; grid-template-columns: repeat(6, 1fr); grid-auto-rows: minmax(200px, auto); gap: 14px; }
-  .tile { position: relative; overflow: hidden; border: 1px solid var(--line); background: var(--s1); border-radius: 16px; padding: 24px; text-decoration: none; display: flex; flex-direction: column; transition: border-color .2s, transform .2s; }
-  .tile:hover { border-color: var(--line2); transform: translateY(-2px); }
-  .tile h4 { margin: 14px 0 6px; font-size: 18px; letter-spacing: -.015em; }
-  .tile p { margin: 0; color: var(--dim); font-size: 14.5px; max-width: 440px; }
-  .tile .more { margin-top: auto; padding-top: 16px; font-size: 13.5px; color: var(--b); font-weight: 600; }
-  .tile.w3 { grid-column: span 3; } .tile.w2 { grid-column: span 2; } .tile.w4 { grid-column: span 4; }
-  .tile::after { content: ""; position: absolute; inset: auto -20% -60% auto; width: 320px; height: 320px; border-radius: 50%; background: radial-gradient(closest-side, var(--glow, rgba(224,119,63,.16)), transparent); pointer-events: none; }
-  .tile.c1 { --glow: rgba(242,239,232,.16); } .tile.c2 { --glow: rgba(141,181,150,.18); } .tile.c3 { --glow: rgba(52,211,153,.14); } .tile.c4 { --glow: rgba(251,191,36,.12); } .tile.c5 { --glow: rgba(248,113,113,.12); }
-
-  /* One app instead of many */
-  .swap { display: grid; grid-template-columns: 1fr auto 1fr; gap: 28px; align-items: center; }
-  .stack { display: grid; gap: 10px; }
-  .stack div { display: flex; justify-content: space-between; gap: 12px; border: 1px solid var(--line); background: var(--s1); border-radius: 10px; padding: 12px 16px; font-size: 14.5px; color: var(--dim); }
-  .stack div s { color: var(--faint); text-decoration-color: rgba(248,113,113,.7); }
-  .stack div em { font-style: normal; font-size: 12.5px; color: var(--faint); }
-  .arrow { width: 54px; height: 54px; border-radius: 50%; display: grid; place-items: center; border: 1px solid var(--line2); background: var(--s2); }
-  .arrow svg { width: 22px; height: 22px; stroke: var(--text); }
-  .one { border: 1px solid rgba(224,119,63,.45); background: radial-gradient(400px 200px at 30% 0%, rgba(224,119,63,.16), transparent 70%), var(--s1); border-radius: 18px; padding: 28px; }
-  .one .brand { font-size: 20px; margin-bottom: 14px; } .one .brand img { width: 34px; height: 34px; }
-  .one ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
-  .one li { display: flex; gap: 10px; color: var(--text); font-size: 15px; }
-  .one li svg { width: 18px; height: 18px; stroke: var(--good); flex: none; margin-top: 3px; }
-
-  .specs { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
-  .specs span { font-size: 12.5px; font-weight: 600; color: var(--text); background: var(--s2); border: 1px solid var(--line2); border-radius: 999px; padding: 5px 11px; }
-
-  /* Debloat list */
-  .dl-list { width: 100%; max-width: 420px; display: grid; gap: 8px; }
-  .dl-item { display: grid; grid-template-columns: 20px 1fr auto; gap: 12px; align-items: center; border: 1px solid var(--line); background: var(--s1); border-radius: 10px; padding: 11px 14px; font-size: 14px; }
-  .dl-item small { display: block; color: var(--faint); font-size: 12px; }
-  .box { width: 18px; height: 18px; border-radius: 5px; border: 1.5px solid var(--line2); display: grid; place-items: center; }
-  .box.on { background: var(--b); border-color: var(--b); }
-  .box.on::after { content: ""; width: 8px; height: 4px; border-left: 2px solid #fff; border-bottom: 2px solid #fff; transform: rotate(-45deg) translate(1px, -1px); }
-  .dl-total { display: flex; justify-content: space-between; align-items: center; margin-top: 6px; padding: 12px 14px; border-radius: 10px; background: rgba(224,119,63,.10); border: 1px solid rgba(224,119,63,.35); font-size: 14px; }
-  .dl-total b { font-size: 18px; }
-
-  /* Tweak categories */
-  .cats { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin-bottom: 30px; }
-  .cats div { border: 1px solid var(--line); background: var(--s1); border-radius: 12px; padding: 16px; }
-  .cats b { display: block; font-size: 14.5px; margin-bottom: 4px; } .cats small { color: var(--dim); font-size: 13px; }
-
-  /* Reveal on scroll */
-  .rv { opacity: 0; transform: translateY(14px); transition: opacity .6s ease, transform .6s cubic-bezier(.2,.8,.2,1); }
-  .rv.in { opacity: 1; transform: none; }
-  @media (prefers-reduced-motion: reduce) { .rv { opacity: 1; transform: none; transition: none; } .toast, .toast .thumb, .toast .drain { animation: none; } .toast .thumb { height: 140px; } html { scroll-behavior: auto; } }
-
-  @media (max-width: 980px) {
-    .links { display: none; }
-    .split, .split.rev { grid-template-columns: 1fr; gap: 36px; }
-    .split.rev > :first-child { order: 0; }
-    .grid3, .promise { grid-template-columns: 1fr 1fr; }
-    .bento { grid-template-columns: 1fr 1fr; } .tile.w3, .tile.w2, .tile.w4 { grid-column: span 1; } .tile.full { grid-column: span 2; }
-    .swap { grid-template-columns: 1fr; } .arrow { transform: rotate(90deg); margin: 0 auto; }
-    .cats { grid-template-columns: 1fr 1fr; }
-    .nums { grid-template-columns: 1fr 1fr; } .nums div:nth-child(2) { border-right: 0; } .nums div:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
-    .app { grid-template-columns: 1fr; } .side { display: none; }
-  }
-  @media (max-width: 640px) {
-    section { padding: 76px 0; }
-    .grid3, .grid2, .promise, .bento { grid-template-columns: 1fr; } .tile.full { grid-column: span 1; }
-    .nums b { font-size: 24px; }
-    .find { grid-template-columns: 1fr; gap: 8px; } .find .tag { justify-self: start; } .find .mini, .find > span:empty { display: none; }
-    .main { padding: 20px 16px; }
-    .navr .btn:not(.primary) { display: none; }
-    th:nth-child(3), td:nth-child(3) { display: none; }
-    .stage { padding: 20px; min-height: 320px; }
-    .toast { width: 220px; right: 12px; top: 12px; }
-    .clipstage { min-height: 430px; }
-    .toast .thumb { animation-name: thumbS; }
-    @keyframes thumbS { 0%, 22% { height: 0 } 30%, 100% { height: 110px } }
-  }
-  /* Flat: no background glows, no purple-blue fills. */
-  .stage { background: var(--s1) !important; }
-  .one { background: var(--s1) !important; border-color: var(--line2) !important; }
-  .lp.g1 { background: #2a2622 !important; } .lp.g2 { background: #23271f !important; } .lp.g3 { background: #2b221e !important; } .lp.g4 { background: #1f2422 !important; }
-  .toast .thumb { background: #22221F !important; }
-  .hero::before, .final::before, .tile::after { display: none !important; }
-  .dot { box-shadow: none !important; }
+  .rv { opacity: 1; }
+  .js .rv { opacity: 0; transform: translateY(14px); transition: opacity .6s ease, transform .6s ease; }
+  .js .rv.in { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) { .js .rv { opacity: 1; transform: none; transition: none; } }
 </style>
+<script>document.documentElement.classList.add("js");</script>
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
 
-<div class="moved"><div class="wrap"><span class="dot"></span><span><b>Pulse has a new home.</b> On version 0.4.11 or older? Download the new version once below and Pulse updates itself from here from then on.</span></div></div>
-
-<nav id="nav">
+<header class="nav" id="nav">
   <div class="wrap">
-    <a class="brand" href="#"><img src="img/icon-small.svg" alt="">Pulse</a>
-    <div class="links">
-      <a href="#clips">Clips</a>
+    <a class="brand" href="./" aria-label="Pulse home"><img src="img/icon.svg" alt="" width="28" height="28">Pulse</a>
+    <nav class="links" aria-label="Sections">
+      <a href="#diagnose">Diagnose</a>
       <a href="#tweaks">Tweaks</a>
-      <a href="#macros">Macros</a>
-      <a href="#debloat">Debloat</a>
-      <a href="#games">Games</a>
-      <a href="#roblox">Roblox</a>
-      <a href="#safety">Safety</a>
+      <a href="#clips">Clips</a>
+      <a href="#trackers">Trackers</a>
+      <a href="fps-calculator/">FPS calculator</a>
+      <a href="guides/">FPS guides</a>
       <a href="#faq">FAQ</a>
-    </div>
-    <div class="navr">
-      <a class="btn sm src" href="#">Source</a>
-      <a class="btn sm primary dl" href="#">Download</a>
-    </div>
-  </div>
-</nav>
-
-<header class="hero">
-  <div class="wrap">
-    <a class="pill rv" href="#clips"><span>New</span> Auto clips for your aces, and a recap after every match</a>
-    <h1 class="rv">Flawless clips. Faster games. <span class="g">One free app.</span></h1>
-    <p class="lead rv">Record your best plays in full quality without slowing your game, apply tweaks that prove they work, run macros on any mouse, and strip the bloat out of Windows. Pulse is the all-in-one companion for your gaming PC.</p>
-    <div class="cta rv">
-      <a class="btn big primary dl" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0l-5-5m5 5l5-5M4 21h16"/></svg>Download for Windows</a>
-      <a class="btn big src" href="#"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5a11.5 11.5 0 00-3.6 22.4c.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.2 1.2a11 11 0 015.8 0c2.2-1.5 3.2-1.2 3.2-1.2.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A11.5 11.5 0 0012 .5z"/></svg>View the source</a>
-    </div>
-    <div class="ver">Free and open source. Windows 10 and 11, 64-bit.</div>
-    <div class="trust rv"><span><svg viewBox="0 0 24 24" fill="none" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>No account</span><span><svg viewBox="0 0 24 24" fill="none" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>No ads</span><span><svg viewBox="0 0 24 24" fill="none" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Nothing uploaded</span><span><svg viewBox="0 0 24 24" fill="none" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Every change undoable</span><span><svg viewBox="0 0 24 24" fill="none" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Open source</span></div>
-
-    <div class="shot rv" aria-label="Pulse's Diagnose page (illustration)">
-      <div class="bar"><i></i><i></i><i></i><b>Pulse</b></div>
-      <div class="app">
-        <div class="side">
-          <div class="item on"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h4l3-8 4 16 3-8h4"/></svg>Diagnose</div>
-          <div class="item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h10M4 12h16M4 18h7"/><circle cx="17" cy="6" r="2"/><circle cx="14" cy="18" r="2"/></svg>Tweaks</div>
-          <div class="item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 20V10m6 10V4m6 16v-7m4 7H2"/></svg>Measure</div>
-          <div class="item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M10 10l5 2.5-5 2.5z"/></svg>Clips</div>
-          <div class="item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="11" rx="3"/><path d="M7 11v3m-1.5-1.5h3M16 12h.01M18 14h.01"/></svg>Games</div>
-          <div class="sec">More</div>
-          <div class="item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2" transform="rotate(12 12 12)"/></svg>Roblox</div>
-          <div class="item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="6" y="2" width="12" height="20" rx="6"/><path d="M12 6v4"/></svg>Macros</div>
-          <div class="item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/></svg>Safety</div>
-        </div>
-        <div class="main">
-          <h3>Diagnose</h3>
-          <div class="sub">Most impactful first. Every finding explains how to fix it.</div>
-          <div class="find"><span class="tag p">Problem</span><div><b>Your monitor is plugged into the motherboard</b><small>Your screen runs on Intel UHD Graphics 770, but this PC has an RTX 4070.</small></div><span class="mini">Show me how</span></div>
-          <div class="find"><span class="tag p">Problem</span><div><b>Display is running slower than it can</b><small>Set to 60 Hz at 2560×1440, but it supports 165 Hz.</small></div><span class="mini blue">Fix it</span></div>
-          <div class="find"><span class="tag c">Worth checking</span><div><b>Memory is at its slow default speed</b><small>32 GB DDR5 at 4800 MT/s, the fallback when EXPO is off.</small></div><span class="mini">BIOS steps</span></div>
-          <div class="find"><span class="tag o">Looks good</span><div><b>CPU under load</b><small>No meaningful throttling during the 20-second load test.</small></div><span></span></div>
-        </div>
-      </div>
+    </nav>
+    <div class="right">
+      <a class="gh src" href="https://github.com/PulseOptimizerApp/Pulse" aria-label="Pulse on GitHub"><svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg><span class="stars">GitHub</span></a>
+      <a class="btn go sm dl" href="https://github.com/PulseOptimizerApp/Pulse/releases/latest/download/Pulse.exe" data-goatcounter-click="download-nav">Download</a>
     </div>
   </div>
 </header>
 
-
-<section id="everything">
+<main id="main">
+<section class="hero">
   <div class="wrap">
-    <div class="center"><div class="eyebrow rv">All in one</div>
-    <h2 class="rv">Your PC's game companion.</h2>
-    <p class="intro rv">Most players juggle an optimizer, a clipper, a macro tool, a debloat script and an FPS counter. Pulse is all of them, built to work together and stay out of your way.</p></div>
-    <div class="bento">
-      <a class="tile w4 c2 rv" href="#clips"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M10 10l5 2.5-5 2.5z"/></svg></div><h4>Full-quality clips that don't slow your game</h4><p>Instant replay recorded by your graphics card's own video chip, up to 144 FPS and 120 Mbps in H.264, HEVC or AV1. Aces and multi-kills save themselves, and every match ends with a recap.</p><span class="more">Clips →</span></a>
-      <a class="tile w2 c1 rv" href="#tweaks"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h10M4 12h16M4 18h7"/><circle cx="17" cy="6" r="2"/><circle cx="14" cy="18" r="2"/></svg></div><h4>Tweaks that prove they work</h4><p>Latency, network, GPU and power tweaks, each explained, measured in your game and undoable.</p><span class="more">Tweaks →</span></a>
-      <a class="tile w2 c5 rv" href="#macros"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="6"/><path d="M12 6v4"/></svg></div><h4>Macros on any mouse</h4><p>Key sequences, auto clicking and Logitech G Hub scripts, with no brand lock-in.</p><span class="more">Macros →</span></a>
-      <a class="tile w2 c3 rv" href="#debloat"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M8 6V4h8v2M6 6l1 14h10l1-14"/><path d="M10 10v6M14 10v6"/></svg></div><h4>Debloat Windows safely</h4><p>Remove preinstalled junk, quiet background services and get gigabytes back, all reversible.</p><span class="more">Debloat →</span></a>
-      <a class="tile w2 c4 rv" href="#clips"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 01-10 0zM17 6h3v2a3 3 0 01-3 3M7 6H4v2a3 3 0 003 3"/></svg></div><h4>A recap after every match</h4><p>Agent, rank, map, K/D/A and headshots for VALORANT, CS2, League and Dota 2.</p></a>
-      <a class="tile w2 c1 rv" href="#diagnose"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l3-8 4 16 3-8h4"/></svg></div><h4>Finds what's really wrong</h4><p>A monitor stuck at 60 Hz, RAM at half speed or an old BIOS, with step-by-step fixes.</p></a>
-      <a class="tile w2 c2 rv" href="#roblox"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2" transform="rotate(12 12 12)"/><path d="M10 10h4v4h-4z"/></svg></div><h4>Roblox, unlocked</h4><p>Higher FPS cap, allowed performance flags and your own font, kept through every Roblox update.</p></a>
-      <a class="tile w2 c4 rv" href="#safety"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 109-9 9.7 9.7 0 00-6.7 2.7L3 8"/><path d="M3 3v5h5"/></svg></div><h4>Undo anything, any time</h4><p>Every setting's old value is saved first, plus a restore point. One click puts it all back.</p></a>
+    <h1 class="rv">Find what's slowing your games. Fix it. Prove it.</h1>
+    <p class="lead rv">Pulse checks your PC for the setup mistakes that cost the most frames, fixes them with tweaks you can measure and undo, and adds full-quality clips, match trackers and a PC builder. One free app for your gaming PC.</p>
+    <div class="cta rv">
+      <a class="btn go dl" href="https://github.com/PulseOptimizerApp/Pulse/releases/latest/download/Pulse.exe" data-goatcounter-click="download-hero">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 20h14"/></svg>
+        Download for Windows
+      </a>
+      <a class="btn" href="#diagnose">See what it does</a>
     </div>
-    <div class="nums rv">
-      <div><b>144 FPS</b><small>clips at up to 120 Mbps</small></div>
-      <div><b>~40</b><small>tweaks, each one explained</small></div>
-      <div><b>100%</b><small>of changes undoable</small></div>
-      <div><b>$0</b><small>no ads, no account, no upsell</small></div>
-    </div>
+    <p class="ver">Free and open source. Windows 10 and 11, 64-bit.</p>
+
+    <figure class="trace" aria-label="A frame-time graph: spiky while a PC has setup problems, then smooth once Pulse fixes them, ending in the Pulse logo.">
+      <svg id="trace" viewBox="0 0 1200 300" role="img" aria-hidden="true"></svg>
+      <figcaption>Frame times with a monitor at 60 Hz, RAM at its default speed and background recording, then fixed.</figcaption>
+    </figure>
   </div>
 </section>
 
-<section id="one">
-  <div class="wrap swap">
-    <div class="stack rv">
-      <div><s>PC optimizer</s><em>guesses, rarely undoes</em></div>
-      <div><s>Game clipper</s><em>account, ads, background load</em></div>
-      <div><s>FPS counter and benchmark tool</s><em>separate app</em></div>
-      <div><s>Macro software</s><em>only for one mouse brand</em></div>
-      <div><s>Debloat script</s><em>runs blind, no undo</em></div>
-      <div><s>Roblox launcher</s><em>another download</em></div>
-    </div>
-    <div class="arrow rv"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14m-6-6l6 6-6 6"/></svg></div>
-    <div class="one rv">
-      <div class="brand"><img src="img/icon-small.svg" alt="">Pulse</div>
-      <ul>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Fixes and tweaks that prove they helped</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Clips, auto clips and match recaps</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>FPS counter and before-and-after tests</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Macros on any mouse or key</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Debloat you can see and undo</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Roblox launcher with your settings</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>One small download. Free.</li>
-      </ul>
-    </div>
-  </div>
-</section>
+<div class="wrap">
+  <div class="screen rv"><img src="img/shots/home.webp" width="2000" height="1322" alt="Pulse's home screen: PC health with the biggest problems first, live CPU, graphics and memory, and shortcuts to Debloat, Tweaks, Clips and the reaction trainer." fetchpriority="high"></div>
+</div>
 
-<section id="clips">
-  <div class="wrap split">
-    <div>
-      <div class="eyebrow rv">Clips</div>
-      <h2 class="rv">Clips that look as good as the play.</h2>
-      <p class="intro rv" style="margin-bottom:0">Instant replay recorded by the video chip built into your graphics card (NVIDIA NVENC, AMD AMF or Intel Quick Sync), not the part running your game. Full quality, no account, no ads, no uploads.</p>
-      <div class="specs rv"><span>Native, 1440p or 1080p</span><span>Up to 144 FPS</span><span>Up to 120 Mbps</span><span>H.264 · HEVC · AV1</span><span>Replay up to 5 min</span><span>Game and mic on separate tracks</span></div>
-      <ul class="ticks">
-        <li class="rv"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span><b>Auto clips your big plays.</b> 3Ks, 4Ks and aces in Counter-Strike 2, triples to pentas in League of Legends, and rampages in Dota 2, from each game's official live data.</span></li>
-        <li class="rv"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span><b>A recap after every match.</b> Map, agent or champion, win or loss, K/D/A, headshot % and rank, with that match's clips one click away. VALORANT, CS2, League and Dota 2.</span></li>
-        <li class="rv"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span><b>A popup that doesn't get in the way.</b> It slides in the moment you clip, shows what you saved, and never takes focus from your game.</span></li>
-        <li class="rv"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span><b>Trim, mix and keep.</b> A built-in trimmer, separate game and mic volume, screenshots, and a storage limit so clips never fill your drive.</span></li>
-      </ul>
-    </div>
-    <div class="stage clipstage rv" aria-label="Your clip library and the clip popup (illustration)">
-      <div class="toast"><div class="thumb"></div><div class="row"><div class="badge"><svg viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></div><div><b>ACE clipped</b><small>Last 30 seconds</small></div></div><div class="drain"></div></div>
-      <div class="lib">
-        <div class="lt"><div class="lp g1"><span>ACE</span><em>0:24</em></div><b>ACE</b><small>VALORANT · 2 min ago</small></div>
-        <div class="lt"><div class="lp g2"><span>Penta kill</span><em>0:30</em></div><b>Penta kill</b><small>League of Legends · 1 h ago</small></div>
-        <div class="lt"><div class="lp g3"><span>4K</span><em>0:19</em></div><b>4K</b><small>Counter-Strike 2 · Yesterday</small></div>
-        <div class="lt"><div class="lp g4"><em>0:30</em></div><b>Marvel Rivals</b><small>Saved with your hotkey</small></div>
+<div class="promise">
+  <div class="wrap">
+    <ul>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>No account, no ads</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>Nothing uploaded</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>Every change can be undone</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>Never touches running games</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>Open source, built in public</li>
+    </ul>
+  </div>
+</div>
+
+<section class="chapter" id="diagnose">
+  <div class="wrap">
+    <div class="head">
+      <p class="tag rv">Diagnose</p>
+      <h2 class="rv">Most slow PCs have a setup problem, not a settings problem.</h2>
+      <div class="copy rv">
+        <p class="lead">Before a single tweak, Pulse looks for the mistakes worth the most frames, sorted by how much each one costs you. Every finding comes with steps for your Windows, graphics card and motherboard.</p>
       </div>
     </div>
+    <div class="facts rv">
+      <div><b>Monitor stuck at 60 Hz</b><span>Or plugged into the motherboard, so games run on the weak built-in chip.</span></div>
+      <div><b>RAM at its slow default</b><span>XMP or EXPO off, one stick, or the wrong slots: easily 10–20% in CPU-heavy games.</span></div>
+      <div><b>Heat, power and old drivers</b><span>A short load test shows throttling, plus BIOS, Wi-Fi and drive checks.</span></div>
+    </div>
+    <div class="screen rv"><img src="img/shots/diagnose.webp" width="2000" height="1099" loading="lazy" alt="Diagnose: a 2 of 6 checkup score, with problems found such as memory at its slow default speed and a monitor below its refresh rate, each with a fix."></div>
   </div>
 </section>
 
-<section id="tweaks">
+<section class="chapter" id="tweaks">
   <div class="wrap">
-    <div class="eyebrow rv">Tweaks</div>
-    <h2 class="rv">Tweaks that actually do something.</h2>
-    <p class="intro rv">Nearly 40 tweaks for lower latency, steadier frame times, better ping and a quieter Windows. Each one says exactly what it changes and what to expect, only shows up if it fits your PC, can be measured in your own game, and comes back off with one click.</p>
-    <div class="cats">
-      <div class="rv"><b>Latency and input</b><small>Mouse, keyboard and frame pacing</small></div>
-      <div class="rv"><b>Network and ping</b><small>Adapter power saving, Nagle, throttling</small></div>
-      <div class="rv"><b>GPU and display</b><small>Scheduling, game mode, visual effects</small></div>
-      <div class="rv"><b>Power and CPU</b><small>Plans, timers, background priority</small></div>
-      <div class="rv"><b>Privacy and background</b><small>Telemetry, AI features, ads in Windows</small></div>
-    </div>
-    <div class="rv">
-      <table>
-        <thead><tr><th>Tweak</th><th>Label</th><th>Why</th></tr></thead>
-        <tbody>
-          <tr><td>Turn off background game recording</td><td><span class="v k">Documented</span></td><td>Uses the official Group Policy setting instead of undocumented registry values.</td></tr>
-          <tr><td>Hardware-accelerated GPU scheduling</td><td><span class="v s">Only where it helps</span></td><td>Offered for RTX 40-series and newer, where DLSS Frame Generation needs it.</td></tr>
-          <tr><td>Network adapter power saving off</td><td><span class="v s">Only where it helps</span></td><td>Stops the adapter dozing between packets. Mostly helps laptops and cheaper adapters.</td></tr>
-          <tr><td>Nagle's algorithm and network throttling</td><td><span class="v s">Only where it helps</span></td><td>Not in Microsoft's documentation, so they're optional and explained, and Measure shows if they help on your PC.</td></tr>
-          <tr><td>"GPU Priority" and "SFIO Priority"</td><td><span class="v x">Left out</span></td><td>Microsoft documents these values as not used.</td></tr>
-          <tr><td>Timer resolution registry tweaks</td><td><span class="v x">Left out</span></td><td>Timer resolution has been per-process since Windows 10 version 2004.</td></tr>
-        </tbody>
-      </table>
-      <p class="note">Automated tests make sure left-out tweaks can't come back in a future version. Every change saves the exact old value first, and Pulse makes a Windows restore point before your first one.</p>
-    </div>
-  </div>
-</section>
-
-<section id="macros">
-  <div class="wrap split rev">
-    <div>
-      <div class="eyebrow rv">Macros</div>
-      <h2 class="rv">Macros on any key or mouse button.</h2>
-      <p class="intro rv" style="margin-bottom:0">Record or build key sequences, auto and butterfly clicking, and run Logitech G Hub Lua scripts on any mouse, not just Logitech's. They keep working with Pulse in the tray.</p>
-      <ul class="ticks">
-        <li class="rv"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span><b>Clean step editor</b> with your own delays, and a panic key that stops everything instantly.</span></li>
-        <li class="rv"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span><b>Plays fair by default.</b> Macros pause while an anti-cheat is running, and mouse-moving macros stay off in competitive shooters. Only use them where a game's rules allow.</span></li>
-      </ul>
-    </div>
-    <div class="stage rv" aria-label="A macro (illustration)">
-      <div class="mac">
-        <div class="step"><span class="n">1</span><span>Press <span class="key">Q</span></span><span class="mini">Key</span></div>
-        <div class="delay">wait 20 ms</div>
-        <div class="step"><span class="n">2</span><span>Press <span class="key">E</span></span><span class="mini">Key</span></div>
-        <div class="delay">wait 20 ms</div>
-        <div class="step"><span class="n">3</span><span>Repeat while <span class="key">Mouse 5</span> is held</span><span class="mini blue">Loop</span></div>
+    <div class="head">
+      <p class="tag rv">Tweaks and Measure</p>
+      <h2 class="rv">Tweaks that show their work.</h2>
+      <div class="copy rv">
+        <p class="lead">Each tweak says exactly what it changes and what to expect, only appears if it fits your PC, saves the old value first, and comes back off in one click. Then Measure tests it in your own game.</p>
       </div>
     </div>
-  </div>
-</section>
-
-<section id="debloat">
-  <div class="wrap split">
-    <div>
-      <div class="eyebrow rv">Debloat</div>
-      <h2 class="rv">A cleaner Windows, without breaking it.</h2>
-      <p class="intro rv" style="margin-bottom:0">Most debloat scripts rip things out blindly. Pulse shows you everything first, explains each item, and keeps what Windows and your games need.</p>
-      <ul class="ticks">
-        <li class="rv"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span><b>Remove preinstalled apps.</b> Candy Crush, news feeds, Solitaire with ads and the rest, each marked "safe to remove" or "check first". Xbox sign-in and Gaming Services are never offered, so your games keep working.</span></li>
-        <li class="rv"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span><b>Get gigabytes back.</b> Old downloads, Windows Update leftovers (cleaned with Microsoft's own tool) and caches, biggest first. Your own files go to the Recycle Bin.</span></li>
-        <li class="rv"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span><b>Quiet the background.</b> Startup apps with advice for each one, extra services, telemetry, AI features and ads in Windows, all as undoable tweaks.</span></li>
-        <li class="rv"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span><b>Stay clean.</b> An optional weekly clean-up of temporary files, and a snapshot that shows what crept back since.</span></li>
-      </ul>
+    <div class="facts rv">
+      <div><b>About 40 tweaks</b><span>Latency, network, graphics, power, privacy and Windows clutter, each explained.</span></div>
+      <div><b>No placebo</b><span>Registry myths Microsoft says do nothing are left out, and tests keep them out.</span></div>
+      <div><b>Measured with PresentMon</b><span>Intel's open-source frame-time tool, the one hardware reviewers use.</span></div>
     </div>
-    <div class="stage rv" aria-label="Debloat (illustration)">
-      <div class="dl-list">
-        <div class="dl-item"><span class="box on"></span><div>Candy Crush Saga<small>Game installed by Windows</small></div><span class="tag o">Safe</span></div>
-        <div class="dl-item"><span class="box on"></span><div>Microsoft Solitaire Collection<small>Card games with ads</small></div><span class="tag o">Safe</span></div>
-        <div class="dl-item"><span class="box on"></span><div>Windows Update leftovers<small>Cleaned with Microsoft's DISM</small></div><span class="mini">6.2 GB</span></div>
-        <div class="dl-item"><span class="box on"></span><div>Old installers in Downloads<small>Over a month old</small></div><span class="mini">3.8 GB</span></div>
-        <div class="dl-item"><span class="box"></span><div>Phone Link<small>Keep it if you use it</small></div><span class="tag c">Check</span></div>
-        <div class="dl-total"><span>Ready to free</span><b>10.4 GB</b></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="diagnose">
-  <div class="wrap">
-    <div class="eyebrow rv">Diagnose</div>
-    <h2 class="rv">Most slow PCs have a setup problem, not a settings problem.</h2>
-    <p class="intro rv">Before suggesting a single tweak, Pulse checks for the mistakes that cost the most. They're free to fix, and worth more than any registry setting. Each one comes with steps for your Windows version, graphics card and motherboard.</p>
-    <div class="grid3">
-      <div class="card rv"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div><h4>Monitor in the wrong port, or stuck at 60 Hz</h4><p>A cable in the motherboard makes games run on the weak built-in chip. One click switches a 144 Hz screen left at 60 Hz.</p></div>
-      <div class="card rv"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><rect x="3" y="7" width="18" height="10" rx="1"/><path d="M7 7V4m4 3V4m4 3V4m4 3V4M7 20v-3m4 3v-3m4 3v-3"/></svg></div><h4>RAM in single channel or at slow speed</h4><p>One stick, the wrong slots, or XMP/EXPO off can cost a lot of FPS in CPU-heavy games.</p></div>
-      <div class="card rv"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 9h6v6H9zM9 1v3m6-3v3M9 20v3m6-3v3M1 9h3m-3 6h3M20 9h3m-3 6h3"/></svg></div><h4>BIOS and CPU checks</h4><p>Spots the Intel 13th/14th Gen microcode fix, an old BIOS and Secure Boot, and explains safe settings like XMP and PBO step by step.</p></div>
-      <div class="card rv"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M22 12H2M5.5 5h13L22 12v6a2 2 0 01-2 2H4a2 2 0 01-2-2v-6z"/><path d="M6 16h.01M10 16h.01"/></svg></div><h4>Games on a hard drive</h4><p>Pulse names them and shows how to move them to an SSD without re-downloading.</p></div>
-      <div class="card rv"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M5 12.5a10 10 0 0114 0M8.5 16a5 5 0 017 0M2 9a15 15 0 0120 0M12 20h.01"/></svg></div><h4>Wi-Fi lag and slow network links</h4><p>Including the 2.4 GHz band, cables stuck at 100 Mbps, and a network adapter that saves power at your ping's expense.</p></div>
-      <div class="card rv"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M14 14.8V4a2 2 0 10-4 0v10.8a4 4 0 104 0z"/></svg></div><h4>A CPU that throttles under load</h4><p>A short load test shows whether heat or power limits are holding your processor back.</p></div>
-    </div>
-  </div>
-</section>
-
-<section id="games">
-  <div class="wrap split rev">
-    <div>
-      <div class="eyebrow rv">Games and Measure</div>
-      <h2 class="rv">Lower delay, then proof that it worked.</h2>
-      <p class="intro rv" style="margin-bottom:0">Pick a game and Pulse builds a checklist for your graphics card and monitor. Then it measures frame times with Intel's open-source PresentMon, the tool hardware reviewers use.</p>
-      <ul class="ticks">
-        <li class="rv"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span><b>The right low-latency setting.</b> NVIDIA Reflex or AMD Anti-Lag 2 where the game has it, with the exact menu, and a frame cap worked out for your screen.</span></li>
-        <li class="rv"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span><b>Fair before-and-after tests.</b> A warm-up run, then tweak off and on in alternating runs, so heat and background tasks hit both sides equally.</span></li>
-        <li class="rv"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span><b>An honest verdict.</b> It only counts as helped if the gain beats your PC's normal run-to-run variation. Otherwise Pulse suggests undoing it.</span></li>
-        <li class="rv"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span><b>Extras while you play.</b> An FPS counter, game mode power switching, a lag check and reaction drills.</span></li>
-      </ul>
-    </div>
-    <div class="stage rv" aria-label="A Measure result (example)">
-      <div class="chart">
-        <svg id="chart" viewBox="0 0 480 220" role="img" aria-label="Frame time over a run, tweak off and on"></svg>
-        <div class="verdict">
-          <div><small>Average FPS</small><b>211.4 → 210.9</b></div>
-          <div><small>1% low FPS</small><b>142.1 → 143.0</b></div>
-          <div><small>Variation</small><b>±2.6 FPS</b></div>
+    <div class="split">
+      <div class="screen rv"><img src="img/shots/tweaks.webp" width="2000" height="1330" loading="lazy" alt="Tweaks: filters for what fits this PC, gaming, performance, network, input, privacy, visual and storage, and the tweak list."></div>
+      <div class="verdict rv" aria-label="Example Measure result">
+        <h3>An honest verdict</h3>
+        <p class="muted" style="font-size:15px;margin-top:6px">Tweak off and on in alternating runs, after a warm-up, so heat and background tasks hit both sides.</p>
+        <svg class="mini" id="mini" viewBox="0 0 400 90" aria-hidden="true"></svg>
+        <div class="rows">
+          <div class="row"><span>Average FPS</span><b>211.4 → 210.9</b></div>
+          <div class="row"><span>1% lows</span><b>142.1 → 143.0</b></div>
+          <div class="row"><span>Normal variation</span><b>±2.6 FPS</b></div>
         </div>
-        <p class="note" style="margin-top:12px"><b style="color:var(--text)">No measurable change.</b> The difference is smaller than this PC's normal variation, so Pulse suggests undoing it. Example result: yours come from your own PC.</p>
+        <div class="call"><b>No measurable change.</b>Smaller than this PC's normal variation, so Pulse suggests undoing it. (An example: yours come from your PC.)</div>
       </div>
     </div>
   </div>
 </section>
 
-<section id="roblox">
-  <div class="wrap split">
-    <div>
-      <div class="eyebrow rv">Roblox</div>
-      <h2 class="rv">A Roblox launcher that keeps your settings.</h2>
-      <p class="intro rv" style="margin-bottom:0">Press Play on roblox.com as usual. Pulse applies your settings first, and keeps them through every Roblox update. It never touches the running game, so there's nothing for Roblox's anti-cheat to flag.</p>
-      <ul class="ticks">
-        <li class="rv"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span><b>FPS cap and allowed performance flags,</b> with settings per experience.</span></li>
-        <li class="rv"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span><b>Your own font</b> for menus, chat and game text. Pick a Windows font or add a .ttf. Emojis keep working.</span></li>
-        <li class="rv"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span><b>Runs on your real graphics card</b> on laptops, with NVIDIA settings for Roblox only and a lag check for the server you're on.</span></li>
+<section class="chapter" id="clips">
+  <div class="wrap">
+    <div class="head">
+      <p class="tag rv">Clips</p>
+      <h2 class="rv">Never miss the play again.</h2>
+      <div class="copy rv">
+        <p class="lead">Instant replay recorded by the video chip in your graphics card (NVENC, AMF or Quick Sync), not the part running your game. One key saves the last minute in full quality. No account, no watermark, no uploads.</p>
+      </div>
+    </div>
+    <div class="facts rv">
+      <div><b>Up to 144 FPS and 120 Mbps</b><span>H.264, HEVC or AV1, with game and mic on separate tracks.</span></div>
+      <div><b>Auto clips</b><span>Aces and multi-kills in CS2, League of Legends and Dota 2 save themselves.</span></div>
+      <div><b>Trim and send</b><span>A built-in trimmer, and a size limit so clips never fill your drive.</span></div>
+    </div>
+    <div class="screen rv"><img src="img/shots/clips.webp" width="2000" height="1099" loading="lazy" alt="Clips: instant replay that doesn't slow your game, with favorites, auto clips and match recaps in the library."></div>
+  </div>
+</section>
+
+<section class="chapter" id="trackers">
+  <div class="wrap">
+    <div class="head">
+      <p class="tag rv">Trackers</p>
+      <h2 class="rv">Your stats, the lobby's, and who's smurfing.</h2>
+      <div class="copy rv">
+        <p class="lead">Pulse saves your VALORANT and Brawlhalla matches as you play and turns them into a tracker: scoreboards, rank history, best agents and legends, and a smurf check that always says why.</p>
+      </div>
+    </div>
+    <div class="facts rv">
+      <div><b>VALORANT</b><span>Full scoreboards, peak ranks, round-by-round replays, and a coach that finds your weak spots.</span></div>
+      <div><b>Brawlhalla</b><span>Every legend and weapon, a match log, and a hotkey that shows your opponent's best legend and your odds.</span></div>
+      <div><b>Recaps</b><span>Agent, rank, K/D/A and headshots after every match, with that match's clips one click away.</span></div>
+    </div>
+    <div class="screen rv"><img src="img/shots/brawlhalla.webp" width="2000" height="1232" loading="lazy" alt="The Brawlhalla tracker: a top player's ranked legends with their rank banners, ratings and records."></div>
+  </div>
+</section>
+
+<section class="chapter" id="hardware">
+  <div class="wrap">
+    <div class="head">
+      <p class="tag rv">PC builder</p>
+      <h2 class="rv">What would a new part actually get you?</h2>
+      <div class="copy rv">
+        <p class="lead">Look up any CPU, graphics card or memory and see how it ranks, what it costs, and what it would do in your PC. The builder starts as your PC and shows the frame rates to expect in popular games at 720p, 1080p and 1440p.</p>
+      </div>
+    </div>
+    <div class="facts rv">
+      <div><b>Over 300 parts</b><span>Desktop and laptop, from a GTX 750 Ti to an RTX 5090.</span></div>
+      <div><b>Ready-made builds</b><span>Low end to top gaming, plus a competitive build for the most frames in VALORANT and CS2.</span></div>
+      <div><b>What holds you back</b><span>Whether your CPU or graphics card sets the pace, and the upgrade that would help most.</span></div>
+    </div>
+    <div class="screen rv"><img src="img/shots/hardware.webp" width="2000" height="1472" loading="lazy" alt="The PC builder: look up a part, ready-made builds with prices, your CPU, graphics card and memory, and expected frame rates per game."></div>
+    <p class="try rv">No Windows PC handy? <a href="fps-calculator/" data-goatcounter-click="calc-from-home">Try the FPS calculator in your browser</a>, or read the <a href="guides/">FPS guides</a> for VALORANT, Fortnite and CS2.</p>
+  </div>
+</section>
+
+<section class="chapter" id="debloat">
+  <div class="wrap">
+    <div class="head">
+      <p class="tag rv">Debloat</p>
+      <h2 class="rv">A cleaner Windows, without breaking it.</h2>
+      <div class="copy rv">
+        <p class="lead">Most debloat scripts rip things out blindly. Pulse shows you everything first, explains each item, and keeps what Windows and your games need. Xbox sign-in and Gaming Services are never offered.</p>
+      </div>
+    </div>
+    <div class="facts rv">
+      <div><b>Preinstalled apps</b><span>Candy Crush, news feeds and the rest, each marked safe or worth checking.</span></div>
+      <div><b>Gigabytes back</b><span>Update leftovers cleaned with Microsoft's own tool. Your files go to the Recycle Bin.</span></div>
+      <div><b>Game Bar, gone properly</b><span>Turned off without the "you'll need a new app" popups.</span></div>
+    </div>
+    <div class="screen rv"><img src="img/shots/debloat.webp" width="2000" height="1099" loading="lazy" alt="Debloat: space ready to free on the C: drive, a free-up-to-a-goal tool and a quick clean list."></div>
+  </div>
+</section>
+
+<section class="chapter" id="more">
+  <div class="wrap">
+    <div class="head">
+      <p class="tag rv">Also in Pulse</p>
+      <h2 class="rv">The rest of your gaming toolkit.</h2>
+      <div class="copy rv"><p class="lead">The tools players usually install one by one, built to work together and stay out of your way.</p></div>
+    </div>
+    <div class="more">
+      <article class="rv">
+        <div class="screen"><img src="img/shots/crosshair.webp" width="2000" height="1375" loading="lazy" alt="Crosshair editor with a live preview and VALORANT crosshair codes."></div>
+        <h3>Crosshair overlay</h3>
+        <p>Your crosshair over any game. Paste a VALORANT code to use the exact same one everywhere.</p>
+      </article>
+      <article class="rv">
+        <div class="screen"><img src="img/shots/reaction.webp" width="2000" height="1375" loading="lazy" alt="Reaction trainer with peek, flick and crosshair placement drills."></div>
+        <h3>Reaction trainer</h3>
+        <p>Drills built like the game: peeks, flicks and crosshair placement that adapt to keep you improving.</p>
+      </article>
+      <article class="rv">
+        <div class="screen"><img src="img/shots/macros.webp" width="2000" height="1375" loading="lazy" alt="Macros: auto and butterfly clicking, key sequences and Logitech scripts."></div>
+        <h3>Macros on any mouse</h3>
+        <p>Auto clicking, key sequences and Logitech G Hub scripts, paused while an anti-cheat runs.</p>
+      </article>
+    </div>
+    <div class="extras rv">
+      <div><h3>FPS counter</h3><p>A light overlay with frame rate and frame times, from PresentMon.</p></div>
+      <div><h3>Roblox launcher</h3><p>A higher FPS cap, allowed performance flags and your own font, kept through Roblox updates.</p></div>
+      <div><h3>PC guide</h3><p>Guides, current prices, best gear and prebuilt picks, refreshed every night.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="chapter" id="setup">
+  <div class="wrap">
+    <div class="head">
+      <p class="tag rv">Getting started</p>
+      <h2 class="rv">Set up in two minutes.</h2>
+      <div class="copy rv"><p class="lead">The first time you open Pulse, it walks you through it. Nothing changes without your OK.</p></div>
+    </div>
+    <ol class="steps rv">
+      <li><h3>Download</h3><p>One small file. Nothing to install, and it updates itself.</p></li>
+      <li><h3>Pick your games</h3><p>Pulse tunes its checks and recaps to what you play.</p></li>
+      <li><h3>Check your PC</h3><p>Diagnose finds the problems worth the most frames.</p></li>
+      <li><h3>Apply what fits</h3><p>The recommended tweaks for your PC, each one undoable.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="chapter" id="safety">
+  <div class="wrap">
+    <div class="head">
+      <p class="tag rv">Safety</p>
+      <h2 class="rv">Built to be trusted with your PC.</h2>
+      <div class="copy rv"><p class="lead">These promises are checked by automated tests on every build. If the code ever breaks one, the build fails.</p></div>
+    </div>
+    <div class="safe">
+      <ul class="rules rv">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 4.5 6v5.5c0 4.6 3.2 8.4 7.5 9.5 4.3-1.1 7.5-4.9 7.5-9.5V6L12 3Z"/><path d="m8.8 12.2 2.3 2.3 4.2-4.6"/></svg>Saves every setting before changing it, and can undo everything</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 4.5 6v5.5c0 4.6 3.2 8.4 7.5 9.5 4.3-1.1 7.5-4.9 7.5-9.5V6L12 3Z"/><path d="m8.8 12.2 2.3 2.3 4.2-4.6"/></svg>Never uploads your files or data</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 4.5 6v5.5c0 4.6 3.2 8.4 7.5 9.5 4.3-1.1 7.5-4.9 7.5-9.5V6L12 3Z"/><path d="m8.8 12.2 2.3 2.3 4.2-4.6"/></svg>Never reads, writes or injects into running games</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 4.5 6v5.5c0 4.6 3.2 8.4 7.5 9.5 4.3-1.1 7.5-4.9 7.5-9.5V6L12 3Z"/><path d="m8.8 12.2 2.3 2.3 4.2-4.6"/></svg>Never turns off your antivirus or adds exclusions</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 4.5 6v5.5c0 4.6 3.2 8.4 7.5 9.5 4.3-1.1 7.5-4.9 7.5-9.5V6L12 3Z"/><path d="m8.8 12.2 2.3 2.3 4.2-4.6"/></svg>Only deletes what you approve, and your own files go to the Recycle Bin</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 4.5 6v5.5c0 4.6 3.2 8.4 7.5 9.5 4.3-1.1 7.5-4.9 7.5-9.5V6L12 3Z"/><path d="m8.8 12.2 2.3 2.3 4.2-4.6"/></svg>Never changes BIOS settings: it shows you how, and you decide</li>
       </ul>
-    </div>
-    <div class="stage rv" aria-label="Roblox settings (illustration)">
-      <div class="rbx">
-        <div class="opt"><div><b>Launch Roblox through Pulse</b><small>Settings applied before every launch</small></div><span class="sw"></span></div>
-        <div class="opt"><div><b>Frame rate cap</b><small>Instead of Roblox's 60 FPS</small></div><span class="fps">240 FPS</span></div>
-        <div class="opt"><div><b>Custom font</b><small style="font-family: Georgia, serif; font-size: 13.5px">The quick brown fox jumps</small></div><span class="sw"></span></div>
-        <div class="opt"><div><b>Game mode while Roblox runs</b><small>High performance plan, back after</small></div><span class="sw off"></span></div>
+      <div class="verify rv">
+        <h3>Check your download</h3>
+        <p>Every release is built by GitHub from the public code, with a SHA-256 checksum and signed build proof. With the GitHub CLI installed, run:</p>
+        <div class="cmd"><code id="attest">gh attestation verify Pulse.exe --repo PulseOptimizerApp/Pulse</code><button class="copy-btn" type="button" data-copy="attest">Copy</button></div>
+        <div class="smartscreen">
+          <h3>"Windows protected your PC"?</h3>
+          <p>Windows shows that for new apps that aren't code-signed yet. Click More info, then Run anyway. You can read every line of the code first.</p>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<section id="safety">
+<section class="chapter" id="faq">
   <div class="wrap">
-    <div class="eyebrow rv">Safety</div>
-    <h2 class="rv">Built to be trusted with your PC.</h2>
-    <p class="intro rv">These promises are checked by automated tests on every build. If the code ever breaks one, the build fails.</p>
-    <div class="promise">
-      <div class="rv"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Saves every setting before changing it, and can undo everything</div>
-      <div class="rv"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Never uploads your files or data</div>
-      <div class="rv"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Never reads, writes or injects into running games</div>
-      <div class="rv"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Never turns off your antivirus or adds exclusions</div>
-      <div class="rv"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Only deletes what you approve, and your own files go to the Recycle Bin</div>
-      <div class="rv"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Never changes BIOS settings: it shows you how, you decide</div>
-    </div>
-    <div class="verify rv">
-      <p><b style="color:var(--text)">Verify your download.</b> Each release is built by GitHub Actions from the public code, with a SHA-256 checksum and signed build proof. With the GitHub CLI installed, run:</p>
-      <pre id="attest">gh attestation verify Pulse.exe --repo PulseOptimizerApp/Pulse</pre>
+    <h2 class="rv">Questions</h2>
+    <div class="faq rv">
+      <details><summary>Is Pulse really free?</summary><p>Yes. No ads, no account, no paid tier, no upsell. It's open source under the AGPL-3.0 license, so anyone can read the code, build it themselves, or keep it going.</p></details>
+      <details><summary>Will it actually give me more FPS?</summary><p>If your PC has a setup problem (a monitor at 60 Hz, RAM at its default speed, games on the built-in graphics), often a lot, and Diagnose finds those first. If your PC is already set up well, tweaks make small differences, and Measure shows you honestly which ones helped on your PC.</p></details>
+      <details><summary>Can it get me banned?</summary><p>The optimizer, clips, trackers and recaps never read, change or inject into running games. Recaps and trackers use each game's official data (Riot's APIs, Valve's Game State Integration, Brawlhalla's public API). Macros are different: many games ban them, so Pulse pauses them while an anti-cheat runs, and you should only use them where a game's rules allow.</p></details>
+      <details><summary>Does it need administrator rights?</summary><p>Most tweaks change system-wide settings, and restore points need admin access. If the prompt bothers you, turn on "Skip the admin prompt" and Pulse opens through a Windows scheduled task. Turn it off any time.</p></details>
+      <details><summary>How do I undo everything?</summary><p>Open Undo and restore and choose Undo everything. Each setting goes back to the exact value it had before. You can also roll back with the Windows restore point Pulse makes before your first change.</p></details>
+      <details><summary>Which games does it support?</summary><p>Diagnose, tweaks, clips and the FPS counter work with any game. Match recaps and auto clips: VALORANT, Counter-Strike 2, League of Legends and Dota 2. Trackers: VALORANT and Brawlhalla. Game-specific checklists cover 36 games, including Fortnite, Apex Legends, Marvel Rivals and Roblox.</p></details>
+      <details><summary>Pulse moved. What do I need to do?</summary><p>If you have version 0.4.11 or older, download the new version once from this page. It updates itself from then on. Your settings, clips and undo history stay where they are.</p></details>
     </div>
   </div>
 </section>
 
-<section id="faq">
+<section class="end">
   <div class="wrap">
-    <div class="center"><div class="eyebrow rv">FAQ</div><h2 class="rv">Questions</h2></div>
-    <div class="faq">
-      <details class="rv"><summary>Pulse moved. Why, and what do I need to do?</summary><p>Pulse's old GitHub home is on hold, so it lives here now. If you have version 0.4.11 or older, download the new version once from this page. It updates itself from the new home after that, and still checks the old one in case it comes back. Your settings, clips and undo history stay where they are.</p></details>
-      <details class="rv"><summary>Windows says "Windows protected your PC". Is it safe?</summary><p>That warning shows for new apps that aren't code-signed yet. Click More info, then Run anyway. The source code is public, each release is built by GitHub from it, and the release page lists checksums so you can confirm your copy is genuine.</p></details>
-      <details class="rv"><summary>Does it need administrator rights?</summary><p>Most tweaks change system-wide settings, and restore points and Defender scans need admin access. If the prompt bothers you, turn on "Skip the admin prompt": Pulse adds a Windows scheduled task that opens it with admin rights. Turn it off any time on the Safety page.</p></details>
-      <details class="rv"><summary>Can it get me banned?</summary><p>Pulse's optimizer, Clips and match recaps never read, change or inject into running games. Recaps use each game's official data (Valve's Game State Integration, Riot's local Live Client API, and your own VALORANT match history). Macros are different: many games ban them, so Pulse pauses them while an anti-cheat runs unless you allow it, and you should only use them where the rules allow.</p></details>
-      <details class="rv"><summary>Which games get match recaps and auto clips?</summary><p>Auto clips and recaps: Counter-Strike 2, League of Legends and Dota 2. VALORANT gets recaps after each match (Riot doesn't share live data during a match, so clip VALORANT plays with your hotkey). Every other game works with the clip hotkey.</p></details>
-      <details class="rv"><summary>How do I undo everything?</summary><p>Open Undo and restore and choose Undo everything. Each setting goes back to the exact value it had before. You can also roll back with the Windows restore point Pulse makes before your first change.</p></details>
-      <details class="rv"><summary>Will it make my games faster?</summary><p>If your PC has a setup problem, often a lot. If it's already set up well, tweaks usually make small differences, and Pulse shows you honestly which ones helped on your PC.</p></details>
+    <h2 class="rv">Give your gaming PC a checkup.</h2>
+    <p class="lead rv" style="margin-top:24px">Free, open source, no account. One file, and it updates itself.</p>
+    <div class="cta rv">
+      <a class="btn go dl" href="https://github.com/PulseOptimizerApp/Pulse/releases/latest/download/Pulse.exe" data-goatcounter-click="download-end">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 20h14"/></svg>
+        Download for Windows
+      </a>
+      <a class="btn src" href="https://github.com/PulseOptimizerApp/Pulse" data-goatcounter-click="star">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="m12 3.5 2.6 5.3 5.9.9-4.3 4.1 1 5.8-5.2-2.7-5.2 2.7 1-5.8-4.3-4.1 5.9-.9L12 3.5Z"/></svg>
+        Star on GitHub
+      </a>
     </div>
+    <p class="ver rv">Free and open source. Windows 10 and 11, 64-bit.</p>
   </div>
 </section>
-
-<section class="final">
-  <div class="wrap">
-    <img src="img/icon-small.svg" alt="" class="rv">
-    <h2 class="rv" style="margin: 0 auto 14px">Give your gaming PC a companion.</h2>
-    <p class="intro rv" style="margin: 0 auto 28px">Faster games, your best plays saved, every match recapped. Free, open source, no account. One file, nothing to install.</p>
-    <div class="cta rv"><a class="btn big primary dl" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0l-5-5m5 5l5-5M4 21h16"/></svg>Download for Windows</a></div>
-    <div class="ver">Free and open source. Windows 10 and 11, 64-bit.</div>
-  </div>
-</section>
+</main>
 
 <footer>
   <div class="wrap">
-    <span>Pulse is open source under the AGPL-3.0 license. Not affiliated with Microsoft, Intel, Riot Games, Valve or Roblox.</span>
-    <nav>
-      <a class="src" href="#">Source</a>
-      <a class="rel" href="#">Releases</a>
-      <a class="sec" href="#">Security</a>
-      <a class="iss" href="#">Report a problem</a>
+    <p>Pulse is open source under the AGPL-3.0 license. Not affiliated with Microsoft, NVIDIA, AMD, Intel, Riot Games, Valve, Blue Mammoth or Roblox.</p>
+    <nav aria-label="Footer">
+      <a href="fps-calculator/">FPS calculator</a>
+      <a href="guides/">FPS guides</a>
+      <a class="src" href="https://github.com/PulseOptimizerApp/Pulse">Source</a>
+      <a class="rel" href="https://github.com/PulseOptimizerApp/Pulse/releases">Releases</a>
+      <a class="sec" href="https://github.com/PulseOptimizerApp/Pulse/blob/main/SECURITY.md">Security</a>
+      <a class="iss" href="https://github.com/PulseOptimizerApp/Pulse/issues">Report a problem</a>
+      <a href="stats.html">Stats</a>
     </nav>
   </div>
 </footer>
@@ -665,18 +550,9 @@
 <script>
   // Pulse's homes, newest first. Downloads come from the first one that has a release with the exe.
   const REPOS = ["PulseOptimizerApp/Pulse", "PulseOptimizer-app/PulseOptimizer"];
-  const HOME = REPOS[0];
-  const gh = p => `https://github.com/${HOME}${p}`;
 
-  document.querySelectorAll(".dl").forEach(a => a.href = gh("/releases/latest/download/PulseOptimizer.exe"));
-  document.querySelectorAll(".src").forEach(a => a.href = gh(""));
-  document.querySelectorAll(".rel").forEach(a => a.href = gh("/releases"));
-  document.querySelectorAll(".sec").forEach(a => a.href = gh("/blob/main/SECURITY.md"));
-  document.querySelectorAll(".iss").forEach(a => a.href = gh("/issues"));
-  document.getElementById("attest").textContent = `gh attestation verify Pulse.exe --repo ${HOME}`;
-
-  // Show the current version and size. A new release takes a few minutes to build its exe, so use the newest
-  // release that already has one, from the newest home that has any.
+  // The current version and size, and the download link to the newest release that already has its exe
+  // (a new release takes a few minutes to build).
   (async () => {
     for (const repo of REPOS) {
       try {
@@ -695,40 +571,89 @@
     }
   })();
 
-  // Nav gets a hairline once you scroll.
+  // Stars next to the GitHub link.
+  (async () => {
+    try {
+      const r = await fetch(`https://api.github.com/repos/${REPOS[0]}`);
+      if (!r.ok) return;
+      const n = (await r.json()).stargazers_count;
+      if (n > 0) document.querySelectorAll(".stars").forEach(el => el.textContent = n >= 1000 ? (n / 1000).toFixed(1) + "k" : String(n));
+    } catch (e) {}
+  })();
+
   const nav = document.getElementById("nav");
   addEventListener("scroll", () => nav.classList.toggle("scrolled", scrollY > 8), { passive: true });
 
-  // Gentle reveal as sections come into view.
   const io = "IntersectionObserver" in window ? new IntersectionObserver(es => es.forEach(e => {
     if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
-  }), { rootMargin: "0px 0px -8% 0px" }) : null;
-  document.querySelectorAll(".rv").forEach((el, i) => io ? io.observe(el) : el.classList.add("in"));
+  }), { rootMargin: "0px 0px -6% 0px" }) : null;
+  document.querySelectorAll(".rv").forEach(el => io ? io.observe(el) : el.classList.add("in"));
 
-  // Measure chart: frame time with the tweak off and on, which overlap (the "no measurable change" example).
-  (function chart() {
-    const svg = document.getElementById("chart");
-    const W = 480, H = 220, L = 44, R = 10, T = 12, B = 30, N = 140;
-    let seed = 7;
-    const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+  document.querySelectorAll("[data-copy]").forEach(b => b.addEventListener("click", async () => {
+    try { await navigator.clipboard.writeText(document.getElementById(b.dataset.copy).textContent); b.textContent = "Copied"; setTimeout(() => b.textContent = "Copy", 1600); } catch (e) {}
+  }));
+
+  // Seeded noise, so the pictures are the same on every visit.
+  function noise(seed) { return () => (seed = (seed * 16807) % 2147483647) / 2147483647; }
+
+  // The hero: a frame-time trace. Spiky while the PC has setup problems, calm once they're fixed,
+  // and it ends by drawing Pulse's mark (the logo is itself a pulse line).
+  (function trace() {
+    const svg = document.getElementById("trace");
+    const W = 1200, H = 300, base = 196;
+    const rnd = noise(11);
+    const pts = [];
+    const spikes = { 70: 92, 150: 70, 196: 104, 262: 80, 330: 96, 410: 62 };
+    for (let x = 0; x <= 560; x += 6) {
+      let y = base + (rnd() - 0.5) * 22;
+      for (const sx in spikes) { const d = Math.abs(x - sx); if (d < 6) y = base - spikes[sx]; else if (d < 12) y = base - spikes[sx] * 0.35; }
+      pts.push([x, y]);
+    }
+    // Calming down.
+    let calm = "";
+    for (let x = 560; x <= 860; x += 6) {
+      const k = 1 - (x - 560) / 300;
+      calm += ` L${x} ${(base + (rnd() - 0.5) * 22 * k * k).toFixed(1)}`;
+    }
+    const rough = pts.map((p, i) => `${i ? "L" : "M"}${p[0]} ${p[1].toFixed(1)}`).join(" ");
+    // Pulse's mark, scaled from its 512 box: M84 318 H150 L176 372 L222 124 H302 A88 88 0 0 1 302 300 H190
+    const s = 0.62, ox = 860 - 84 * s, oy = base - 318 * s;
+    const P = (x, y) => `${(ox + x * s).toFixed(1)} ${(oy + y * s).toFixed(1)}`;
+    const mark = ` L${P(150, 318)} L${P(176, 372)} L${P(222, 124)} L${P(302, 124)} A${88 * s} ${88 * s} 0 0 1 ${P(302, 300)} L${P(190, 300)}`;
+    const end = ox + 302 * s + 88 * s;
+    const tail = ` M${end + 40} ${base} L${W} ${base}`;
+    const notes = [
+      [70, "Monitor at 60 Hz"], [196, "RAM at default speed"], [330, "Background recording"],
+    ];
+    let h = `<g class="grid">`;
+    [base - 100, base - 50, base, base + 50].forEach(y => h += `<line x1="0" x2="${W}" y1="${y}" y2="${y}"/>`);
+    h += `</g>`;
+    h += `<text class="axis" x="0" y="${base + 78}">Frame time, before</text><text class="axis" x="${W}" y="${base + 78}" text-anchor="end">after</text>`;
+    notes.forEach(([x, t], i) => {
+      const y = base - spikes[x] - 18;
+      h += `<g class="fade" style="animation-delay:${0.5 + i * 0.35}s"><line class="pin" x1="${x}" x2="${x}" y1="${y + 4}" y2="${base - spikes[x] - 4}"/><text class="note" x="${x}" y="${y - 2}" text-anchor="middle">${t}</text></g>`;
+    });
+    h += `<g class="fade" style="animation-delay:2.2s"><text class="note fix" x="${710}" y="${base - 30}" text-anchor="middle">Fixed by Pulse</text></g>`;
+    h += `<path class="rough draw" d="${rough}"/>`;
+    h += `<path class="smooth draw late" d="M560 ${pts[pts.length - 1][1].toFixed(1)}${calm}${mark}"/>`;
+    h += `<path class="smooth draw late" d="${tail}" style="opacity:.35"/>`;
+    svg.innerHTML = h;
+    svg.querySelectorAll(".draw").forEach(p => p.style.setProperty("--len", Math.ceil(p.getTotalLength())));
+  })();
+
+  // Measure: frame time with the tweak off and on, which overlap.
+  (function mini() {
+    const svg = document.getElementById("mini");
+    const W = 400, H = 90, N = 90, rnd = noise(7);
     const series = shift => Array.from({ length: N }, (_, i) => {
-      let v = 4.75 + Math.sin(i / 11 + shift) * 0.18 + (rnd() - 0.5) * 0.55;
-      if (rnd() > 0.965) v += 1.6 + rnd() * 1.6;
+      let v = 45 + Math.sin(i / 9 + shift) * 5 + (rnd() - 0.5) * 12;
+      if (rnd() > 0.96) v -= 18 + rnd() * 14;
       return v;
     });
-    const off = series(0), on = series(0.4);
-    const yMin = 3.5, yMax = 8.5;
-    const x = i => L + (i / (N - 1)) * (W - L - R);
-    const y = v => T + (1 - (v - yMin) / (yMax - yMin)) * (H - T - B);
-    const path = s => s.map((v, i) => `${i ? "L" : "M"}${x(i).toFixed(1)} ${y(v).toFixed(1)}`).join(" ");
-    let h = `<defs><linearGradient id="tg" x1="0" x2="1"><stop offset="0" stop-color="#F2EFE8"/><stop offset=".55" stop-color="#E0773F"/><stop offset="1" stop-color="#8DB596"/></linearGradient></defs><g class="grid">`;
-    [4, 5, 6, 7, 8].forEach(v => h += `<line x1="${L}" x2="${W - R}" y1="${y(v)}" y2="${y(v)}"/>`);
-    h += `</g><g class="axis">`;
-    [4, 6, 8].forEach(v => h += `<text x="${L - 8}" y="${y(v) + 4}" text-anchor="end">${v} ms</text>`);
-    h += `<text x="${L}" y="${H - 8}">Frame time · grey: tweak off · colour: tweak on</text></g>`;
-    h += `<path class="trace off" d="${path(off)}"/><path class="trace on" d="${path(on)}"/>`;
-    svg.innerHTML = h;
+    const path = s => s.map((v, i) => `${i ? "L" : "M"}${(i / (N - 1) * W).toFixed(1)} ${v.toFixed(1)}`).join(" ");
+    svg.innerHTML = `<path d="${path(series(0))}" fill="none" stroke="#6E685E" stroke-width="1.5"/><path d="${path(series(0.5))}" fill="none" stroke="#E0773F" stroke-width="1.5" opacity=".9"/>`;
   })();
 </script>
+<script data-goatcounter="https://pulseoptimizer.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
 </body>
 </html>
