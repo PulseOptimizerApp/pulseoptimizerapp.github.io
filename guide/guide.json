@@ -1,6 +1,6 @@
 {
  "Schema": 1,
- "Updated": "2026-11-09",
+ "Updated": "2026-11-10",
  "Tips": [
   {
    "Title": "Run your monitor at its full refresh rate, from the graphics card",
@@ -190,7 +190,7 @@
    "Tier": "1440p / 4K"
   }
  ],
- "RamSource": "Capital and Compute RAM tracker, November 9, 2026",
+ "RamSource": "Capital and Compute RAM tracker, November 10, 2026",
  "RamSourceUrl": "https://capitalandcompute.net/memory-prices/",
  "Ram": [
   {
@@ -600,6 +600,26 @@
    "Date": "2026-10-16"
   },
   {
+   "Tag": "RAM",
+   "Hot": true,
+   "Title": "Memory shortage spurs smartphone makers to melt used memory off old devices, then re-solder it onto new products",
+   "Body": "Reballed memory currently accounts for a small share of smartphone components, but adoption could nearly double by 2027 as manufacturers look for alternatives to increasingly expensive DRAM.",
+   "SourceName": "Tom's Hardware",
+   "SourceUrl": "https://www.tomshardware.com/pc-components/dram/memory-shortage-spurs-smartphone-makers-to-melt-used-memory-off-old-devices-then-re-solder-it-onto-new-products-recycled-memory-to-keep-budget-phones-affordable-reballing-adoption-to-double-by-2027",
+   "Date": "2026-11-09",
+   "Auto": true
+  },
+  {
+   "Tag": "RAM",
+   "Hot": false,
+   "Title": "World of Warcraft: Forever launched on 70,480 CPU cores and 251,136 GB of RAM",
+   "Body": "Soon after launch, Blizzard revealed some of the most impressive details about the hardware powering the game.",
+   "SourceName": "TechSpot",
+   "SourceUrl": "https://www.techspot.com/news/114485-wow-forever-launch-infrastructure-included-70000-cpu-cores.html",
+   "Date": "2026-11-09",
+   "Auto": true
+  },
+  {
    "Tag": "GPU",
    "Hot": false,
    "Title": "Nvidia released its 8800 GTX GPU 20 years ago today, celebrates with Steam game homage",
@@ -611,21 +631,11 @@
   },
   {
    "Tag": "RAM",
-   "Hot": true,
+   "Hot": false,
    "Title": "PC's with 64GB of RAM plummet 18% as memory prices soar",
    "Body": "CPU-Z data reveals PC memory capacity is dropping for the first time ever.",
    "SourceName": "Tom's Hardware",
    "SourceUrl": "https://www.tomshardware.com/pc-components/ram/pcs-with-64gb-of-ram-plummet-18-percent-as-memory-prices-soar-cpu-z-install-base-data-shows-ddr4-making-a-surprise-comeback",
-   "Date": "2026-11-08",
-   "Auto": true
-  },
-  {
-   "Tag": "RAM",
-   "Hot": false,
-   "Title": "WoW: Forever launch used 70,480 CPU cores and 251 terabytes of RAM",
-   "Body": "Inside the astonishing hardware behind World of Warcraft: Forever.",
-   "SourceName": "Tom's Hardware",
-   "SourceUrl": "https://www.tomshardware.com/video-games/pc-gaming/wow-forever-launch-used-70-480-cpu-cores-and-251-terabytes-of-ram-3-924-virtual-machines-powered-one-of-world-of-warcrafts-smoothest-launches-ever",
    "Date": "2026-11-08",
    "Auto": true
   },
@@ -637,26 +647,6 @@
    "SourceName": "Tom's Hardware",
    "SourceUrl": "https://www.tomshardware.com/pc-components/this-rtx-5060-gaming-pc-costs-less-than-the-steam-machine-grab-the-ibuypower-slate-prebuilt-pc-with-massive-usd500-discount",
    "Date": "2026-11-07",
-   "Auto": true
-  },
-  {
-   "Tag": "GPU",
-   "Hot": false,
-   "Title": "The Best GPU for Budget PCs: CPU/GPU Scaling Tested",
-   "Body": "A faster GPU isn't always a better upgrade for an older PC.",
-   "SourceName": "TechSpot",
-   "SourceUrl": "https://www.techspot.com/review/3193-gpu-for-budget-pc-scaling-test/",
-   "Date": "2026-11-06",
-   "Auto": true
-  },
-  {
-   "Tag": "CPU",
-   "Hot": false,
-   "Title": "Intel leaker claims Nova Lake desktop chips have 5.1 GHz clock limit beyond 90°C",
-   "Body": "A known Intel leaker claims that Intel's next-generation processors will top out at 5.1 GHz if the CPU core temperatures aren't kept below 90°C.",
-   "SourceName": "Tom's Hardware",
-   "SourceUrl": "https://www.tomshardware.com/pc-components/cpus/intel-leaker-claims-nova-lake-desktop-chips-have-5-1-ghz-clock-limit-beyond-90-c-high-clock-speeds-could-demand-significant-cooling-for-next-gen-chips",
-   "Date": "2026-11-05",
    "Auto": true
   }
  ],
@@ -928,7 +918,6 @@
    "Team Group's CEO expects no price drop next year. Its DDR5 chips cost about 5.5 times more than a year ago, and supply may not catch up before late 2028.": "El CEO de Team Group no espera bajadas de precio el próximo año. Sus chips DDR5 cuestan unas 5,5 veces más que hace un año, y la oferta podría no ponerse al día antes de finales de 2028.",
    "The RTX 5090 has vanished from US stores": "La RTX 5090 ha desaparecido de las tiendas de EE. UU.",
    "It's gone from NVIDIA's own store, and Micro Center now lists it as \"Not Carried\". NVIDIA hasn't said it's discontinued.": "Ya no está en la tienda de NVIDIA, y Micro Center ahora la marca como \"Not Carried\". NVIDIA no ha dicho que esté descatalogada.",
-   "CPU": "CPU",
    "1080p": "1080p",
    "1080p / 1440p": "1080p / 1440p",
    "1440p": "1440p",
@@ -939,10 +928,6 @@
    "32 GB DDR5 (2×16)": "32 GB DDR5 (2×16)",
    "64 GB DDR4 (2×32)": "64 GB DDR4 (2×32)",
    "64 GB DDR5 (2×32)": "64 GB DDR5 (2×32)",
-   "A faster GPU isn't always a better upgrade for an older PC.": "Una GPU más rápida no siempre es la mejor mejora para un PC antiguo.",
-   "The Best GPU for Budget PCs: CPU/GPU Scaling Tested": "La mejor GPU para PCs económicos: escalado CPU/GPU a prueba",
-   "Intel leaker claims Nova Lake desktop chips have 5.1 GHz clock limit beyond 90°C": "Un filtrador de Intel dice que los Nova Lake de escritorio se limitan a 5,1 GHz por encima de 90 °C",
-   "A known Intel leaker claims that Intel's next-generation processors will top out at 5.1 GHz if the CPU core temperatures aren't kept below 90°C.": "Un conocido filtrador de Intel afirma que los próximos procesadores de Intel no pasarán de 5,1 GHz si los núcleos no se mantienen por debajo de 90 °C.",
    "Best Buy knocks $500 off the iBUYPOWER Slate, bringing this RTX 5060-powered gaming desktop down to $899 with a Ryzen 5 processor, 16GB of DDR5 memory, and a 1TB SSD": "Best Buy rebaja $500 el iBUYPOWER Slate y deja este PC con RTX 5060 en $899, con un Ryzen 5, 16 GB de DDR5 y un SSD de 1 TB"
   },
   "pt-BR": {
@@ -1205,7 +1190,6 @@
    "Team Group's CEO expects no price drop next year. Its DDR5 chips cost about 5.5 times more than a year ago, and supply may not catch up before late 2028.": "O CEO da Team Group não espera queda de preço no ano que vem. Os chips DDR5 dela custam cerca de 5,5 vezes mais que há um ano, e a oferta pode não se normalizar antes do fim de 2028.",
    "The RTX 5090 has vanished from US stores": "A RTX 5090 sumiu das lojas dos EUA",
    "It's gone from NVIDIA's own store, and Micro Center now lists it as \"Not Carried\". NVIDIA hasn't said it's discontinued.": "Ela saiu da loja da própria NVIDIA, e a Micro Center agora a lista como \"Not Carried\". A NVIDIA não disse que ela foi descontinuada.",
-   "CPU": "CPU",
    "1080p": "1080p",
    "1080p / 1440p": "1080p / 1440p",
    "1440p": "1440p",
@@ -1216,10 +1200,6 @@
    "32 GB DDR5 (2×16)": "32 GB DDR5 (2×16)",
    "64 GB DDR4 (2×32)": "64 GB DDR4 (2×32)",
    "64 GB DDR5 (2×32)": "64 GB DDR5 (2×32)",
-   "A faster GPU isn't always a better upgrade for an older PC.": "Uma GPU mais rápida nem sempre é o melhor upgrade para um PC antigo.",
-   "The Best GPU for Budget PCs: CPU/GPU Scaling Tested": "A melhor GPU para PCs baratos: escala de CPU/GPU testada",
-   "Intel leaker claims Nova Lake desktop chips have 5.1 GHz clock limit beyond 90°C": "Vazador da Intel diz que os Nova Lake de desktop ficam limitados a 5,1 GHz acima de 90 °C",
-   "A known Intel leaker claims that Intel's next-generation processors will top out at 5.1 GHz if the CPU core temperatures aren't kept below 90°C.": "Um vazador conhecido da Intel afirma que os próximos processadores da Intel vão parar em 5,1 GHz se os núcleos não ficarem abaixo de 90 °C.",
    "Best Buy knocks $500 off the iBUYPOWER Slate, bringing this RTX 5060-powered gaming desktop down to $899 with a Ryzen 5 processor, 16GB of DDR5 memory, and a 1TB SSD": "A Best Buy tira US$ 500 do iBUYPOWER Slate e deixa este PC com RTX 5060 por US$ 899, com Ryzen 5, 16 GB de DDR5 e SSD de 1 TB"
   }
  },
