@@ -1,6 +1,6 @@
 {
  "Schema": 1,
- "Updated": "2026-11-12",
+ "Updated": "2026-11-13",
  "Tips": [
   {
    "Title": "Run your monitor at its full refresh rate, from the graphics card",
@@ -190,7 +190,7 @@
    "Tier": "1440p / 4K"
   }
  ],
- "RamSource": "Capital and Compute RAM tracker, November 12, 2026",
+ "RamSource": "Capital and Compute RAM tracker, November 13, 2026",
  "RamSourceUrl": "https://capitalandcompute.net/memory-prices/",
  "Ram": [
   {
@@ -647,16 +647,6 @@
    "SourceName": "Tom's Hardware",
    "SourceUrl": "https://www.tomshardware.com/video-games/playstation/upgrade-your-ps5s-storage-for-gta-6s-digital-pre-load-with-these-ssd-storage-options-from-usd174-ultra-fast-drives-slot-into-the-m-2-expansion-slot-to-ready-your-console-for-gtas-huge-212gb-installation",
    "Date": "2026-11-10",
-   "Auto": true
-  },
-  {
-   "Tag": "RAM",
-   "Hot": false,
-   "Title": "Memory shortage spurs smartphone makers to melt used memory off old devices, then re-solder it onto new products",
-   "Body": "Reballed memory currently accounts for a small share of smartphone components, but adoption could nearly double by 2027 as manufacturers look for alternatives to increasingly expensive DRAM.",
-   "SourceName": "Tom's Hardware",
-   "SourceUrl": "https://www.tomshardware.com/pc-components/dram/memory-shortage-spurs-smartphone-makers-to-melt-used-memory-off-old-devices-then-re-solder-it-onto-new-products-recycled-memory-to-keep-budget-phones-affordable-reballing-adoption-to-double-by-2027",
-   "Date": "2026-11-09",
    "Auto": true
   }
  ],
