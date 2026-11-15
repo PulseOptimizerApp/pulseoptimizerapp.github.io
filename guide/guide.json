@@ -335,16 +335,16 @@
     {
      "Label": "Gaming value",
      "Name": "AMD Ryzen 5 7600X3D",
-     "Why": "Most of the X3D gaming speed for less.",
-     "SourceName": "G2A News",
-     "SourceUrl": "https://www.g2a.com/news/features/hardware/best-cpu-for-gaming-in-2026-top-picks-benchmarks-and-buying-guide/"
+     "Why": "Tom's Hardware's best-value gaming CPU, at about $250.",
+     "SourceName": "Tom's Hardware",
+     "SourceUrl": "https://www.tomshardware.com/reviews/best-gaming-cpu,2466.html"
     },
     {
      "Label": "Best Intel",
-     "Name": "Core Ultra 7 270K Plus",
-     "Why": "Best if you also edit or stream; about 20% behind X3D in games.",
-     "SourceName": "DropReference",
-     "SourceUrl": "https://dropreference.com/en/blog/guide/best-gaming-processor"
+     "Name": "Core Ultra 5 250K Plus",
+     "Why": "Strong in games and multitasking for about $200 to $220. Tom's Hardware and PC Gamer both pick it.",
+     "SourceName": "Tom's Hardware",
+     "SourceUrl": "https://www.tomshardware.com/reviews/best-gaming-cpu,2466.html"
     }
    ]
   },
@@ -593,11 +593,11 @@
   {
    "Tag": "GPU",
    "Hot": false,
-   "Title": "The RTX 5090 has vanished from US stores",
-   "Body": "It's gone from NVIDIA's own store, and Micro Center now lists it as \"Not Carried\". NVIDIA hasn't said it's discontinued.",
-   "SourceName": "The FPS Review",
-   "SourceUrl": "https://www.thefpsreview.com/2026/10/16/the-rtx-5090-has-vanished-from-nvidias-marketplace-and-micro-center-now-lists-it-as-not-carried/",
-   "Date": "2026-10-16"
+   "Title": "Radeon cards may get scarcer until January",
+   "Body": "An unconfirmed report from China says AMD's gaming GPU supply is down 20 to 50% since October, with shortages lasting until January 2027. The RX 9070 XT's lowest UK price has already risen to £799.",
+   "SourceName": "Club386",
+   "SourceUrl": "https://www.club386.com/amd-gpu-supply-falls-by-up-to-50-percent-rumour/",
+   "Date": "2026-11-12"
   },
   {
    "Tag": "RAM",
@@ -665,7 +665,6 @@
    "Best all-round value, quiet": "Mejor calidad-precio general, silencioso",
    "Best build quality": "Mejor calidad de montaje",
    "Best for gaming": "Mejor para jugar",
-   "Best if you also edit or stream; about 20% behind X3D in games.": "El mejor si también editas o haces streaming; un 20% por detrás de X3D en juegos.",
    "Best overall": "Mejor en general",
    "Best performance power mode, Game Mode on, background recording off": "Modo de energía Mejor rendimiento, Modo Juego activado, grabación en segundo plano desactivada",
    "Best sound": "Mejor sonido",
@@ -711,7 +710,6 @@
    "Microphone": "Micrófono",
    "Monitors": "Monitores",
    "Most configurable": "El más configurable",
-   "Most of the X3D gaming speed for less.": "Casi toda la velocidad X3D en juegos por menos.",
    "New games compile shaders the first time an effect appears, causing hitches that fade. Let the pre-compile step finish, raise the driver's shader cache (10 GB or Unlimited), and skip cleaner apps that delete it.": "Los juegos nuevos compilan shaders la primera vez que aparece un efecto, con tirones que luego desaparecen. Deja terminar la precompilación, sube la caché de shaders del driver (10 GB o Ilimitada) y evita apps de limpieza que la borran.",
    "New games stutter badly on hard drives. Drops that start after 5 to 15 minutes usually mean heat: clean the dust, fix airflow, repaste or undervolt.": "Los juegos nuevos dan muchos tirones en discos duros. Caídas que empiezan a los 5 a 15 minutos suelen ser calor: limpia el polvo, mejora el flujo de aire, cambia la pasta o haz undervolt.",
    "No measurable effect on modern Windows, and a real chance of breaking installed software.": "Ningún efecto medible en Windows moderno, y riesgo real de romper programas instalados.",
@@ -906,8 +904,6 @@
    "Open GPU tuning": "Abrir ajuste de GPU",
    "Set gentle fan curves in the BIOS (usually under Hardware Monitor or Smart Fan).": "Pon curvas de ventilador suaves en la BIOS (suele estar en Hardware Monitor o Smart Fan).",
    "Team Group's CEO expects no price drop next year. Its DDR5 chips cost about 5.5 times more than a year ago, and supply may not catch up before late 2028.": "El CEO de Team Group no espera bajadas de precio el próximo año. Sus chips DDR5 cuestan unas 5,5 veces más que hace un año, y la oferta podría no ponerse al día antes de finales de 2028.",
-   "The RTX 5090 has vanished from US stores": "La RTX 5090 ha desaparecido de las tiendas de EE. UU.",
-   "It's gone from NVIDIA's own store, and Micro Center now lists it as \"Not Carried\". NVIDIA hasn't said it's discontinued.": "Ya no está en la tienda de NVIDIA, y Micro Center ahora la marca como \"Not Carried\". NVIDIA no ha dicho que esté descatalogada.",
    "1080p": "1080p",
    "1080p / 1440p": "1080p / 1440p",
    "1440p": "1440p",
@@ -917,7 +913,22 @@
    "32 GB DDR4 (2×16)": "32 GB DDR4 (2×16)",
    "32 GB DDR5 (2×16)": "32 GB DDR5 (2×16)",
    "64 GB DDR4 (2×32)": "64 GB DDR4 (2×32)",
-   "64 GB DDR5 (2×32)": "64 GB DDR5 (2×32)"
+   "64 GB DDR5 (2×32)": "64 GB DDR5 (2×32)",
+   "Tom's Hardware's best-value gaming CPU, at about $250.": "La CPU para juegos con mejor relación calidad-precio según Tom's Hardware, por unos $250.",
+   "Strong in games and multitasking for about $200 to $220. Tom's Hardware and PC Gamer both pick it.": "Rinde bien en juegos y multitarea por unos $200 a $220. Tom's Hardware y PC Gamer la eligen.",
+   "Radeon cards may get scarcer until January": "Las Radeon podrían escasear hasta enero",
+   "An unconfirmed report from China says AMD's gaming GPU supply is down 20 to 50% since October, with shortages lasting until January 2027. The RX 9070 XT's lowest UK price has already risen to £799.": "Un informe no confirmado desde China dice que el suministro de GPU para juegos de AMD ha caído entre un 20 y un 50% desde octubre, con escasez hasta enero de 2027. El precio más bajo de la RX 9070 XT en Reino Unido ya ha subido a £799.",
+   "Since May 2026, new NVIDIA drivers no longer include the NVIDIA Control Panel. The same settings are in the NVIDIA App (System and Graphics), or you can get the Control Panel free from the Microsoft Store.": "Desde mayo de 2026, los drivers nuevos de NVIDIA ya no incluyen el Panel de control de NVIDIA. Los mismos ajustes están en la NVIDIA App (System y Graphics), o puedes descargar el Panel de control gratis desde Microsoft Store.",
+   "A clean install removes the old NVIDIA Control Panel. Use the NVIDIA App, or get the Control Panel back from the Microsoft Store.": "Una instalación limpia quita el antiguo Panel de control de NVIDIA. Usa la NVIDIA App o recupera el Panel de control desde Microsoft Store.",
+   "CPU": "CPU",
+   "We tested the RAM-saving storage tech in Gears of War: E-Day": "Probamos la tecnología de almacenamiento que ahorra RAM en Gears of War: E-Day",
+   "Today we’re focusing on a less-discussed technology that plays an equally important role in bringing this visually rich, densely detailed world to systems with more limited hardware resources: storage technology…": "Hoy nos centramos en una tecnología de la que se habla menos y que es igual de importante para llevar este mundo tan detallado a equipos más modestos: el almacenamiento…",
+   "Nearly 20 years after launch, ancient AMD Radeon HD 2000 and 3000 GPUs finally get a Linux fix for corrupted video playback": "Casi 20 años después, las viejas Radeon HD 2000 y 3000 de AMD reciben por fin un arreglo en Linux para el vídeo corrupto",
+   "A new kernel contributor used AI to develop a patch for the drivers powering his nearly-20-year-old Radeon GPU.": "Un nuevo colaborador del kernel usó IA para crear un parche para los drivers de su Radeon de casi 20 años.",
+   "Unannounced Intel Core Ultra 7 260K CPU surfaces in Newegg prebuilt gaming PCs": "Un Intel Core Ultra 7 260K no anunciado aparece en PCs gamer montados de Newegg",
+   "The mysterious Intel Core Ultra 7 260K has surfaced in some prebuilt gaming PCs on Newegg, despite no official mention of the chip from Intel.": "El misterioso Intel Core Ultra 7 260K ha aparecido en algunos PCs gamer montados de Newegg, aunque Intel no ha mencionado oficialmente el chip.",
+   "This week in Tom's Hardware Premium: November 14, 2026 — Mac Studio versus DGX Spark, AMD's MEXT cuts DRAM requirements in half, and the Huang saga reaches critical mass": "Esta semana en Tom's Hardware Premium (14 de noviembre de 2026): Mac Studio contra DGX Spark, MEXT de AMD reduce a la mitad la DRAM necesaria y la saga Huang llega a su punto crítico",
+   "Catch up with everything we've published this week on our subscription service, Tom's Hardware Premium, including exclusive interviews, local AI deep dives, and much more.": "Ponte al día con todo lo publicado esta semana en Tom's Hardware Premium, su servicio de suscripción: entrevistas exclusivas, análisis a fondo de IA local y mucho más."
   },
   "pt-BR": {
    "36 g for $99.99.": "36 g por US$ 99,99.",
@@ -936,7 +947,6 @@
    "Best all-round value, quiet": "Melhor custo-benefício geral, silencioso",
    "Best build quality": "Melhor qualidade de montagem",
    "Best for gaming": "Melhor para jogos",
-   "Best if you also edit or stream; about 20% behind X3D in games.": "Melhor se você também edita ou faz live; cerca de 20% atrás dos X3D em jogos.",
    "Best overall": "Melhor no geral",
    "Best performance power mode, Game Mode on, background recording off": "Modo de energia Melhor desempenho, Modo de Jogo ligado, gravação em segundo plano desligada",
    "Best sound": "Melhor som",
@@ -982,7 +992,6 @@
    "Microphone": "Microfone",
    "Monitors": "Monitores",
    "Most configurable": "O mais configurável",
-   "Most of the X3D gaming speed for less.": "Quase toda a velocidade X3D em jogos por menos.",
    "New games compile shaders the first time an effect appears, causing hitches that fade. Let the pre-compile step finish, raise the driver's shader cache (10 GB or Unlimited), and skip cleaner apps that delete it.": "Jogos novos compilam shaders na primeira vez que um efeito aparece, causando travadas que somem depois. Deixe a pré-compilação terminar, aumente o cache de shaders do driver (10 GB ou Ilimitado) e evite apps de limpeza que o apagam.",
    "New games stutter badly on hard drives. Drops that start after 5 to 15 minutes usually mean heat: clean the dust, fix airflow, repaste or undervolt.": "Jogos novos travam muito em HD. Quedas que começam após 5 a 15 minutos geralmente são calor: limpe a poeira, melhore a ventilação, troque a pasta ou faça undervolt.",
    "No measurable effect on modern Windows, and a real chance of breaking installed software.": "Nenhum efeito medível no Windows moderno, e risco real de quebrar programas instalados.",
@@ -1177,8 +1186,6 @@
    "Open GPU tuning": "Abrir ajuste de GPU",
    "Set gentle fan curves in the BIOS (usually under Hardware Monitor or Smart Fan).": "Configure curvas suaves de ventoinha na BIOS (normalmente em Hardware Monitor ou Smart Fan).",
    "Team Group's CEO expects no price drop next year. Its DDR5 chips cost about 5.5 times more than a year ago, and supply may not catch up before late 2028.": "O CEO da Team Group não espera queda de preço no ano que vem. Os chips DDR5 dela custam cerca de 5,5 vezes mais que há um ano, e a oferta pode não se normalizar antes do fim de 2028.",
-   "The RTX 5090 has vanished from US stores": "A RTX 5090 sumiu das lojas dos EUA",
-   "It's gone from NVIDIA's own store, and Micro Center now lists it as \"Not Carried\". NVIDIA hasn't said it's discontinued.": "Ela saiu da loja da própria NVIDIA, e a Micro Center agora a lista como \"Not Carried\". A NVIDIA não disse que ela foi descontinuada.",
    "1080p": "1080p",
    "1080p / 1440p": "1080p / 1440p",
    "1440p": "1440p",
@@ -1188,7 +1195,22 @@
    "32 GB DDR4 (2×16)": "32 GB DDR4 (2×16)",
    "32 GB DDR5 (2×16)": "32 GB DDR5 (2×16)",
    "64 GB DDR4 (2×32)": "64 GB DDR4 (2×32)",
-   "64 GB DDR5 (2×32)": "64 GB DDR5 (2×32)"
+   "64 GB DDR5 (2×32)": "64 GB DDR5 (2×32)",
+   "Tom's Hardware's best-value gaming CPU, at about $250.": "A CPU para jogos com melhor custo-benefício segundo a Tom's Hardware, por cerca de US$ 250.",
+   "Strong in games and multitasking for about $200 to $220. Tom's Hardware and PC Gamer both pick it.": "Vai bem em jogos e multitarefa por cerca de US$ 200 a US$ 220. Tom's Hardware e PC Gamer a escolhem.",
+   "Radeon cards may get scarcer until January": "As Radeon podem ficar mais escassas até janeiro",
+   "An unconfirmed report from China says AMD's gaming GPU supply is down 20 to 50% since October, with shortages lasting until January 2027. The RX 9070 XT's lowest UK price has already risen to £799.": "Um relato não confirmado da China diz que a oferta de GPUs para jogos da AMD caiu de 20% a 50% desde outubro, com falta até janeiro de 2027. O menor preço da RX 9070 XT no Reino Unido já subiu para £799.",
+   "Since May 2026, new NVIDIA drivers no longer include the NVIDIA Control Panel. The same settings are in the NVIDIA App (System and Graphics), or you can get the Control Panel free from the Microsoft Store.": "Desde maio de 2026, os drivers novos da NVIDIA não incluem mais o Painel de controle da NVIDIA. Os mesmos ajustes estão no NVIDIA App (System e Graphics), ou você pode baixar o Painel de controle de graça na Microsoft Store.",
+   "A clean install removes the old NVIDIA Control Panel. Use the NVIDIA App, or get the Control Panel back from the Microsoft Store.": "Uma instalação limpa remove o antigo Painel de controle da NVIDIA. Use o NVIDIA App ou recupere o Painel de controle na Microsoft Store.",
+   "CPU": "CPU",
+   "We tested the RAM-saving storage tech in Gears of War: E-Day": "Testamos a tecnologia de armazenamento que economiza RAM em Gears of War: E-Day",
+   "Today we’re focusing on a less-discussed technology that plays an equally important role in bringing this visually rich, densely detailed world to systems with more limited hardware resources: storage technology…": "Hoje focamos em uma tecnologia menos comentada que é igualmente importante para levar esse mundo tão detalhado a PCs mais modestos: o armazenamento…",
+   "Nearly 20 years after launch, ancient AMD Radeon HD 2000 and 3000 GPUs finally get a Linux fix for corrupted video playback": "Quase 20 anos depois, as antigas Radeon HD 2000 e 3000 da AMD finalmente recebem uma correção no Linux para vídeo corrompido",
+   "A new kernel contributor used AI to develop a patch for the drivers powering his nearly-20-year-old Radeon GPU.": "Um novo colaborador do kernel usou IA para criar um patch para os drivers da sua Radeon de quase 20 anos.",
+   "Unannounced Intel Core Ultra 7 260K CPU surfaces in Newegg prebuilt gaming PCs": "Um Intel Core Ultra 7 260K não anunciado aparece em PCs gamer montados da Newegg",
+   "The mysterious Intel Core Ultra 7 260K has surfaced in some prebuilt gaming PCs on Newegg, despite no official mention of the chip from Intel.": "O misterioso Intel Core Ultra 7 260K apareceu em alguns PCs gamer montados da Newegg, embora a Intel não tenha mencionado o chip oficialmente.",
+   "This week in Tom's Hardware Premium: November 14, 2026 — Mac Studio versus DGX Spark, AMD's MEXT cuts DRAM requirements in half, and the Huang saga reaches critical mass": "Esta semana no Tom's Hardware Premium (14 de novembro de 2026): Mac Studio contra DGX Spark, o MEXT da AMD corta pela metade a DRAM necessária e a saga Huang chega ao ponto crítico",
+   "Catch up with everything we've published this week on our subscription service, Tom's Hardware Premium, including exclusive interviews, local AI deep dives, and much more.": "Confira tudo o que saiu esta semana no Tom's Hardware Premium, o serviço de assinatura: entrevistas exclusivas, análises de IA local e muito mais."
   }
  },
  "Guides": [
@@ -1204,7 +1226,7 @@
    "Chapters": [
     {
      "Title": "Get the basics right",
-     "Intro": null,
+     "Intro": "Since May 2026, new NVIDIA drivers no longer include the NVIDIA Control Panel. The same settings are in the NVIDIA App (System and Graphics), or you can get the Control Panel free from the Microsoft Store.",
      "Steps": [
       {
        "Text": "Plug the monitor into the graphics card, not the motherboard."
@@ -1274,6 +1296,10 @@
     {
      "Name": "NVIDIA App",
      "Url": "https://www.nvidia.com/en-us/software/nvidia-app/"
+    },
+    {
+     "Name": "Tom's Hardware: NVIDIA Control Panel no longer ships with drivers",
+     "Url": "https://www.tomshardware.com/pc-components/gpus/nvidia-is-finally-ditching-its-iconic-control-panel-after-20-years-new-driver-updates-only-ship-in-the-nvidia-app"
     }
    ]
   },
@@ -1467,7 +1493,8 @@
        "Text": "Run DDU, pick GPU and your brand on the right, then 'Clean and restart'."
       },
       {
-       "Text": "Back in Windows, run the driver you downloaded. On NVIDIA pick Custom → Clean installation if offered."
+       "Text": "Back in Windows, run the driver you downloaded. On NVIDIA pick Custom → Clean installation if offered.",
+       "Tip": "A clean install removes the old NVIDIA Control Panel. Use the NVIDIA App, or get the Control Panel back from the Microsoft Store."
       },
       {
        "Text": "Reconnect to the internet, then set your refresh rate and driver settings again (the NVIDIA or AMD settings guide)."
@@ -1479,6 +1506,10 @@
     {
      "Name": "Wagnardsoft: Display Driver Uninstaller",
      "Url": "https://www.wagnardsoft.com/"
+    },
+    {
+     "Name": "Tom's Hardware: NVIDIA Control Panel no longer ships with drivers",
+     "Url": "https://www.tomshardware.com/pc-components/gpus/nvidia-is-finally-ditching-its-iconic-control-panel-after-20-years-new-driver-updates-only-ship-in-the-nvidia-app"
     }
    ]
   },
