@@ -1,6 +1,6 @@
 {
  "Schema": 1,
- "Updated": "2026-11-16",
+ "Updated": "2026-11-17",
  "Tips": [
   {
    "Title": "Run your monitor at its full refresh rate, from the graphics card",
@@ -190,7 +190,7 @@
    "Tier": "1440p / 4K"
   }
  ],
- "RamSource": "Capital and Compute RAM tracker, November 16, 2026",
+ "RamSource": "Capital and Compute RAM tracker, November 17, 2026",
  "RamSourceUrl": "https://capitalandcompute.net/memory-prices/",
  "Ram": [
   {
@@ -243,7 +243,17 @@
    "Average": 127
   },
   {
+   "Date": "2025-06-19",
+   "Cheapest": 50,
+   "Average": 127
+  },
+  {
    "Date": "2025-07-03",
+   "Cheapest": 62,
+   "Average": 130
+  },
+  {
+   "Date": "2025-07-08",
    "Cheapest": 62,
    "Average": 130
   },
@@ -253,9 +263,19 @@
    "Average": 130
   },
   {
+   "Date": "2025-09-22",
+   "Cheapest": 63,
+   "Average": 132
+  },
+  {
    "Date": "2025-11-24",
    "Cheapest": 124,
    "Average": 345
+  },
+  {
+   "Date": "2025-12-07",
+   "Cheapest": 126,
+   "Average": 422
   },
   {
    "Date": "2026-02-04",
@@ -263,9 +283,19 @@
    "Average": 569
   },
   {
+   "Date": "2026-02-21",
+   "Cheapest": 150,
+   "Average": 558
+  },
+  {
    "Date": "2026-04-17",
    "Cheapest": 150,
    "Average": 539
+  },
+  {
+   "Date": "2026-05-08",
+   "Cheapest": 150,
+   "Average": 521
   },
   {
    "Date": "2026-06-28",
@@ -273,9 +303,19 @@
    "Average": 566
   },
   {
+   "Date": "2026-07-23",
+   "Cheapest": 390,
+   "Average": 561
+  },
+  {
    "Date": "2026-09-08",
    "Cheapest": 396,
    "Average": 574
+  },
+  {
+   "Date": "2026-10-07",
+   "Cheapest": 396,
+   "Average": 595
   },
   {
    "Date": "2026-10-16",
@@ -298,6 +338,11 @@
    "Average": 608
   },
   {
+   "Date": "2026-10-30",
+   "Cheapest": 420,
+   "Average": 616
+  },
+  {
    "Date": "2026-10-31",
    "Cheapest": 429,
    "Average": 617
@@ -311,6 +356,26 @@
    "Date": "2026-11-03",
    "Cheapest": 429,
    "Average": 617
+  },
+  {
+   "Date": "2026-11-07",
+   "Cheapest": 429,
+   "Average": 620
+  },
+  {
+   "Date": "2026-11-11",
+   "Cheapest": 429,
+   "Average": 624
+  },
+  {
+   "Date": "2026-11-15",
+   "Cheapest": 429,
+   "Average": 622
+  },
+  {
+   "Date": "2026-11-16",
+   "Cheapest": 429,
+   "Average": 622
   }
  ],
  "Gear": [
@@ -602,6 +667,16 @@
   {
    "Tag": "GPU",
    "Hot": false,
+   "Title": "Nvidia announces Rubin HPC GPU with 'record number of CUDA cores' at Supercomputing 2026",
+   "Body": "Nvidia took the wraps off its Rubin HPC GPU at Supercomputing 2026.",
+   "SourceName": "Tom's Hardware",
+   "SourceUrl": "https://www.tomshardware.com/pc-components/gpus/nvidia-announces-rubin-hpc-gpu-with-record-number-of-cuda-cores-at-supercomputing-2026-new-chip-accelerates-agentic-hpc-workloads-arrives-in-2028",
+   "Date": "2026-11-16",
+   "Auto": true
+  },
+  {
+   "Tag": "GPU",
+   "Hot": false,
    "Title": "Nvidia RTX 5090 stock returns to Newegg with 21 models",
    "Body": "After rumors of Nvidia GeForce RTX 5090 graphics cards being withdrawn from the consumer retail channel it is pleasing to see major U.S.",
    "SourceName": "Tom's Hardware",
@@ -627,26 +702,6 @@
    "SourceName": "Tom's Hardware",
    "SourceUrl": "https://www.tomshardware.com/pc-components/ssds/we-tested-the-ram-saving-storage-tech-in-gears-of-war-e-day-up-to-3-7-gb-s-of-ssd-streaming-speed-saves-several-gigabytes-of-system-ram-usage",
    "Date": "2026-11-14",
-   "Auto": true
-  },
-  {
-   "Tag": "GPU",
-   "Hot": false,
-   "Title": "Nearly 20 years after launch, ancient AMD Radeon HD 2000 and 3000 GPUs finally get a Linux fix for corrupted video playback",
-   "Body": "A new kernel contributor used AI to develop a patch for the drivers powering his nearly-20-year-old Radeon GPU.",
-   "SourceName": "Tom's Hardware",
-   "SourceUrl": "https://www.tomshardware.com/software/linux/nearly-20-years-after-launch-ancient-radeon-hd-2000-and-3000-gpus-finally-get-a-linux-fix-for-corrupted-video-playback-ai-helps-squash-a-decades-old-uvd-bug",
-   "Date": "2026-11-14",
-   "Auto": true
-  },
-  {
-   "Tag": "CPU",
-   "Hot": false,
-   "Title": "Unannounced Intel Core Ultra 7 260K CPU surfaces in Newegg prebuilt gaming PCs",
-   "Body": "The mysterious Intel Core Ultra 7 260K has surfaced in some prebuilt gaming PCs on Newegg, despite no official mention of the chip from Intel.",
-   "SourceName": "Tom's Hardware",
-   "SourceUrl": "https://www.tomshardware.com/pc-components/cpus/unannounced-intel-core-ultra-7-260k-cpu-surfaces-in-newegg-prebuilt-gaming-pcs-intel-doesnt-have-official-specs-list-available-for-exclusive-arrow-lake-chip",
-   "Date": "2026-11-13",
    "Auto": true
   }
  ],
@@ -930,13 +985,8 @@
    "An unconfirmed report from China says AMD's gaming GPU supply is down 20 to 50% since October, with shortages lasting until January 2027. The RX 9070 XT's lowest UK price has already risen to £799.": "Un informe no confirmado desde China dice que el suministro de GPU para juegos de AMD ha caído entre un 20 y un 50% desde octubre, con escasez hasta enero de 2027. El precio más bajo de la RX 9070 XT en Reino Unido ya ha subido a £799.",
    "Since May 2026, new NVIDIA drivers no longer include the NVIDIA Control Panel. The same settings are in the NVIDIA App (System and Graphics), or you can get the Control Panel free from the Microsoft Store.": "Desde mayo de 2026, los drivers nuevos de NVIDIA ya no incluyen el Panel de control de NVIDIA. Los mismos ajustes están en la NVIDIA App (System y Graphics), o puedes descargar el Panel de control gratis desde Microsoft Store.",
    "A clean install removes the old NVIDIA Control Panel. Use the NVIDIA App, or get the Control Panel back from the Microsoft Store.": "Una instalación limpia quita el antiguo Panel de control de NVIDIA. Usa la NVIDIA App o recupera el Panel de control desde Microsoft Store.",
-   "CPU": "CPU",
    "We tested the RAM-saving storage tech in Gears of War: E-Day": "Probamos la tecnología de almacenamiento que ahorra RAM en Gears of War: E-Day",
-   "Today we’re focusing on a less-discussed technology that plays an equally important role in bringing this visually rich, densely detailed world to systems with more limited hardware resources: storage technology…": "Hoy nos centramos en una tecnología de la que se habla menos y que es igual de importante para llevar este mundo tan detallado a equipos más modestos: el almacenamiento…",
-   "Nearly 20 years after launch, ancient AMD Radeon HD 2000 and 3000 GPUs finally get a Linux fix for corrupted video playback": "Casi 20 años después, las viejas Radeon HD 2000 y 3000 de AMD reciben por fin un arreglo en Linux para el vídeo corrupto",
-   "A new kernel contributor used AI to develop a patch for the drivers powering his nearly-20-year-old Radeon GPU.": "Un nuevo colaborador del kernel usó IA para crear un parche para los drivers de su Radeon de casi 20 años.",
-   "Unannounced Intel Core Ultra 7 260K CPU surfaces in Newegg prebuilt gaming PCs": "Un Intel Core Ultra 7 260K no anunciado aparece en PCs gamer montados de Newegg",
-   "The mysterious Intel Core Ultra 7 260K has surfaced in some prebuilt gaming PCs on Newegg, despite no official mention of the chip from Intel.": "El misterioso Intel Core Ultra 7 260K ha aparecido en algunos PCs gamer montados de Newegg, aunque Intel no ha mencionado oficialmente el chip."
+   "Today we’re focusing on a less-discussed technology that plays an equally important role in bringing this visually rich, densely detailed world to systems with more limited hardware resources: storage technology…": "Hoy nos centramos en una tecnología de la que se habla menos y que es igual de importante para llevar este mundo tan detallado a equipos más modestos: el almacenamiento…"
   },
   "pt-BR": {
    "36 g for $99.99.": "36 g por US$ 99,99.",
@@ -1210,13 +1260,8 @@
    "An unconfirmed report from China says AMD's gaming GPU supply is down 20 to 50% since October, with shortages lasting until January 2027. The RX 9070 XT's lowest UK price has already risen to £799.": "Um relato não confirmado da China diz que a oferta de GPUs para jogos da AMD caiu de 20% a 50% desde outubro, com falta até janeiro de 2027. O menor preço da RX 9070 XT no Reino Unido já subiu para £799.",
    "Since May 2026, new NVIDIA drivers no longer include the NVIDIA Control Panel. The same settings are in the NVIDIA App (System and Graphics), or you can get the Control Panel free from the Microsoft Store.": "Desde maio de 2026, os drivers novos da NVIDIA não incluem mais o Painel de controle da NVIDIA. Os mesmos ajustes estão no NVIDIA App (System e Graphics), ou você pode baixar o Painel de controle de graça na Microsoft Store.",
    "A clean install removes the old NVIDIA Control Panel. Use the NVIDIA App, or get the Control Panel back from the Microsoft Store.": "Uma instalação limpa remove o antigo Painel de controle da NVIDIA. Use o NVIDIA App ou recupere o Painel de controle na Microsoft Store.",
-   "CPU": "CPU",
    "We tested the RAM-saving storage tech in Gears of War: E-Day": "Testamos a tecnologia de armazenamento que economiza RAM em Gears of War: E-Day",
-   "Today we’re focusing on a less-discussed technology that plays an equally important role in bringing this visually rich, densely detailed world to systems with more limited hardware resources: storage technology…": "Hoje focamos em uma tecnologia menos comentada que é igualmente importante para levar esse mundo tão detalhado a PCs mais modestos: o armazenamento…",
-   "Nearly 20 years after launch, ancient AMD Radeon HD 2000 and 3000 GPUs finally get a Linux fix for corrupted video playback": "Quase 20 anos depois, as antigas Radeon HD 2000 e 3000 da AMD finalmente recebem uma correção no Linux para vídeo corrompido",
-   "A new kernel contributor used AI to develop a patch for the drivers powering his nearly-20-year-old Radeon GPU.": "Um novo colaborador do kernel usou IA para criar um patch para os drivers da sua Radeon de quase 20 anos.",
-   "Unannounced Intel Core Ultra 7 260K CPU surfaces in Newegg prebuilt gaming PCs": "Um Intel Core Ultra 7 260K não anunciado aparece em PCs gamer montados da Newegg",
-   "The mysterious Intel Core Ultra 7 260K has surfaced in some prebuilt gaming PCs on Newegg, despite no official mention of the chip from Intel.": "O misterioso Intel Core Ultra 7 260K apareceu em alguns PCs gamer montados da Newegg, embora a Intel não tenha mencionado o chip oficialmente."
+   "Today we’re focusing on a less-discussed technology that plays an equally important role in bringing this visually rich, densely detailed world to systems with more limited hardware resources: storage technology…": "Hoje focamos em uma tecnologia menos comentada que é igualmente importante para levar esse mundo tão detalhado a PCs mais modestos: o armazenamento…"
   }
  },
  "Guides": [
