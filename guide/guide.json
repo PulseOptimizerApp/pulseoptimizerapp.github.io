@@ -1,6 +1,6 @@
 {
  "Schema": 1,
- "Updated": "2026-11-17",
+ "Updated": "2026-11-18",
  "Tips": [
   {
    "Title": "Run your monitor at its full refresh rate, from the graphics card",
@@ -129,7 +129,7 @@
   {
    "Name": "Radeon RX 9060 XT 8GB",
    "Msrp": 299,
-   "Now": 459,
+   "Now": 539,
    "Lowest": 259,
    "Tier": "1080p"
   },
@@ -143,21 +143,21 @@
   {
    "Name": "Radeon RX 9060 XT 16GB",
    "Msrp": 349,
-   "Now": 659,
+   "Now": 729,
    "Lowest": 349,
    "Tier": "1080p / 1440p"
   },
   {
    "Name": "GeForce RTX 5060 Ti 16GB",
    "Msrp": 429,
-   "Now": 769,
+   "Now": 799,
    "Lowest": 379,
    "Tier": "1080p / 1440p"
   },
   {
    "Name": "Radeon RX 9070 GRE",
    "Msrp": 549,
-   "Now": 569,
+   "Now": 729,
    "Lowest": 499,
    "Tier": "1440p"
   },
@@ -171,26 +171,26 @@
   {
    "Name": "GeForce RTX 5070",
    "Msrp": 549,
-   "Now": 899,
+   "Now": 869,
    "Lowest": 479,
    "Tier": "1440p"
   },
   {
    "Name": "Radeon RX 9070 XT",
    "Msrp": 599,
-   "Now": 919,
+   "Now": 959,
    "Lowest": 599,
    "Tier": "1440p / 4K"
   },
   {
    "Name": "GeForce RTX 5070 Ti",
    "Msrp": 749,
-   "Now": 1399,
+   "Now": 1400,
    "Lowest": 729,
    "Tier": "1440p / 4K"
   }
  ],
- "RamSource": "Capital and Compute RAM tracker, November 17, 2026",
+ "RamSource": "Capital and Compute RAM tracker, November 18, 2026",
  "RamSourceUrl": "https://capitalandcompute.net/memory-prices/",
  "Ram": [
   {
@@ -665,6 +665,16 @@
    "Date": "2026-11-12"
   },
   {
+   "Tag": "RAM",
+   "Hot": false,
+   "Title": "Samsung, Micron, and SK Hynix are accused of conspiring to inflate RAM prices, lawsuit moves forward",
+   "Body": "A California judge has denied Samsung's motion to dismiss a lawsuit accusing it, Micron, and SK Hynix of colluding to inflate DRAM prices.",
+   "SourceName": "TechSpot",
+   "SourceUrl": "https://www.techspot.com/news/114580-samsung-micron-sk-hynix-accused-conspiring-inflate-ram.html",
+   "Date": "2026-11-17",
+   "Auto": true
+  },
+  {
    "Tag": "GPU",
    "Hot": false,
    "Title": "Nvidia announces Rubin HPC GPU with 'record number of CUDA cores' at Supercomputing 2026",
@@ -672,36 +682,6 @@
    "SourceName": "Tom's Hardware",
    "SourceUrl": "https://www.tomshardware.com/pc-components/gpus/nvidia-announces-rubin-hpc-gpu-with-record-number-of-cuda-cores-at-supercomputing-2026-new-chip-accelerates-agentic-hpc-workloads-arrives-in-2028",
    "Date": "2026-11-16",
-   "Auto": true
-  },
-  {
-   "Tag": "GPU",
-   "Hot": false,
-   "Title": "Nvidia RTX 5090 stock returns to Newegg with 21 models",
-   "Body": "After rumors of Nvidia GeForce RTX 5090 graphics cards being withdrawn from the consumer retail channel it is pleasing to see major U.S.",
-   "SourceName": "Tom's Hardware",
-   "SourceUrl": "https://www.tomshardware.com/pc-components/gpus/nvidia-rtx-5090-stock-returns-to-newegg-with-21-models-but-scarcity-pricing-keeps-the-cheapest-air-cooled-cards-at-least-three-times-msrp",
-   "Date": "2026-11-15",
-   "Auto": true
-  },
-  {
-   "Tag": "RAM",
-   "Hot": true,
-   "Title": "Judge denies motion to dismiss DRAM price-fixing lawsuit against Micron, Samsung, and SK hynix, finds evidence of DRAM collusion plausible after 500% price surge",
-   "Body": "The judge characterized the three companies as \"hawks flying in formation\" when it came to their business decisions.",
-   "SourceName": "Tom's Hardware",
-   "SourceUrl": "https://www.tomshardware.com/tech-industry/big-tech/judge-denies-motion-to-dismiss-dram-price-fixing-lawsuit-against-micron-samsung-and-sk-hynix-says-chipmakers-acted-like-hawks-flying-in-formation-finds-evidence-of-dram-collusion-plausible-after-500-percent-price-surge",
-   "Date": "2026-11-15",
-   "Auto": true
-  },
-  {
-   "Tag": "RAM",
-   "Hot": false,
-   "Title": "We tested the RAM-saving storage tech in Gears of War: E-Day",
-   "Body": "Today we’re focusing on a less-discussed technology that plays an equally important role in bringing this visually rich, densely detailed world to systems with more limited hardware resources: storage technology…",
-   "SourceName": "Tom's Hardware",
-   "SourceUrl": "https://www.tomshardware.com/pc-components/ssds/we-tested-the-ram-saving-storage-tech-in-gears-of-war-e-day-up-to-3-7-gb-s-of-ssd-streaming-speed-saves-several-gigabytes-of-system-ram-usage",
-   "Date": "2026-11-14",
    "Auto": true
   }
  ],
@@ -984,9 +964,7 @@
    "Radeon cards may get scarcer until January": "Las Radeon podrían escasear hasta enero",
    "An unconfirmed report from China says AMD's gaming GPU supply is down 20 to 50% since October, with shortages lasting until January 2027. The RX 9070 XT's lowest UK price has already risen to £799.": "Un informe no confirmado desde China dice que el suministro de GPU para juegos de AMD ha caído entre un 20 y un 50% desde octubre, con escasez hasta enero de 2027. El precio más bajo de la RX 9070 XT en Reino Unido ya ha subido a £799.",
    "Since May 2026, new NVIDIA drivers no longer include the NVIDIA Control Panel. The same settings are in the NVIDIA App (System and Graphics), or you can get the Control Panel free from the Microsoft Store.": "Desde mayo de 2026, los drivers nuevos de NVIDIA ya no incluyen el Panel de control de NVIDIA. Los mismos ajustes están en la NVIDIA App (System y Graphics), o puedes descargar el Panel de control gratis desde Microsoft Store.",
-   "A clean install removes the old NVIDIA Control Panel. Use the NVIDIA App, or get the Control Panel back from the Microsoft Store.": "Una instalación limpia quita el antiguo Panel de control de NVIDIA. Usa la NVIDIA App o recupera el Panel de control desde Microsoft Store.",
-   "We tested the RAM-saving storage tech in Gears of War: E-Day": "Probamos la tecnología de almacenamiento que ahorra RAM en Gears of War: E-Day",
-   "Today we’re focusing on a less-discussed technology that plays an equally important role in bringing this visually rich, densely detailed world to systems with more limited hardware resources: storage technology…": "Hoy nos centramos en una tecnología de la que se habla menos y que es igual de importante para llevar este mundo tan detallado a equipos más modestos: el almacenamiento…"
+   "A clean install removes the old NVIDIA Control Panel. Use the NVIDIA App, or get the Control Panel back from the Microsoft Store.": "Una instalación limpia quita el antiguo Panel de control de NVIDIA. Usa la NVIDIA App o recupera el Panel de control desde Microsoft Store."
   },
   "pt-BR": {
    "36 g for $99.99.": "36 g por US$ 99,99.",
@@ -1259,9 +1237,7 @@
    "Radeon cards may get scarcer until January": "As Radeon podem ficar mais escassas até janeiro",
    "An unconfirmed report from China says AMD's gaming GPU supply is down 20 to 50% since October, with shortages lasting until January 2027. The RX 9070 XT's lowest UK price has already risen to £799.": "Um relato não confirmado da China diz que a oferta de GPUs para jogos da AMD caiu de 20% a 50% desde outubro, com falta até janeiro de 2027. O menor preço da RX 9070 XT no Reino Unido já subiu para £799.",
    "Since May 2026, new NVIDIA drivers no longer include the NVIDIA Control Panel. The same settings are in the NVIDIA App (System and Graphics), or you can get the Control Panel free from the Microsoft Store.": "Desde maio de 2026, os drivers novos da NVIDIA não incluem mais o Painel de controle da NVIDIA. Os mesmos ajustes estão no NVIDIA App (System e Graphics), ou você pode baixar o Painel de controle de graça na Microsoft Store.",
-   "A clean install removes the old NVIDIA Control Panel. Use the NVIDIA App, or get the Control Panel back from the Microsoft Store.": "Uma instalação limpa remove o antigo Painel de controle da NVIDIA. Use o NVIDIA App ou recupere o Painel de controle na Microsoft Store.",
-   "We tested the RAM-saving storage tech in Gears of War: E-Day": "Testamos a tecnologia de armazenamento que economiza RAM em Gears of War: E-Day",
-   "Today we’re focusing on a less-discussed technology that plays an equally important role in bringing this visually rich, densely detailed world to systems with more limited hardware resources: storage technology…": "Hoje focamos em uma tecnologia menos comentada que é igualmente importante para levar esse mundo tão detalhado a PCs mais modestos: o armazenamento…"
+   "A clean install removes the old NVIDIA Control Panel. Use the NVIDIA App, or get the Control Panel back from the Microsoft Store.": "Uma instalação limpa remove o antigo Painel de controle da NVIDIA. Use o NVIDIA App ou recupere o Painel de controle na Microsoft Store."
   }
  },
  "Guides": [
