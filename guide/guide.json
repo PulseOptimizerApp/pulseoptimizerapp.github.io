@@ -1,6 +1,6 @@
 {
  "Schema": 1,
- "Updated": "2026-11-18",
+ "Updated": "2026-11-19",
  "Tips": [
   {
    "Title": "Run your monitor at its full refresh rate, from the graphics card",
@@ -190,7 +190,7 @@
    "Tier": "1440p / 4K"
   }
  ],
- "RamSource": "Capital and Compute RAM tracker, November 18, 2026",
+ "RamSource": "Capital and Compute RAM tracker, November 19, 2026",
  "RamSourceUrl": "https://capitalandcompute.net/memory-prices/",
  "Ram": [
   {
@@ -663,6 +663,26 @@
    "SourceName": "Club386",
    "SourceUrl": "https://www.club386.com/amd-gpu-supply-falls-by-up-to-50-percent-rumour/",
    "Date": "2026-11-12"
+  },
+  {
+   "Tag": "Storage",
+   "Hot": false,
+   "Title": "SSDs, laptops, and phones may get cheaper as consumer NAND spot pricing drops 20%",
+   "Body": "According to a new report, slowing demand for consumer electronics and diverging production requirements for consumer and enterprise NAND have resulted in declining spot prices for consumer-grade flash memory.",
+   "SourceName": "Tom's Hardware",
+   "SourceUrl": "https://www.tomshardware.com/pc-components/ssds/ssds-laptops-and-phones-may-get-cheaper-as-consumer-nand-spot-pricing-drops-20-percent-bank-of-america-expects-contract-price-drops-report-cites-oversupply-in-consumer-market-amid-declining-demand-and-growing-chinese-competition",
+   "Date": "2026-11-18",
+   "Auto": true
+  },
+  {
+   "Tag": "Coming",
+   "Hot": false,
+   "Title": "AMD teases mystery CES 2027 announcement: Zen 6, RDNA 5, or yet more AI?",
+   "Body": "Jack Huynh, AMD's SVP and GM of Computing and Graphics, posted the teaser on his official X account.",
+   "SourceName": "TechSpot",
+   "SourceUrl": "https://www.techspot.com/news/114604-amd-teases-mystery-ces-2027-announcement-zen-6.html",
+   "Date": "2026-11-18",
+   "Auto": true
   },
   {
    "Tag": "RAM",
