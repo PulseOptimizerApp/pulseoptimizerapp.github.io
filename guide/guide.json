@@ -1,6 +1,6 @@
 {
  "Schema": 1,
- "Updated": "2026-11-19",
+ "Updated": "2026-11-20",
  "Tips": [
   {
    "Title": "Run your monitor at its full refresh rate, from the graphics card",
@@ -190,7 +190,7 @@
    "Tier": "1440p / 4K"
   }
  ],
- "RamSource": "Capital and Compute RAM tracker, November 19, 2026",
+ "RamSource": "Capital and Compute RAM tracker, November 20, 2026",
  "RamSourceUrl": "https://capitalandcompute.net/memory-prices/",
  "Ram": [
   {
@@ -667,41 +667,31 @@
   {
    "Tag": "Storage",
    "Hot": false,
-   "Title": "SSDs, laptops, and phones may get cheaper as consumer NAND spot pricing drops 20%",
-   "Body": "According to a new report, slowing demand for consumer electronics and diverging production requirements for consumer and enterprise NAND have resulted in declining spot prices for consumer-grade flash memory.",
+   "Title": "Save 36% on this 4TB Samsung 990 Pro SSD upgrade for your gaming PC, now just 17.5 cents per GB",
+   "Body": "Grab this 4TB Samsung 990 Pro SSD with Gen 4 speeds for $699.99, a 36% price drop compared to its list price and a $100 drop since last week.",
    "SourceName": "Tom's Hardware",
-   "SourceUrl": "https://www.tomshardware.com/pc-components/ssds/ssds-laptops-and-phones-may-get-cheaper-as-consumer-nand-spot-pricing-drops-20-percent-bank-of-america-expects-contract-price-drops-report-cites-oversupply-in-consumer-market-amid-declining-demand-and-growing-chinese-competition",
-   "Date": "2026-11-18",
+   "SourceUrl": "https://www.tomshardware.com/pc-components/ssds/save-36-percent-on-this-4tb-samsung-990-pro-ssd-upgrade-for-your-gaming-pc-now-just-17-5-cents-per-gb-our-top-gen-4-drive-recommendation-is-now-usd100-cheaper-than-last-week",
+   "Date": "2026-11-19",
    "Auto": true
   },
   {
-   "Tag": "Coming",
+   "Tag": "Storage",
    "Hot": false,
-   "Title": "AMD teases mystery CES 2027 announcement: Zen 6, RDNA 5, or yet more AI?",
-   "Body": "Jack Huynh, AMD's SVP and GM of Computing and Graphics, posted the teaser on his official X account.",
+   "Title": "Valve may raise Steam Machine prices yet again: 'Memory and storage costs continue to increase at unprecedented levels'",
+   "Body": "The 2TB model will be \"especially constrained\": Valve has closed the waitlist and says it doesn't know how many it will be able to make, or at what price they'll be sold.",
+   "SourceName": "PC Gamer",
+   "SourceUrl": "https://www.pcgamer.com/hardware/steam-machines/valve-may-raise-steam-machine-prices-yet-again-memory-and-storage-costs-continue-to-increase-at-unprecedented-levels/",
+   "Date": "2026-11-19",
+   "Auto": true
+  },
+  {
+   "Tag": "Storage",
+   "Hot": false,
+   "Title": "NAND flash prices fell 20% in the last two weeks, and are predicted to fall further in 2027",
+   "Body": "While NAND flash prices have risen rapidly over the past year, 2027 could finally bring some relief to customers.",
    "SourceName": "TechSpot",
-   "SourceUrl": "https://www.techspot.com/news/114604-amd-teases-mystery-ces-2027-announcement-zen-6.html",
-   "Date": "2026-11-18",
-   "Auto": true
-  },
-  {
-   "Tag": "RAM",
-   "Hot": false,
-   "Title": "Samsung, Micron, and SK Hynix are accused of conspiring to inflate RAM prices, lawsuit moves forward",
-   "Body": "A California judge has denied Samsung's motion to dismiss a lawsuit accusing it, Micron, and SK Hynix of colluding to inflate DRAM prices.",
-   "SourceName": "TechSpot",
-   "SourceUrl": "https://www.techspot.com/news/114580-samsung-micron-sk-hynix-accused-conspiring-inflate-ram.html",
-   "Date": "2026-11-17",
-   "Auto": true
-  },
-  {
-   "Tag": "GPU",
-   "Hot": false,
-   "Title": "Nvidia announces Rubin HPC GPU with 'record number of CUDA cores' at Supercomputing 2026",
-   "Body": "Nvidia took the wraps off its Rubin HPC GPU at Supercomputing 2026.",
-   "SourceName": "Tom's Hardware",
-   "SourceUrl": "https://www.tomshardware.com/pc-components/gpus/nvidia-announces-rubin-hpc-gpu-with-record-number-of-cuda-cores-at-supercomputing-2026-new-chip-accelerates-agentic-hpc-workloads-arrives-in-2028",
-   "Date": "2026-11-16",
+   "SourceUrl": "https://www.techspot.com/news/114630-nand-flash-prices-fell-20-last-two-weeks.html",
+   "Date": "2026-11-19",
    "Auto": true
   }
  ],
