@@ -1,6 +1,6 @@
 {
  "Schema": 1,
- "Updated": "2026-11-20",
+ "Updated": "2026-11-21",
  "Tips": [
   {
    "Title": "Run your monitor at its full refresh rate, from the graphics card",
@@ -190,7 +190,7 @@
    "Tier": "1440p / 4K"
   }
  ],
- "RamSource": "Capital and Compute RAM tracker, November 20, 2026",
+ "RamSource": "Capital and Compute RAM tracker, November 21, 2026",
  "RamSourceUrl": "https://capitalandcompute.net/memory-prices/",
  "Ram": [
   {
@@ -663,6 +663,16 @@
    "SourceName": "Club386",
    "SourceUrl": "https://www.club386.com/amd-gpu-supply-falls-by-up-to-50-percent-rumour/",
    "Date": "2026-11-12"
+  },
+  {
+   "Tag": "Coming",
+   "Hot": true,
+   "Title": "AMD's next-gen Zen 6 desktop CPUs are rumoured to be delayed, may be pushed back to second half of 2027",
+   "Body": "A process switch to TSMC N2X is said to be behind the delay.",
+   "SourceName": "PC Gamer",
+   "SourceUrl": "https://www.pcgamer.com/hardware/processors/amds-next-gen-zen-6-desktop-cpus-are-rumoured-to-be-delayed-may-be-pushed-back-to-second-half-of-2027/",
+   "Date": "2026-11-20",
+   "Auto": true
   },
   {
    "Tag": "Storage",
